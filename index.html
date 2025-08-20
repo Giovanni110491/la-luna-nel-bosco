@@ -3,391 +3,340 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>La Luna nel Bosco – Casa Vacanze</title>
-  <meta name="description" content="La Luna nel Bosco: appartamento immerso nel verde. Foto, servizi e prenotazioni rapide." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>La Luna nel Bosco – Casa Vacanze a Livorno</title>
+  <meta name="description" content="La Luna nel Bosco: appartamento esclusivo con piscina, terrazza panoramica e parco secolare a Livorno. Prenota su Airbnb (–15%), Booking o VRBO." />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="La Luna nel Bosco – Casa Vacanze" />
-  <meta property="og:description" content="Appartamento immerso nel verde. Prenota il tuo soggiorno." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/hero.jpg" />
-  <meta property="og:locale" content="it_IT" />
-
-  <!-- Favicons (opzionali) -->
-  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <!-- Social preview -->
+  <meta property="og:title" content="La Luna nel Bosco – Casa Vacanze">
+  <meta property="og:description" content="Appartamento spazioso con piscina, terrazza privata e parco secolare. A pochi minuti dal mare di Livorno.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/hero.jpg">
+  <meta property="og:locale" content="it_IT">
 
   <style>
     :root{
-      --bg:#0f172a;         /* blu notte */
-      --card:#111827;       /* grigio scuro */
-      --muted:#94a3b8;      /* grigio testo */
-      --brand:#22c55e;      /* verde accento */
-      --brand-2:#60a5fa;    /* azzurro accento */
-      --text:#e5e7eb;       /* testo chiaro */
+      --bg:#fdfcf8;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --brand:#2e7d32;
+      --brand-2:#42a5f5;
+      --text:#333333;
       --max:1080px;
       --radius:14px;
-      --shadow:0 12px 35px rgba(0,0,0,.35);
+      --shadow:0 6px 20px rgba(0,0,0,.12);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 80% -200px, #1f2937 0%, #0b1020 50%, #060910 100%);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.6;
+      padding-bottom:70px; /* spazio per banner fisso */
+    }
     a{color:var(--brand-2);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--max);margin:0 auto;padding:24px}
-    header.hero{position:relative;min-height:68vh;display:grid;align-items:center;isolation:isolate;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
-    header.hero::before{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.50),rgba(0,0,0,.55)), url('images/hero.jpg') center/cover no-repeat;
-      filter:saturate(1.05) brightness(.9);z-index:-2
+    h1,h2,h3{margin:0}
+
+    /* HERO */
+    header.hero{
+      position:relative;min-height:70vh;display:grid;align-items:center;overflow:hidden;isolation:isolate;color:#fff;
     }
-    header .wrap{max-width:var(--max);margin-inline:auto;padding:64px 24px;display:grid;gap:18px}
-    .badge{display:inline-block;background:rgba(34,197,94,.15);color:#bbf7d0;border:1px solid rgba(34,197,94,.35);padding:6px 10px;border-radius:999px;font-size:12px;letter-spacing:.4px}
-    h1{font-size:clamp(28px,6vw,58px);margin:6px 0 4px;line-height:1.15}
-    .subtitle{color:var(--muted);font-size:clamp(14px,2.2vw,18px);max-width:720px}
+    header.hero::before{
+      content:"";position:absolute;inset:0;z-index:-2;
+      background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
+    }
+    header .wrap{max-width:var(--max);margin:auto;padding:60px 24px;display:grid;gap:18px}
+    .badge{display:inline-block;background:rgba(255,255,255,.22);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px}
+    h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
+    .subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
     .cta{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
-    .btn{appearance:none;border:none;border-radius:12px;padding:12px 18px;font-weight:600;cursor:pointer}
-    .btn-primary{background:linear-gradient(135deg,var(--brand),#16a34a);color:#052e16;box-shadow:var(--shadow)}
-    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--text)}
-    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:-60px;position:relative;z-index:5}
-    .card{grid-column:span 12;background:linear-gradient(180deg,#0b1224, #0a0f1d);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .card .pad{padding:22px}
-    @media(min-width:840px){.card.span-6{grid-column:span 6}.card.span-8{grid-column:span 8}.card.span-4{grid-column:span 4}}
-    .grid{display:grid;gap:14px}
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .feature{background:#0c1326;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px}
-    .feature h3{margin:6px 0 2px;font-size:16px}
+    .btn{border:none;border-radius:12px;padding:12px 18px;font-weight:600;cursor:pointer}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-outline{background:transparent;border:2px solid #fff;color:#fff}
+
+    /* LOGO + TITOLO NELL'HERO */
+    .hero-title{
+      display:flex;
+      align-items:center;
+      gap:18px;              /* spazio tra logo e titolo */
+      flex-wrap:wrap;
+    }
+    .hero-title img{
+      height:96px;           /* cambia qui la dimensione del logo */
+      width:auto;
+      display:block;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));
+    }
+    @media (max-width:600px){
+      .hero-title img{ height:72px; }
+    }
+
+    /* NAV */
+    nav.top{position:sticky;top:0;background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);z-index:10;border-bottom:1px solid #eee}
+    nav.top .inner{max-width:var(--max);margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;padding:10px 16px}
+    nav.top a{color:#333;text-decoration:none;padding:8px 10px;border-radius:10px}
+    nav.top a:hover{background:#f2f2f2}
+    .brand{font-weight:700}
+
+    /* SEZIONI */
+    section{scroll-margin-top:80px}
+    .section{padding:28px 0}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #eee}
+    .pad{padding:22px}
     .muted{color:var(--muted)}
-    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-    .g-item{grid-column:span 12;border-radius:12px;overflow:hidden;position:relative}
-    .g-item img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3}
-    .g-item.big{grid-column:span 12}
-    @media(min-width:840px){.g-item{grid-column:span 4}.g-item.big{grid-column:span 8}}
-    .price{font-weight:700;font-size:20px}
-    form{display:grid;gap:12px}
-    label{font-size:14px}
-    input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0c1224;color:var(--text)}
-    input[type="date"]{padding:10px}
-    .row{display:grid;gap:12px}
-    @media(min-width:680px){.row{grid-template-columns:repeat(3,1fr)}}
-    .note{font-size:13px;color:var(--muted)}
-    .warn{color:#fca5a5}
-    .ok{color:#86efac}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);margin:8px 0}
-    .total{display:flex;justify-content:space-between;align-items:center;background:#0c1326;border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:10px}
-    .map{border:0;width:100%;height:360px;border-radius:12px;filter:grayscale(.2) saturate(1.1) contrast(1.05)}
-    footer{margin-top:42px;padding:36px 24px;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,.06)}
-    .airbnb{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2)}
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;place-items:center;z-index:99}
-    .lightbox img{max-width:92vw;max-height:86vh;border-radius:12px;box-shadow:var(--shadow)}
-    .lightbox.show{display:grid}
-    .calendar-hints{font-size:13px}
-    .occupied{font-size:13px;display:flex;flex-wrap:wrap;gap:8px}
-    .occupied span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 8px;background:#0c1326}
+
+    /* FEATURES GRID */
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px;
+    }
+    .feature{
+      background:#fafafa;
+      border:1px solid #eee;
+      border-radius:12px;
+      padding:16px;
+      text-align:center;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100px;
+    }
+
+    /* GALLERIA */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px}
+
+    /* PIATTAFORME */
+    .platforms{display:flex;gap:10px;flex-wrap:wrap}
+    .platforms a{display:inline-flex;align-items:center;gap:8px;border:1px solid #ddd;padding:10px 12px;border-radius:10px;background:#fafafa}
+    .platforms img{height:18px;width:auto;display:block}
+
+    /* MAPPA + FOOTER */
+    .map{border:0;width:100%;height:360px;border-radius:12px}
+    footer{margin-top:42px;padding:20px;color:var(--muted);text-align:center;border-top:1px solid #ddd}
+
+    /* BANNER PRENOTAZIONE FISSO */
+    .booking-banner{
+      position:fixed;bottom:0;left:0;right:0;z-index:100;
+      background:#2e7d32;color:#fff;padding:12px 20px;
+      display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
+      font-size:16px;font-weight:600;
+    }
+    .booking-banner a{
+      background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none;
+    }
+    .booking-banner a:hover{background:#f2f2f2}
   </style>
 </head>
 <body>
 
+<!-- NAV -->
+<nav class="top" aria-label="Navigazione principale">
+  <div class="inner">
+    <div class="brand">La Luna nel Bosco</div>
+    <div class="links" style="display:flex;gap:6px;flex-wrap:wrap">
+      <a href="#descrizione">Descrizione</a>
+      <a href="#punti">Punti di forza</a>
+      <a href="#gallery">Galleria</a>
+      <a href="#spazi">Gli spazi</a>
+      <a href="#comfort">Comfort</a>
+      <a href="#esterni">Spazi esterni</a>
+      <a href="#regole">Regole</a>
+      <a href="#mappa">Dove siamo</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
 <header class="hero" id="top">
   <div class="wrap">
-    <span class="badge">Benvenutə</span>
-    <h1>La Luna nel Bosco</h1>
-    <p class="subtitle">Appartamento accogliente immerso nel verde, perfetto per chi cerca silenzio, stelle e aria pulita. Foto, servizi e prenotazioni qui sotto.</p>
+    <span class="badge">Casa vacanze a Livorno • Montenero</span>
+
+    <div class="hero-title">
+      <img src="./logo.png" alt="Logo La Luna nel Bosco">
+      <h1>La Luna nel Bosco</h1>
+    </div>
+
+    <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="#booking" aria-label="Vai alla sezione prenotazioni">Prenota ora</a>
-      <a class="btn btn-outline" href="#gallery" aria-label="Vai alla galleria">Guarda le foto</a>
+      <a class="btn btn-primary" href="#contatti">Prenota ora (–15% su Airbnb)</a>
+      <a class="btn btn-outline" href="#gallery">Guarda le foto</a>
     </div>
   </div>
 </header>
 
-<main class="container">
+<main>
 
-  <!-- Schede info + prenotazione rapida -->
-  <section class="cards">
-    <article class="card span-8">
-      <div class="pad grid">
-        <h2>La casa</h2>
-        <p class="muted">Bilocale luminoso con <strong>2–4 posti letto</strong>, cucina attrezzata, Wi‑Fi veloce, terrazzo vista bosco e parcheggio. Ideale per smart working e weekend romantici.</p>
-        <div class="features">
-          <div class="feature"><h3>✅ Wi‑Fi & Smart TV</h3><div class="muted">Netflix/Prime (con i tuoi account)</div></div>
-          <div class="feature"><h3>🔥 Camino</h3><div class="muted">Legna inclusa in inverno</div></div>
-          <div class="feature"><h3>🌿 Terrazzo</h3><div class="muted">Vista bosco e amaca</div></div>
-          <div class="feature"><h3>🚗 Parcheggio</h3><div class="muted">Gratuito in loco</div></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="card span-4" id="fast">
-      <div class="pad">
-        <h2>Da €<span id="fromPrice">120</span>/notte</h2>
-        <p class="muted">Miglior prezzo diretto. <em>Minimo 2 notti.</em></p>
-        <div class="divider"></div>
-        <a class="airbnb" href="#" id="airbnbLink" target="_blank" rel="noopener">
-          <!-- TODO: inserisci link Airbnb o elimina il bottone -->
-          Prenota su Airbnb
-        </a>
-      </div>
-    </article>
-  </section>
-
-  <!-- Galleria -->
-  <section id="gallery" style="margin-top:28px">
-    <h2>Galleria</h2>
-    <p class="muted">Clicca per ingrandire.</p>
-    <div class="gallery" aria-live="polite">
-      <!-- TODO: sostituisci con le tue foto in images/ -->
-      <figure class="g-item big"><img src="images/living.jpg" alt="Soggiorno luminoso con divano e vista bosco"></figure>
-      <figure class="g-item"><img src="images/bedroom.jpg" alt="Camera da letto matrimoniale con luce naturale"></figure>
-      <figure class="g-item"><img src="images/kitchen.jpg" alt="Cucina attrezzata moderna"></figure>
-      <figure class="g-item"><img src="images/terrace.jpg" alt="Terrazzo con tavolino e amaca"></figure>
-      <figure class="g-item"><img src="images/bathroom.jpg" alt="Bagno con doccia spaziosa"></figure>
-      <figure class="g-item"><img src="images/detail.jpg" alt="Dettaglio d'arredo in legno"></figure>
+  <!-- DESCRIZIONE -->
+  <section id="descrizione" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Descrizione</h2>
+        <p>
+          Immerso nella quiete delle colline di <strong>Montenero</strong>, “La Luna nel Bosco” è un appartamento di <strong>125 m²</strong> recentemente ristrutturato,
+          al primo piano della dependance di una villa ottocentesca con grande <strong>parco secolare</strong>, <strong>piscina stagionale</strong> e <strong>campo da tennis</strong>.
+          La posizione è ideale per visitare Livorno, Pisa, la Costa degli Etruschi e la Toscana, rientrando poi a rilassarsi
+          tra la <strong>terrazza solarium privata</strong> e l’atmosfera del <strong>camino</strong> in inverno.
+        </p>
+        <p class="muted">Indirizzo: Via del Pino, Livorno</p>
+      </article>
     </div>
   </section>
 
-  <!-- Prenotazioni -->
-  <section id="booking" style="margin-top:34px">
-    <article class="card">
-      <div class="pad">
-        <h2>Prenota</h2>
-        <p class="muted">Seleziona le date e invia la richiesta. Riceverai conferma via email.</p>
-
-        <!-- Calendario/istruzioni -->
-        <div class="calendar-hints muted">
-          <strong>Date occupate:</strong>
-          <div class="occupied" id="occupiedTags"><!-- riempito via JS --></div>
-          <div class="note">Le date occupate vengono bloccate automaticamente al controllo. Se hai dubbi, invia comunque la richiesta: ti rispondiamo subito.</div>
+  <!-- PUNTI DI FORZA -->
+  <section id="punti" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Punti di forza</h2>
+        <div class="features" style="margin-top:10px">
+          <div class="feature">📐 125 m² ristrutturati</div>
+          <div class="feature">🌿 Parco secolare</div>
+          <div class="feature">🏊 Piscina 7×15 m</div>
+          <div class="feature">🎾 Campo da tennis</div>
+          <div class="feature">🔥 Camino</div>
+          <div class="feature">🌞 Terrazza privata</div>
         </div>
-
-        <div class="divider"></div>
-
-        <form id="bookingForm" action="https://formspree.io/f/XXXXXXX" method="POST" novalidate>
-          <!-- TODO: crea un endpoint gratuito su Formspree e sostituisci XXXXXXX -->
-
-          <div class="row">
-            <div>
-              <label for="checkin">Check‑in</label>
-              <input type="date" id="checkin" name="checkin" required aria-required="true">
-            </div>
-            <div>
-              <label for="checkout">Check‑out</label>
-              <input type="date" id="checkout" name="checkout" required aria-required="true">
-            </div>
-            <div>
-              <label for="guests">Ospiti</label>
-              <select id="guests" name="guests" required aria-required="true">
-                <option value="1">1 ospite</option>
-                <option value="2" selected>2 ospiti</option>
-                <option value="3">3 ospiti</option>
-                <option value="4">4 ospiti</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row" style="grid-template-columns:1fr 1fr">
-            <div>
-              <label for="name">Nome e cognome</label>
-              <input type="text" id="name" name="name" required placeholder="Es. Mario Rossi">
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="tuo@email.it">
-            </div>
-          </div>
-
-          <label for="phone">Telefono (WhatsApp)</label>
-          <input type="tel" id="phone" name="phone" placeholder="+39 ...">
-
-          <label for="message">Messaggio (opzionale)</label>
-          <textarea id="message" name="message" rows="4" placeholder="Arrivo verso le 19:00, viaggiando con cane di piccola taglia..."></textarea>
-
-          <!-- Anti-spam honeypot -->
-          <input type="text" name="_gotcha" style="display:none">
-
-          <div class="total" role="status" aria-live="polite">
-            <div>
-              <div class="muted">Totale stimato</div>
-              <div class="price">€ <span id="total">—</span></div>
-              <div class="note" id="breakdown"></div>
-            </div>
-            <button class="btn btn-primary" id="submitBtn" type="submit">Invia richiesta</button>
-          </div>
-
-          <!-- Campi nascosti per riepilogo -->
-          <input type="hidden" name="nights" id="nightsField">
-          <input type="hidden" name="total_eur" id="totalField">
-          <input type="hidden" name="price_breakdown" id="breakdownField">
-          <input type="hidden" name="_subject" value="Nuova richiesta prenotazione - La Luna nel Bosco">
-          <input type="hidden" name="source" value="Sito ufficiale">
-        </form>
-
-        <p id="validationMsg" class="note warn" style="display:none;margin-top:8px"></p>
-      </div>
-    </article>
+      </article>
+    </div>
   </section>
 
-  <!-- Mappa -->
-  <section style="margin-top:28px">
-    <article class="card">
-      <div class="pad">
+  <!-- GALLERIA -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Galleria</h2>
+        <div class="gallery" style="margin-top:12px">
+          <img src="images/living.jpg" alt="Soggiorno con camino">
+          <img src="images/bedroom.jpg" alt="Camera matrimoniale">
+          <img src="images/kitchen.jpg" alt="Cucina attrezzata">
+          <img src="images/terrace.jpg" alt="Terrazza solarium">
+          <img src="images/pool.jpg" alt="Piscina condominiale">
+          <img src="images/garden.jpg" alt="Parco secolare">
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- GLI SPAZI -->
+  <section id="spazi" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Gli spazi</h2>
+        <p>
+          L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:
+        </p>
+        <ul>
+          <li>1 camera matrimoniale</li>
+          <li>1 camera singola convertibile in matrimoniale</li>
+          <li>1 camera singola</li>
+          <li>1 camera singola mansardata (accesso con scala a chiocciola)</li>
+        </ul>
+        <p>Zona giorno con <strong>soggiorno e TV satellitare</strong>, ampia <strong>zona pranzo</strong> e <strong>2 bagni con doccia</strong>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- COMFORT -->
+  <section id="comfort" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Comfort</h2>
+        <div class="features" style="margin-top:10px">
+          <div class="feature">🍳 Cucina completa</div>
+          <div class="feature">🧰 Dotazioni</div>
+          <div class="feature">🎁 Welcome kit</div>
+          <div class="feature">📶 Wi-Fi gratuito</div>
+          <div class="feature">🧺 Biancheria e lavatrice</div>
+          <div class="feature">🪟 Comfort clima</div>
+          <div class="feature">🅿️ Parcheggio</div>
+          <div class="feature">🧯 Sicurezza</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SPAZI ESTERNI -->
+  <section id="esterni" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Spazi esterni</h2>
+        <ul>
+          <li><strong>Terrazza panoramica privata</strong> con tavolo, sedie e barbecue</li>
+          <li><strong>Piscina condominiale 7×15 m</strong> (indicativa 1/6–30/9)</li>
+          <li><strong>Campo da tennis</strong> immerso nel verde</li>
+          <li><strong>Grande parco secolare</strong> ideale per passeggiate e relax</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- REGOLE -->
+  <section id="regole" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Regole della casa</h2>
+        <ul>
+          <li>Numero massimo ospiti: <strong>5 (+1 con extra costo)</strong></li>
+          <li>Soggiorno minimo: <strong>4 notti</strong></li>
+          <li>Check-in: dopo le <strong>15:00</strong> • Check-out: entro le <strong>10:00</strong></li>
+          <li><strong>No fumo</strong> all’interno</li>
+          <li><strong>Animali non ammessi</strong></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- MAPPA -->
+  <section id="mappa" class="section">
+    <div class="container">
+      <article class="card pad">
         <h2>Dove siamo</h2>
-        <p class="muted">A pochi minuti da sentieri, fiumi e ristorantini tipici. Parcheggio in loco.</p>
-        <!-- TODO: sostituisci il place nella query per una mappa precisa -->
-        <iframe class="map"
-          src="https://www.google.com/maps?q=Bosco%20Italia&output=embed"
-          title="Mappa La Luna nel Bosco" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </article>
+        <p>L’appartamento si trova in <strong>Via del Pino, Livorno</strong>, sulle colline di Montenero.</p>
+        <iframe class="map" src="https://www.google.com/maps?q=Via%20del%20Pino%20Livorno&output=embed" title="Mappa La Luna nel Bosco" loading="lazy"></iframe>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Contatti</h2>
+        <p>Email: <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank">@lalunanelbosco</a></p>
+      </article>
+    </div>
   </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
-  <div>© <span id="year"></span> La Luna nel Bosco • <a href="#top">torna su</a></div>
-  <div style="margin-top:6px">Contatti: <a href="mailto:info@lalunanelbosco.it">info@lalunanelbosco.it</a> • <a href="https://wa.me/39XXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></div>
-  <div class="note" style="margin-top:6px">P.IVA / Codice CIR (se applicabile) • <a href="#" rel="nofollow">Privacy</a></div>
+  <div style="margin-bottom:12px;">
+    <img src="./logo.png" alt="Logo La Luna nel Bosco" style="max-height:60px;display:block;margin:0 auto;">
+  </div>
+  <div>© <span id="year"></span> La Luna nel Bosco • Livorno</div>
+  <div>CF: <strong>DFRLSN57M41E625C</strong></div>
 </footer>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" role="dialog" aria-label="Anteprima immagine">
-  <img src="" alt="" id="lightboxImg">
+<!-- BANNER PRENOTAZIONE -->
+<div class="booking-banner">
+  🌙 La Luna nel Bosco • Prenota ora:
+  <a href="https://www.airbnb.it/rooms/15109094" target="_blank">Airbnb (–15%)</a>
+  <a href="https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html" target="_blank">Booking</a>
+  <a href="https://www.vrbo.com/it-it/affitto-vacanze/p6814788" target="_blank">VRBO</a>
 </div>
 
 <script>
-  // ====== CONFIGURAZIONE RAPIDA ======
-  const PRICING = {
-    basePerNight: 120,              // TODO: modifica prezzo per notte
-    cleaningFee: 35,                // TODO: eventuale costo pulizie
-    cityTaxPerPersonPerNight: 1.5,  // TODO: tassa di soggiorno (se non applicabile metti 0)
-    minNights: 2,
-    maxGuests: 4
-  };
-
-  // Inserisci qui le date già occupate (inclusi check-in/check-out)
-  // Formato: 'YYYY-MM-DD'
-  const OCCUPIED_RANGES = [
-    // TODO: aggiorna o svuota l'array
-    {from: '2025-08-22', to: '2025-08-26'},
-    {from: '2025-09-10', to: '2025-09-12'}
-  ];
-
-  // ====== UTIL ======
-  const $ = sel => document.querySelector(sel);
-  const $$ = sel => [...document.querySelectorAll(sel)];
-  const fmt = n => new Intl.NumberFormat('it-IT', {minimumFractionDigits:0, maximumFractionDigits:0}).format(n);
-
-  function toDate(val){ return new Date(val + 'T12:00:00'); } // evita timezone edge cases
-  function diffNights(a,b){ return Math.max(0, Math.round((b - a) / (1000*60*60*24))); }
-  function overlaps(a1,a2,b1,b2){ return a1 <= b2 && b1 <= a2; }
-
-  function rangeStr(r){
-    const f = new Date(r.from+'T12:00:00'), t = new Date(r.to+'T12:00:00');
-    return f.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})+" → "+t.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'});
-  }
-
-  function refreshOccupiedTags(){
-    const wrap = $('#occupiedTags');
-    wrap.innerHTML = OCCUPIED_RANGES.map(r=>`<span>${rangeStr(r)}</span>`).join('') || '<span>Nessuna: scegli liberamente 🎉</span>';
-  }
-
-  function validateDates(){
-    const ci = $('#checkin').value, co = $('#checkout').value;
-    const msg = $('#validationMsg');
-    const btn = $('#submitBtn');
-    msg.style.display = 'none';
-    btn.disabled = false;
-
-    if(!ci || !co) return true;
-
-    const d1 = toDate(ci), d2 = toDate(co);
-    if(d2 <= d1){
-      msg.textContent = 'Il check‑out deve essere successivo al check‑in.';
-      msg.style.display = 'block'; btn.disabled = true; return false;
-    }
-    const nights = diffNights(d1,d2);
-    if(nights < PRICING.minNights){
-      msg.textContent = `Soggiorno minimo: ${PRICING.minNights} notti.`;
-      msg.style.display = 'block'; btn.disabled = true; return false;
-    }
-    // blocco date occupate
-    for(const r of OCCUPIED_RANGES){
-      const rs = toDate(r.from), re = toDate(r.to);
-      if(overlaps(d1, d2, rs, re)){
-        msg.textContent = `Intervallo non disponibile: ${rangeStr(r)}. Scegli altre date.`;
-        msg.style.display = 'block'; btn.disabled = true; return false;
-      }
-    }
-    return true;
-  }
-
-  function updatePrice(){
-    const ci = $('#checkin').value, co = $('#checkout').value;
-    const guests = parseInt($('#guests').value||'1',10);
-    const outTotal = $('#total');
-    const outBreak = $('#breakdown');
-    const nightsField = $('#nightsField');
-    const totalField = $('#totalField');
-    const breakdownField = $('#breakdownField');
-
-    if(!ci || !co){ outTotal.textContent = '—'; outBreak.textContent = ''; return; }
-
-    if(!validateDates()) return;
-
-    const d1 = toDate(ci), d2 = toDate(co);
-    const nights = diffNights(d1,d2);
-
-    const base = PRICING.basePerNight * nights;
-    const tax  = PRICING.cityTaxPerPersonPerNight * guests * nights;
-    const total= Math.round(base + PRICING.cleaningFee + tax);
-
-    outTotal.textContent = fmt(total);
-    outBreak.textContent = `(${nights} notti x €${fmt(PRICING.basePerNight)}) + pulizie €${fmt(PRICING.cleaningFee)} + tassa €${fmt(tax)}`;
-    nightsField.value = nights.toString();
-    totalField.value = total.toString();
-    breakdownField.value = outBreak.textContent;
-  }
-
-  // Lightbox galleria
-  (function initLightbox(){
-    const lb = $('#lightbox'), img = $('#lightboxImg');
-    $$('#gallery img').forEach(el=>{
-      el.style.cursor = 'zoom-in';
-      el.addEventListener('click', ()=>{
-        img.src = el.src; img.alt = el.alt; lb.classList.add('show');
-      });
-    });
-    lb.addEventListener('click', ()=> lb.classList.remove('show'));
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape') lb.classList.remove('show'); });
-  })();
-
-  // Event handlers
-  ['checkin','checkout','guests'].forEach(id=>{
-    document.getElementById(id).addEventListener('change', ()=>{ validateDates(); updatePrice(); });
-  });
-
-  document.getElementById('bookingForm').addEventListener('submit', (e)=>{
-    if(!validateDates()){ e.preventDefault(); return false; }
-  });
-
-  // Limiti e placeholder iniziali
-  (function initDates(){
-    const today = new Date(); today.setHours(12,0,0,0);
-    const min = new Date(today.getTime() + 1000*60*60*24); // domani
-    const max = new Date(today.getTime() + 1000*60*60*24*365); // 12 mesi
-    const toISO = d => d.toISOString().slice(0,10);
-    $('#checkin').min = toISO(min);
-    $('#checkout').min = toISO(new Date(min.getTime()+1000*60*60*24));
-    $('#checkin').max = toISO(max);
-    $('#checkout').max = toISO(new Date(max.getTime()+1000*60*60*24));
-    refreshOccupiedTags();
-  })();
-
-  // Testo footer & prezzo "da"
   document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('fromPrice').textContent = PRICING.basePerNight;
-
-  // Accessibilità: aggiorna prezzo in tempo reale
-  setInterval(updatePrice, 250);
 </script>
+
 </body>
 </html>
