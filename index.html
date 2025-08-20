@@ -59,21 +59,9 @@
     .btn-outline{background:transparent;border:2px solid #fff;color:#fff}
 
     /* LOGO + TITOLO NELL'HERO */
-    .hero-title{
-      display:flex;
-      align-items:center;
-      gap:18px;              /* spazio tra logo e titolo */
-      flex-wrap:wrap;
-    }
-    .hero-title img{
-      height:96px;           /* cambia qui la dimensione del logo */
-      width:auto;
-      display:block;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));
-    }
-    @media (max-width:600px){
-      .hero-title img{ height:72px; }
-    }
+    .hero-title{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+    .hero-title img{height:96px;width:auto;display:block;filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));}
+    @media (max-width:600px){.hero-title img{height:72px;}}
 
     /* NAV */
     nav.top{position:sticky;top:0;background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);z-index:10;border-bottom:1px solid #eee}
@@ -90,32 +78,39 @@
     .muted{color:var(--muted)}
 
     /* FEATURES GRID */
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:14px;
-    }
-    .feature{
-      background:#fafafa;
-      border:1px solid #eee;
-      border-radius:12px;
-      padding:16px;
-      text-align:center;
-      font-weight:600;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:100px;
-    }
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .feature{background:#fafafa;border:1px solid #eee;border-radius:12px;padding:16px;text-align:center;font-weight:600;display:flex;align-items:center;justify-content:center;min-height:100px}
 
-    /* GALLERIA */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
-    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px}
+    /* SLIDESHOW */
+    .slideshow-container {position: relative;max-width: 1000px;margin: auto;}
+    .mySlides {display: none;}
+    .mySlides img {width:100%;border-radius:12px;}
+    .prev, .next {
+      cursor: pointer;position: absolute;top: 50%;padding: 16px;
+      color: white;font-weight: bold;font-size: 24px;
+      border-radius: 0 3px 3px 0;user-select: none;
+      background: rgba(0,0,0,0.4);transform: translateY(-50%);
+    }
+    .next {right: 0;border-radius: 3px 0 0 3px;}
+    .prev:hover, .next:hover {background-color: rgba(0,0,0,0.8);}
+    .dot {cursor:pointer;height: 12px;width: 12px;margin: 0 3px;background:#bbb;border-radius:50%;display:inline-block;}
+    .active, .dot:hover {background:#717171;}
+    .fade {animation: fade 1.5s;}
+    @keyframes fade {from{opacity:.4} to{opacity:1}}
 
-    /* PIATTAFORME */
-    .platforms{display:flex;gap:10px;flex-wrap:wrap}
-    .platforms a{display:inline-flex;align-items:center;gap:8px;border:1px solid #ddd;padding:10px 12px;border-radius:10px;background:#fafafa}
-    .platforms img{height:18px;width:auto;display:block}
+    /* SEZIONE HOST */
+    .host-card{
+      display:grid;gap:16px;
+    }
+    .host-photo{
+      width:100%;max-width:560px;margin:0 auto;
+      border-radius:18px;overflow:hidden;box-shadow:var(--shadow);
+    }
+    .host-photo img{display:block;width:100%;height:auto;}
+    @media(min-width:860px){
+      .host-card{grid-template-columns:1.2fr .8fr;align-items:center}
+      .host-photo{margin:0}
+    }
 
     /* MAPPA + FOOTER */
     .map{border:0;width:100%;height:360px;border-radius:12px}
@@ -128,9 +123,7 @@
       display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
       font-size:16px;font-weight:600;
     }
-    .booking-banner a{
-      background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none;
-    }
+    .booking-banner a{background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none;}
     .booking-banner a:hover{background:#f2f2f2}
   </style>
 </head>
@@ -148,6 +141,7 @@
       <a href="#comfort">Comfort</a>
       <a href="#esterni">Spazi esterni</a>
       <a href="#regole">Regole</a>
+      <a href="#host">L’host</a>
       <a href="#mappa">Dove siamo</a>
       <a href="#contatti">Contatti</a>
     </div>
@@ -158,12 +152,10 @@
 <header class="hero" id="top">
   <div class="wrap">
     <span class="badge">Casa vacanze a Livorno • Montenero</span>
-
     <div class="hero-title">
       <img src="./logo.png" alt="Logo La Luna nel Bosco">
       <h1>La Luna nel Bosco</h1>
     </div>
-
     <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
     <div class="cta">
       <a class="btn btn-primary" href="#contatti">Prenota ora (–15% su Airbnb)</a>
@@ -207,18 +199,27 @@
     </div>
   </section>
 
-  <!-- GALLERIA -->
+  <!-- GALLERIA SLIDESHOW -->
   <section id="gallery" class="section">
     <div class="container">
       <article class="card pad">
         <h2>Galleria</h2>
-        <div class="gallery" style="margin-top:12px">
-          <img src="images/living.jpg" alt="Soggiorno con camino">
-          <img src="images/bedroom.jpg" alt="Camera matrimoniale">
-          <img src="images/kitchen.jpg" alt="Cucina attrezzata">
-          <img src="images/terrace.jpg" alt="Terrazza solarium">
-          <img src="images/pool.jpg" alt="Piscina condominiale">
-          <img src="images/garden.jpg" alt="Parco secolare">
+        <div class="slideshow-container">
+          <div class="mySlides fade"><img src="images/foto1.jpg" alt="Foto 1"></div>
+          <div class="mySlides fade"><img src="images/foto2.jpg" alt="Foto 2"></div>
+          <div class="mySlides fade"><img src="images/foto3.jpg" alt="Foto 3"></div>
+          <div class="mySlides fade"><img src="images/foto4.jpg" alt="Foto 4"></div>
+          <div class="mySlides fade"><img src="images/foto5.jpg" alt="Foto 5"></div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div style="text-align:center;margin-top:10px;">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
         </div>
       </article>
     </div>
@@ -229,9 +230,7 @@
     <div class="container">
       <article class="card pad">
         <h2>Gli spazi</h2>
-        <p>
-          L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:
-        </p>
+        <p>L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:</p>
         <ul>
           <li>1 camera matrimoniale</li>
           <li>1 camera singola convertibile in matrimoniale</li>
@@ -293,6 +292,25 @@
     </div>
   </section>
 
+  <!-- L'HOST -->
+  <section id="host" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>L’host</h2>
+        <div class="host-card" style="margin-top:10px;">
+          <div>
+            <p><strong>Sono Alessandra</strong>, livornese doc, e da oltre trent’anni vivo immersa nella natura di questo parco che porto nel cuore. Amo il design, l’arte e le piccole magie della vita quotidiana.</p>
+            <p>Curo questo appartamento con la stessa dedizione che riservo alla mia casa: ogni dettaglio è pensato perché gli ospiti possano sentirsi accolti e a loro agio. È il rifugio ideale per chi desidera scoprire Livorno e la Toscana vivendo un’esperienza intima, silenziosa e immersa nel verde.</p>
+          </div>
+          <div class="host-photo">
+            <!-- Sostituisci con la tua foto -->
+            <img src="images/host.jpg" alt="Alessandra – Host di La Luna nel Bosco">
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- MAPPA -->
   <section id="mappa" class="section">
     <div class="container">
@@ -336,6 +354,40 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  let slideIndex = 0;
+  let slideTimer;
+
+  function showSlides() {
+    const slides = document.getElementsByClassName("mySlides");
+    const dots = document.getElementsByClassName("dot");
+
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+
+    for (let i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+
+    if (slides.length) slides[slideIndex-1].style.display = "block";
+    if (dots.length) dots[slideIndex-1].className += " active";
+
+    slideTimer = setTimeout(showSlides, 5000); // 5s
+  }
+
+  function plusSlides(n) {
+    clearTimeout(slideTimer);
+    slideIndex += n - 1;
+    showSlides();
+  }
+
+  function currentSlide(n) {
+    clearTimeout(slideTimer);
+    slideIndex = n - 1;
+    showSlides();
+  }
+
+  // avvio slideshow
+  showSlides();
 </script>
 
 </body>
