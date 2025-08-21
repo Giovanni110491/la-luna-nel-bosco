@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>La Luna nel Bosco – Casa Vacanze a Livorno</title>
-  <meta name="description" content="La Luna nel Bosco: appartamento esclusivo con piscina, terrazza panoramica e parco secolare a Livorno. Prenota su Airbnb (–15%), Booking o VRBO." />
+  <meta name="description" content="La Luna nel Bosco: appartamento esclusivo con piscina, terrazza panoramica e parco secolare a Livorno. Prenota su Airbnb, Booking o VRBO." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -40,7 +40,7 @@
     }
     a{color:var(--brand-2);text-decoration:none}
     a:hover{text-decoration:underline}
-    .container{max-width:var(--max);margin:0 auto;padding:24px}
+    .container{max-width:var(--max);margin:0 auto;padding:20px 24px} /* ↓ spazio sezioni leggermente ridotto */
     h1,h2,h3{margin:0}
 
     /* NAV */
@@ -58,8 +58,31 @@
       display:flex;align-items:center;gap:10px;font-weight:700
     }
     nav .brand img{height:28px;width:auto}
-    nav.top a{color:#333;text-decoration:none;padding:8px 10px;border-radius:10px}
+
+    /* menu 2 righe: 6 voci sopra, 5 sotto */
+    .links{
+      display:grid;
+      grid-template-columns:repeat(6, auto);
+      gap:8px 10px;           /* riga x colonna */
+      align-content:center;
+    }
+    @media (max-width:900px){
+      .links{grid-template-columns:repeat(3, auto);}
+    }
+    @media (max-width:560px){
+      .links{grid-template-columns:repeat(2, auto);}
+    }
+    nav.top a{color:#333;text-decoration:none;padding:6px 8px;border-radius:10px;white-space:nowrap}
     nav.top a:hover{background:#f2f2f2}
+
+    /* Instagram pill in header */
+    .ig-pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color:#fff;font-weight:600;
+    }
+    .ig-pill svg{width:16px;height:16px;display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.2))}
 
     /* HERO */
     header.hero{
@@ -69,21 +92,22 @@
       content:"";position:absolute;inset:0;z-index:-2;
       background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
     }
-    header .wrap{max-width:var(--max);margin:auto;padding:60px 24px;display:grid;gap:18px}
+    header .wrap{max-width:var(--max);margin:auto;padding:54px 24px;display:grid;gap:16px}
     .badge{display:inline-block;background:rgba(255,255,255,.22);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px}
     .hero-title{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
     .hero-title img{height:96px;width:auto;display:block;filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));}
     @media (max-width:600px){.hero-title img{height:72px}}
     h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     .subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
-    .cta{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
+    .cta{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap}
     .btn{border:none;border-radius:12px;padding:12px 18px;font-weight:600;cursor:pointer}
     .btn-primary{background:var(--brand);color:#fff}
     .btn-outline{background:transparent;border:2px solid #fff;color:#fff}
+    .cta-note{font-size:13px;color:#eaeaea}
 
     /* SEZIONI / CARD */
     section{scroll-margin-top:80px}
-    .section{padding:28px 0}
+    .section{padding:22px 0} /* ↓ leggermente meno spazio */
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #eee}
     .pad{padding:22px}
     .muted{color:var(--muted)}
@@ -133,7 +157,7 @@
       display:block;
     }
     .thumb .cap{
-      position:absolute;left:8px;right:auto;bottom:8px;
+      position:absolute;left:8px;bottom:8px;
       background:rgba(0,0,0,.55);
       color:#fff;font-size:14px;font-weight:600;
       padding:4px 8px;border-radius:8px;
@@ -159,18 +183,18 @@
 
     /* MAPPA + FOOTER */
     .map{border:0;width:100%;height:360px;border-radius:12px}
-    footer{margin-top:42px;padding:20px;color:var(--muted);text-align:center;border-top:1px solid #ddd}
+    footer{margin-top:30px;padding:18px;color:var(--muted);text-align:center;border-top:1px solid #ddd}
     footer img{max-height:60px;display:block;margin:0 auto 12px}
 
     /* BANNER PRENOTAZIONE FISSO */
     .booking-banner{
       position:fixed;bottom:0;left:0;right:0;z-index:100;
-      background:#2e7d32;color:#fff;padding:12px 20px;
-      display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
-      font-size:16px;font-weight:600
+      background:#2e7d32;color:#fff;padding:10px 16px;
+      display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;
+      font-size:15px;font-weight:600
     }
     .booking-banner a{
-      background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none
+      background:#fff;color:#2e7d32;padding:6px 12px;border-radius:8px;font-weight:700;text-decoration:none
     }
     .booking-banner a:hover{background:#f2f2f2}
   </style>
@@ -195,7 +219,9 @@
       <img src="./logo.png" alt="Logo La Luna nel Bosco" width="96" height="96" decoding="async">
       <span>La Luna nel Bosco</span>
     </div>
-    <div class="links" style="display:flex;gap:6px;flex-wrap:wrap">
+
+    <!-- 6 link nella prima riga + 5 nella seconda (grid) -->
+    <div class="links">
       <a href="#descrizione">Descrizione</a>
       <a href="#punti">Punti di forza</a>
       <a href="#gallery">Galleria</a>
@@ -221,9 +247,10 @@
     </div>
     <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="#contatti">Prenota ora (–15% su Airbnb)</a>
+      <a class="btn btn-primary" href="#contatti">Prenota ora</a>
       <a class="btn btn-outline" href="#gallery">Guarda le foto</a>
     </div>
+    <div class="cta-note">Su <strong>Airbnb</strong> la tariffa è in media <strong>~15% più bassa</strong> rispetto ad altre piattaforme.</div>
   </div>
 </header>
 
@@ -346,7 +373,7 @@
   </div>
 
   <script>
-    // Gruppi foto per ogni area (54 immagini totali)
+    // Gruppi foto per ogni area
     const photos = {
       esterno: ["esterno_giardino_1.jpg","esterno_giardino_2.jpg","esterno_giardino_3.jpg"],
       piscina: ["piscina_1.jpg","piscina_2.jpg","piscina_3.jpg","piscina_4.jpg"],
@@ -392,12 +419,6 @@
       if(e.key==="Escape") closeLightbox();
       if(e.key==="ArrowRight") next();
       if(e.key==="ArrowLeft")  prev();
-    });
-
-    // Anno nel footer
-    document.addEventListener("DOMContentLoaded", ()=>{
-      const y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
     });
   </script>
 
@@ -475,7 +496,7 @@
         <h2>L’host</h2>
         <div class="host-card" style="margin-top:10px;">
           <div>
-            <p><strong>Sono Alessandra</strong>, livornese doc, e da oltre trent’anni vivo immersa nella natura di questo parco che porto nel cuore. Amo il design, l’arte e le piccole magie della vita quotidiana.</p>
+            <p>Sono Alessandra, livornese doc, e da oltre trent’anni vivo immersa nella natura di questo parco che porto nel cuore. Amo il design, l’arte e le piccole magie della vita quotidiana.</p>
             <p>Curo questo appartamento con la stessa dedizione che riservo alla mia casa: ogni dettaglio è pensato perché gli ospiti possano sentirsi accolti e a loro agio. È il rifugio ideale per chi desidera scoprire Livorno e la Toscana vivendo un’esperienza intima, silenziosa e immersa nel verde.</p>
           </div>
           <div class="host-photo">
@@ -536,7 +557,16 @@
       <article class="card pad">
         <h2>Contatti</h2>
         <p>Email: <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a></p>
-        <p>Instagram: <a href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener">@lalunanelbosco</a></p>
+        <p>Instagram:
+          <a class="ig-pill" href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener" style="margin-left:8px;">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="white" stroke-opacity=".6"/>
+              <path d="M12 8.2A3.8 3.8 0 1 0 12 15.8 3.8 3.8 0 0 0 12 8.2Z" stroke="white" stroke-width="2"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+            </svg>
+            @lalunanelbosco
+          </a>
+        </p>
       </article>
     </div>
   </section>
@@ -552,11 +582,16 @@
 
 <!-- BANNER PRENOTAZIONE -->
 <div class="booking-banner" role="region" aria-label="Prenotazioni rapide">
-  🌙 La Luna nel Bosco • Prenota ora:
-  <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">Airbnb (–15%)</a>
+  🌙 Tariffe: su <strong>Airbnb</strong> in media <strong>~15% più basse</strong> rispetto ad altre piattaforme →
+  <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">Vai su Airbnb</a>
   <a href="https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html" target="_blank" rel="noopener">Booking</a>
   <a href="https://www.vrbo.com/it-it/affitto-vacanze/p6814788" target="_blank" rel="noopener">VRBO</a>
 </div>
+
+<script>
+  // Anno nel footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
