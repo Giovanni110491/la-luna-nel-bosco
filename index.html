@@ -215,78 +215,146 @@
     </div>
   </section>
 
-  <!-- PUNTI DI FORZA -->
-  <section id="punti" class="section">
-    <div class="container">
-      <article class="card pad">
-        <h2>Punti di forza</h2>
-        <div class="features" style="margin-top:10px">
-          <div class="feature">📐 125 m² ristrutturati</div>
-          <div class="feature">🌿 Parco secolare</div>
-          <div class="feature">🏊 Piscina 7×15 m</div>
-          <div class="feature">🎾 Campo da tennis</div>
-          <div class="feature">🔥 Camino</div>
-          <div class="feature">🌞 Terrazza privata</div>
-        </div>
-      </article>
-    </div>
-  </section>
+<!-- PUNTI DI FORZA -->
+<section id="punti" class="section">
+  <div class="container">
+    <article class="card pad">
+      <h2>Punti di forza</h2>
+      <div class="features-row">
+        <a href="#gallery-esterno" class="feature">🌿 Parco secolare</a>
+        <a href="#gallery-piscina" class="feature">🏊 Piscina 7×15 m</a>
+        <a href="#gallery-tennis" class="feature">🎾 Campo da tennis</a>
+        <a href="#gallery-terrazza" class="feature">🌞 Terrazza privata</a>
+        <a href="#gallery-soggiorno" class="feature">🔥 Camino</a>
+      </div>
+    </article>
+  </div>
+</section>
 
-  <!-- GALLERIA SLIDESHOW -->
+<style>
+  .features-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: nowrap;
+    overflow-x: auto;   /* scroll orizzontale su mobile */
+    padding-bottom: 8px;
+  }
+  .features-row .feature {
+    flex: 0 0 180px; /* stessa larghezza per tutti */
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .features-row .feature:hover {
+    background: #f2f2f2;
+  }
+</style>
+
+
+  <!-- GALLERIA -->
   <section id="gallery" class="section">
     <div class="container">
       <article class="card pad">
         <h2>Galleria</h2>
-
-        <div class="slideshow-container" aria-label="Galleria di immagini">
-          <!-- Bagno grande -->
-          <div class="mySlides fade"><img src="images/bagno_grande_1.jpg" alt="Bagno grande 1" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/bagno_grande_2.jpg" alt="Bagno grande 2" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/bagno_grande_3.jpg" alt="Bagno grande 3" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/bagno_grande_4.jpg" alt="Bagno grande 4" loading="lazy" decoding="async"></div>
-
-          <!-- Bagno piccolo -->
-          <div class="mySlides fade"><img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo 1" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/bagno_piccolo_2.jpg" alt="Bagno piccolo 2" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/bagno_piccolo_3.jpg" alt="Bagno piccolo 3" loading="lazy" decoding="async"></div>
-
-          <!-- Camera gialla -->
-          <div class="mySlides fade"><img src="images/camera_gialla_1.jpg" alt="Camera gialla 1" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/camera_gialla_2.jpg" alt="Camera gialla 2" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/camera_gialla_3.jpg" alt="Camera gialla 3" loading="lazy" decoding="async"></div>
-
-          <!-- Camera grigia -->
-          <div class="mySlides fade"><img src="images/camera_grigia_1.jpg" alt="Camera grigia 1" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/camera_grigia_2.jpg" alt="Camera grigia 2" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/camera_grigia_3.jpg" alt="Camera grigia 3" loading="lazy" decoding="async"></div>
-          <div class="mySlides fade"><img src="images/camera_grigia_4.jpg" alt="Camera grigia 4" loading="lazy" decoding="async"></div>
-
-          <!-- Pulsanti -->
-          <button class="prev" aria-label="Immagine precedente" onclick="plusSlides(-1)">&#10094;</button>
-          <button class="next" aria-label="Immagine successiva" onclick="plusSlides(1)">&#10095;</button>
-        </div>
-
-        <!-- Dots -->
-        <div class="dots" aria-hidden="true">
-          <!-- 14 dots -->
-          <span class="dot" onclick="currentSlide(1)"></span>
-          <span class="dot" onclick="currentSlide(2)"></span>
-          <span class="dot" onclick="currentSlide(3)"></span>
-          <span class="dot" onclick="currentSlide(4)"></span>
-          <span class="dot" onclick="currentSlide(5)"></span>
-          <span class="dot" onclick="currentSlide(6)"></span>
-          <span class="dot" onclick="currentSlide(7)"></span>
-          <span class="dot" onclick="currentSlide(8)"></span>
-          <span class="dot" onclick="currentSlide(9)"></span>
-          <span class="dot" onclick="currentSlide(10)"></span>
-          <span class="dot" onclick="currentSlide(11)"></span>
-          <span class="dot" onclick="currentSlide(12)"></span>
-          <span class="dot" onclick="currentSlide(13)"></span>
-          <span class="dot" onclick="currentSlide(14)"></span>
+        <div class="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px">
+          <div id="gallery-esterno" class="thumb" data-group="esterno"><img src="images/esterno_giardino_1.jpg" alt="Esterno"><span>Esterno</span></div>
+          <div id="gallery-piscina" class="thumb" data-group="piscina"><img src="images/piscina_1.jpg" alt="Piscina"><span>Piscina</span></div>
+          <div id="gallery-tennis" class="thumb" data-group="tennis"><img src="images/campo_tennis_1.jpg" alt="Campo da tennis"><span>Campo da tennis</span></div>
+          <div id="gallery-terrazza" class="thumb" data-group="terrazza"><img src="images/terrazza_1.jpg" alt="Terrazza"><span>Terrazza</span></div>
+          <div id="gallery-soggiorno" class="thumb" data-group="soggiorno"><img src="images/soggiorno_1.jpg" alt="Soggiorno"><span>Soggiorno</span></div>
+          <div class="thumb" data-group="bagno_piccolo"><img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo"><span>Bagno piccolo</span></div>
+          <div class="thumb" data-group="bagno_grande"><img src="images/bagno_grande_1.jpg" alt="Bagno grande"><span>Bagno grande</span></div>
+          <div class="thumb" data-group="cucina"><img src="images/cucina_1.jpg" alt="Cucina"><span>Cucina</span></div>
+          <div class="thumb" data-group="matrimoniale"><img src="images/camera_matrimoniale_1.jpg" alt="Camera matrimoniale"><span>Camera matrimoniale</span></div>
+          <div class="thumb" data-group="grigia"><img src="images/camera_grigia_1.jpg" alt="Camera singola 1"><span>Camera singola 1</span></div>
+          <div class="thumb" data-group="gialla"><img src="images/camera_gialla_1.jpg" alt="Camera singola 2"><span>Camera singola 2</span></div>
+          <div class="thumb" data-group="soppalco"><img src="images/camera_soppalco_1.jpg" alt="Camera singola 3"><span>Camera singola 3</span></div>
+          <div class="thumb" data-group="parco"><img src="images/parco_condominiale_1.jpg" alt="Parco condominiale"><span>Parco condominiale</span></div>
         </div>
       </article>
     </div>
   </section>
+
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" style="position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000">
+    <button class="lb-btn lb-prev" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;font-size:30px;padding:10px;cursor:pointer;border-radius:8px">❮</button>
+    <img src="" alt="" style="max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px">
+    <button class="lb-btn lb-next" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;font-size:30px;padding:10px;cursor:pointer;border-radius:8px">❯</button>
+    <button class="lb-btn lb-close" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:24px;padding:8px;cursor:pointer;border-radius:8px">✕</button>
+  </div>
+
+  <script>
+    const photos = {
+      esterno: ["esterno_giardino_1.jpg","esterno_giardino_2.jpg","esterno_giardino_3.jpg"],
+      piscina: ["piscina_1.jpg","piscina_2.jpg","piscina_3.jpg","piscina_4.jpg"],
+      tennis: ["campo_tennis_1.jpg","campo_tennis_2.jpg"],
+      terrazza: ["terrazza_1.jpg","terrazza_2.jpg","terrazza_3.jpg","terrazza_4.jpg","terrazza_5.jpg","terrazza_6.jpg","terrazza_7.jpg","terrazza_8.jpg"],
+      soggiorno: ["soggiorno_1.jpg","soggiorno_2.jpg","soggiorno_3.jpg","soggiorno_4.jpg","soggiorno_5.jpg","soggiorno_6.jpg"],
+      bagno_piccolo: ["bagno_piccolo_1.jpg","bagno_piccolo_2.jpg","bagno_piccolo_3.jpg"],
+      bagno_grande: ["bagno_grande_1.jpg","bagno_grande_2.jpg","bagno_grande_3.jpg","bagno_grande_4.jpg"],
+      cucina: ["cucina_1.jpg","cucina_2.jpg","cucina_3.jpg"],
+      matrimoniale: ["camera_matrimoniale_1.jpg","camera_matrimoniale_2.jpg","camera_matrimoniale_3.jpg"],
+      grigia: ["camera_grigia_1.jpg","camera_grigia_2.jpg","camera_grigia_3.jpg","camera_grigia_4.jpg"],
+      gialla: ["camera_gialla_1.jpg","camera_gialla_2.jpg","camera_gialla_3.jpg"],
+      soppalco: ["camera_soppalco_1.jpg","camera_soppalco_2.jpg","camera_soppalco_3.jpg"],
+      parco: ["parco_condominiale_1.jpg","parco_condominiale_2.jpg","parco_condominiale_3.jpg","parco_condominiale_4.jpg","parco_condominiale_5.jpg","parco_condominiale_6.jpg","parco_condominiale_7.jpg"]
+    };
+
+    const lb = document.getElementById("lightbox");
+    const lbImg = lb.querySelector("img");
+    let currentGroup=[],currentIndex=0;
+
+    function openLightbox(group,i=0){
+      currentGroup = photos[group].map(f=>"images/"+f);
+      currentIndex = i;
+      lbImg.src = currentGroup[currentIndex];
+      lb.style.display="flex";
+    }
+    function closeLightbox(){lb.style.display="none"}
+    function next(){currentIndex=(currentIndex+1)%currentGroup.length;lbImg.src=currentGroup[currentIndex]}
+    function prev(){currentIndex=(currentIndex-1+currentGroup.length)%currentGroup.length;lbImg.src=currentGroup[currentIndex]}
+
+    document.querySelectorAll(".thumb").forEach(thumb=>{
+      thumb.style.cursor="pointer";
+      thumb.style.position="relative";
+      thumb.querySelector("img").style.width="100%";
+      thumb.querySelector("img").style.height="auto";
+      let label=document.createElement("span");
+      label.textContent=thumb.querySelector("span").textContent;
+      label.style.position="absolute";
+      label.style.bottom="6px";
+      label.style.left="6px";
+      label.style.background="rgba(0,0,0,.6)";
+      label.style.color="#fff";
+      label.style.fontSize="14px";
+      label.style.padding="3px 6px";
+      label.style.borderRadius="6px";
+      thumb.appendChild(label);
+
+      thumb.addEventListener("click",()=>{
+        openLightbox(thumb.dataset.group,0);
+      });
+    });
+    lb.querySelector(".lb-close").onclick=closeLightbox;
+    lb.querySelector(".lb-next").onclick=next;
+    lb.querySelector(".lb-prev").onclick=prev;
+    window.addEventListener("keydown",e=>{
+      if(lb.style.display!=="flex")return;
+      if(e.key==="Escape")closeLightbox();
+      if(e.key==="ArrowRight")next();
+      if(e.key==="ArrowLeft")prev();
+    });
+  </script>
+
 
   <!-- GLI SPAZI -->
   <section id="spazi" class="section">
