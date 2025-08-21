@@ -43,26 +43,69 @@
     .container{max-width:var(--max);margin:0 auto;padding:24px}
     h1,h2,h3{margin:0}
 
-    /* NAV */
-    nav.top{
-      position:sticky;top:0;z-index:20;
-      background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);
-      border-bottom:1px solid #eee;
-    }
-    nav.top .inner{
-      max-width:var(--max);margin:0 auto;
-      padding:10px 16px
-    }
-    .nav-header{
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
-    }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .brand img{height:28px;width:auto}
+/* NAV */
+nav.top{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#ffffffd9;
+  backdrop-filter:saturate(1.2) blur(6px);
+  border-bottom:1px solid #eee;
+}
 
-    .nav-rows{display:grid;gap:6px;margin-top:8px}
-    .links-row{
-      display:flex;gap:6px;flex-wrap:wrap;
-    }
+nav.top {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#ffffffd9;
+  backdrop-filter:saturate(1.2) blur(6px);
+  border-bottom:1px solid #eee;
+}
+
+nav.top .inner {
+  max-width:var(--max);
+  margin:0 auto;
+  display: flex;
+  flex-direction: column;   /* logo sopra, link sotto */
+  align-items: center;      /* centra tutto */
+  padding:10px 16px;
+  gap: 12px;                /* spazio tra titolo e link */
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  font-size:22px;           /* titolo più grande */
+}
+
+.brand img {
+  height:36px;
+  width:auto;
+}
+
+nav.top .links {
+  display:flex;
+  flex-wrap:wrap;           /* permette max 2 righe */
+  gap:16px;
+  justify-content:center;   /* centra i link */
+  max-width:100%;
+}
+
+nav.top .links a {
+  color:#000;
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:8px;
+  font-weight:500;
+  font-size:16px;           /* stessa dimensione per tutti */
+  text-align:center;
+  max-width:90px;           /* forza due righe max */
+  white-space:normal;       /* consente di andare a capo */
+  line-height:1.3;
+}
+
     .links-row a{
       color:#333;text-decoration:none;padding:8px 10px;border-radius:10px
     }
@@ -187,6 +230,18 @@
     }
     .booking-banner a:hover{background:#f2f2f2}
     .note-airbnb{font-weight:700;opacity:.95}
+
+    nav.top .links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: nowrap;       /* tutte in una riga */
+    overflow-x: auto;        /* scroll se non ci sta tutto */
+    scrollbar-width: none;   /* nasconde scrollbar Firefox */
+    }
+    nav.top .links::-webkit-scrollbar {
+    display: none;           /* nasconde scrollbar Chrome/Safari */
+   }
+
   </style>
 
   <!-- Dati strutturati base -->
@@ -205,31 +260,22 @@
 <!-- NAV -->
 <nav class="top" aria-label="Navigazione principale">
   <div class="inner">
-    <div class="nav-header">
-      <div class="brand">
-        <img src="./logo.png" alt="Logo La Luna nel Bosco" width="96" height="96" decoding="async">
-        <span>La Luna nel Bosco</span>
-      </div>
+    <div class="brand">
+      <img src="./logo.png" alt="Logo La Luna nel Bosco" width="96" height="96" decoding="async">
+      <span>La Luna nel Bosco</span>
     </div>
-
-    <!-- 6 link sopra -->
-    <div class="nav-rows">
-      <div class="links-row" aria-label="Navigazione primaria">
-        <a href="#descrizione">Descrizione</a>
-        <a href="#punti">Comfort</a>
-        <a href="#gallery">Galleria</a>
-        <a href="#spazi">Gli spazi</a>
-        <a href="#esterni">Spazi esterni</a>
-        <a href="#regole">Regole</a>
-      </div>
-      <!-- 5 link sotto -->
-      <div class="links-row" aria-label="Navigazione secondaria">
-        <a href="#host">L’host</a>
-        <a href="#recensioni">Recensioni</a>
-        <a href="#mappa">Dove siamo</a>
-        <a href="#contatti">Contatti</a>
-        <a href="#gallery">Foto</a>
-      </div>
+    <div class="links">
+      <a href="#descrizione">Descrizione</a>
+      <a href="#punti">Punti di forza</a>
+      <a href="#gallery">Galleria</a>
+      <a href="#spazi">Spazi</a>
+      <a href="#comfort">Comfort</a>
+      <a href="#esterni">Spazi esterni</a>
+      <a href="#regole">Regole</a>
+      <a href="#host">L’host</a>
+      <a href="#recensioni">Recensioni</a>
+      <a href="#mappa">Dove siamo</a>
+      <a href="#contatti">Contatti</a>
     </div>
   </div>
 </nav>
@@ -259,7 +305,6 @@
     <div class="container">
       <article class="card pad">
         <h2>Descrizione</h2>
-        <p>
           Immerso nella quiete delle colline di <strong>Montenero</strong>, “La Luna nel Bosco” è un appartamento di <strong>125 m²</strong> recentemente ristrutturato,
           al primo piano della dependance di una villa ottocentesca con grande <strong>parco secolare</strong>, <strong>piscina stagionale</strong> e <strong>campo da tennis</strong>.
           La posizione è ideale per visitare Livorno, Pisa, la Costa degli Etruschi e la Toscana, rientrando poi a rilassarsi
