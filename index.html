@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>La Luna nel Bosco – Casa Vacanze a Livorno</title>
   <meta name="description" content="La Luna nel Bosco: appartamento esclusivo con piscina, terrazza panoramica e parco secolare a Livorno. Prenota su Airbnb (–15%), Booking o VRBO." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Social preview -->
@@ -14,44 +15,28 @@
   <meta property="og:image" content="images/hero.jpg">
   <meta property="og:locale" content="it_IT">
 
-  <!-- JSON-LD rating aggregato (aggiorna i numeri quando vuoi) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "La Luna nel Bosco",
-    "address": { "@type": "PostalAddress", "addressLocality": "Livorno", "addressCountry": "IT" },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "ratingCount": "45"
-    }
-  }
-  </script>
-
   <style>
     :root{
       --bg:#fdfcf8;
       --card:#ffffff;
       --muted:#6b7280;
-      --brand:#2e7d32;   /* verde bosco */
-      --brand-2:#42a5f5; /* azzurro link */
+      --brand:#2e7d32;
+      --brand-2:#42a5f5;
       --text:#333333;
       --max:1080px;
       --radius:14px;
       --shadow:0 6px 20px rgba(0,0,0,.12);
-      --airbnb:#FF5A5F;
-      --booking:#0071c2;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      padding:0 0 78px 0;            /* spazio per banner fisso */
       background:var(--bg);
       color:var(--text);
       font-family:'Poppins',sans-serif;
       line-height:1.6;
+      padding-bottom:72px; /* spazio per banner fisso */
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
     a{color:var(--brand-2);text-decoration:none}
     a:hover{text-decoration:underline}
@@ -59,11 +44,23 @@
     h1,h2,h3{margin:0}
 
     /* NAV */
-    nav.top{position:sticky;top:0;background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);z-index:10;border-bottom:1px solid #eee}
-    nav.top .inner{max-width:var(--max);margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between;padding:10px 16px}
+    nav.top{
+      position:sticky;top:0;z-index:20;
+      background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);
+      border-bottom:1px solid #eee;
+    }
+    nav.top .inner{
+      max-width:var(--max);margin:0 auto;
+      display:flex;gap:14px;align-items:center;justify-content:space-between;
+      padding:10px 16px
+    }
+    nav .brand{
+      display:flex;align-items:center;gap:10px;font-weight:700
+    }
+    nav .brand img{height:28px;width:auto}
+
     nav.top a{color:#333;text-decoration:none;padding:8px 10px;border-radius:10px}
     nav.top a:hover{background:#f2f2f2}
-    .brand{font-weight:700}
 
     /* HERO */
     header.hero{
@@ -75,6 +72,9 @@
     }
     header .wrap{max-width:var(--max);margin:auto;padding:60px 24px;display:grid;gap:18px}
     .badge{display:inline-block;background:rgba(255,255,255,.22);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px}
+    .hero-title{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .hero-title img{height:96px;width:auto;display:block;filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));}
+    @media (max-width:600px){.hero-title img{height:72px}}
     h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     .subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
     .cta{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
@@ -82,83 +82,89 @@
     .btn-primary{background:var(--brand);color:#fff}
     .btn-outline{background:transparent;border:2px solid #fff;color:#fff}
 
-    /* LOGO accanto al titolo HERO */
-    .hero-title{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-    .hero-title img{height:96px;width:auto;display:block;filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));}
-    @media (max-width:600px){.hero-title img{height:72px;}}
-
-    /* SEZIONI E CARD */
+    /* SEZIONI / CARD */
     section{scroll-margin-top:80px}
     .section{padding:28px 0}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #eee}
     .pad{padding:22px}
     .muted{color:var(--muted)}
-
-    /* FEATURES */
     .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
     .feature{background:#fafafa;border:1px solid #eee;border-radius:12px;padding:16px;text-align:center;font-weight:600;display:flex;align-items:center;justify-content:center;min-height:100px}
 
     /* SLIDESHOW */
-    .slideshow-container {position: relative;max-width: 1000px;margin: auto;}
+    .slideshow-container {position: relative; width:100%; max-width: 1080px; margin: 0 auto;}
     .mySlides {display: none;}
-    .mySlides img {width:100%;border-radius:12px;}
+    .mySlides img {width:100%;height:auto;border-radius:12px}
     .prev, .next {
       cursor: pointer;position: absolute;top: 50%;padding: 14px 16px;
-      color: white;font-weight: 700;font-size: 22px;line-height:1;
-      border-radius: 8px;user-select: none;border:none;
-      background: rgba(0,0,0,0.35);transform: translateY(-50%);
+      color: white;font-weight: bold;font-size: 22px;border-radius: 10px;
+      background: rgba(0,0,0,0.35);transform: translateY(-50%);user-select: none;
     }
-    .next {right: 10px;}
-    .prev {left: 10px;}
+    .next {right: 8px;}
+    .prev {left: 8px;}
     .prev:hover, .next:hover {background-color: rgba(0,0,0,0.6);}
-    .dots{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap}
-    .dot {cursor:pointer;height: 11px;width: 11px;background:#bbb;border-radius:50%;display:inline-block;transition:transform .15s}
-    .dot.active, .dot:hover {background:#717171;transform:scale(1.12)}
-    .fade {animation: fade 1.2s;}
+    .dots {text-align:center;margin-top:10px}
+    .dot {cursor:pointer;height: 10px;width: 10px;margin: 0 3px;background:#bbb;border-radius:50%;display:inline-block;transition:opacity .2s}
+    .active, .dot:hover {background:#717171;}
+    .fade {animation: fade 1s;}
     @keyframes fade {from{opacity:.4} to{opacity:1}}
 
-    /* HOST */
+    /* SEZIONE HOST */
     .host-card{display:grid;gap:16px}
-    .host-photo{width:220px;height:220px;border-radius:50%;overflow:hidden;box-shadow:var(--shadow);margin:0 auto}
-    .host-photo img{width:100%;height:100%;object-fit:cover}
-    @media(min-width:860px){.host-card{grid-template-columns:1.2fr .8fr;align-items:center}.host-photo{margin:0}}
+    .host-photo{width:180px;height:180px;margin:0 auto;border-radius:50%;overflow:hidden;box-shadow:var(--shadow)}
+    .host-photo img{display:block;width:100%;height:100%;object-fit:cover}
+    @media(min-width:860px){
+      .host-card{grid-template-columns:auto 220px;align-items:center}
+      .host-photo{margin:0}
+    }
 
     /* RECENSIONI */
-    .review-scores{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:860px){.review-scores{grid-template-columns:1fr 1fr}}
+    .review-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:860px){.review-grid{grid-template-columns:1fr 1fr}}
     .score-box{padding:18px;border:1px solid #eee;border-radius:12px;background:#fafafa;text-align:center}
-    .score{font-size:32px;font-weight:800}
-    .score .small{font-size:16px;font-weight:600}
-    .airbnb .score{color:var(--airbnb)}
-    .booking .score{color:var(--booking)}
-    blockquote{background:#fafafa;border-left:4px solid #e5e7eb;padding:12px 16px;border-radius:8px;margin:0}
-    blockquote.airbnb{border-left-color:var(--airbnb)}
-    blockquote.booking{border-left-color:var(--booking)}
+    .score-box img{height:26px;margin-bottom:8px}
+    .score-airbnb .score{color:#FF5A5F}   /* rosso/salmone Airbnb */
+    .score-booking .score{color:#0071c2}  /* blu Booking */
+    blockquote{background:#fafafa;border-left:4px solid #ddd;padding:12px 16px;border-radius:8px;margin:0}
 
     /* MAPPA + FOOTER */
     .map{border:0;width:100%;height:360px;border-radius:12px}
     footer{margin-top:42px;padding:20px;color:var(--muted);text-align:center;border-top:1px solid #ddd}
+    footer img{max-height:60px;display:block;margin:0 auto 12px}
 
     /* BANNER PRENOTAZIONE FISSO */
     .booking-banner{
       position:fixed;bottom:0;left:0;right:0;z-index:100;
       background:#2e7d32;color:#fff;padding:12px 20px;
       display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
-      font-size:16px;font-weight:600;
+      font-size:16px;font-weight:600
     }
     .booking-banner a{
-      background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;
-      font-weight:700;text-decoration:none;
+      background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none
     }
     .booking-banner a:hover{background:#f2f2f2}
   </style>
+
+  <!-- Dati strutturati base -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "La Luna nel Bosco",
+    "address": { "@type": "PostalAddress", "streetAddress": "Via del Pino", "addressLocality": "Livorno", "addressCountry": "IT" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "ratingCount": "45" }
+  }
+  </script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="top" aria-label="Navigazione principale">
   <div class="inner">
-    <div class="brand">La Luna nel Bosco</div>
+    <div class="brand">
+      <img src="./logo.png" alt="Logo La Luna nel Bosco" width="96" height="96" decoding="async">
+      <span>La Luna nel Bosco</span>
+    </div>
     <div class="links" style="display:flex;gap:6px;flex-wrap:wrap">
       <a href="#descrizione">Descrizione</a>
       <a href="#punti">Punti di forza</a>
@@ -180,7 +186,7 @@
   <div class="wrap">
     <span class="badge">Casa vacanze a Livorno • Montenero</span>
     <div class="hero-title">
-      <img src="./logo.png" alt="Logo La Luna nel Bosco">
+      <img src="./logo.png" alt="" width="120" height="120" decoding="async">
       <h1>La Luna nel Bosco</h1>
     </div>
     <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
@@ -226,101 +232,58 @@
     </div>
   </section>
 
-  <!-- TEST TEMPORANEO -->
-<h3>Test immagine</h3>
-<img src="images/Bagno grande_1.jpg" alt="Test immagine" style="max-width:400px;border:1px solid #ccc;border-radius:6px">
-<p>Se vedi la foto sopra, i percorsi funzionano!</p>
-
   <!-- GALLERIA SLIDESHOW -->
   <section id="gallery" class="section">
     <div class="container">
       <article class="card pad">
         <h2>Galleria</h2>
 
-        <div class="slideshow-container" id="slideshow">
-          <!-- Esterno e giardino -->
-          <div class="mySlides fade"><img src="images/Esterno%20e%20giardino%20privato_1.jpg" alt="Esterno e giardino privato 1"></div>
-          <div class="mySlides fade"><img src="images/Esterno%20e%20giardino%20privato_2.jpg" alt="Esterno e giardino privato 2"></div>
-          <div class="mySlides fade"><img src="images/Esterno%20e%20giardino%20privato_3.jpg" alt="Esterno e giardino privato 3"></div>
+        <div class="slideshow-container" aria-label="Galleria di immagini">
+          <!-- Bagno grande -->
+          <div class="mySlides fade"><img src="images/bagno_grande_1.jpg" alt="Bagno grande 1" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/bagno_grande_2.jpg" alt="Bagno grande 2" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/bagno_grande_3.jpg" alt="Bagno grande 3" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/bagno_grande_4.jpg" alt="Bagno grande 4" loading="lazy" decoding="async"></div>
 
-          <!-- Piscina -->
-          <div class="mySlides fade"><img src="images/Piscina_1.jpg" alt="Piscina 1"></div>
-          <div class="mySlides fade"><img src="images/Piscina_2.jpg" alt="Piscina 2"></div>
-          <div class="mySlides fade"><img src="images/Piscina_3.jpg" alt="Piscina 3"></div>
-          <div class="mySlides fade"><img src="images/Piscina_4.jpg" alt="Piscina 4"></div>
+          <!-- Bagno piccolo -->
+          <div class="mySlides fade"><img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo 1" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/bagno_piccolo_2.jpg" alt="Bagno piccolo 2" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/bagno_piccolo_3.jpg" alt="Bagno piccolo 3" loading="lazy" decoding="async"></div>
 
-          <!-- Campo da tennis -->
-          <div class="mySlides fade"><img src="images/Campo%20da%20tennis_1.jpg" alt="Campo da tennis 1"></div>
-          <div class="mySlides fade"><img src="images/Campo%20da%20tennis_2.jpg" alt="Campo da tennis 2"></div>
+          <!-- Camera gialla -->
+          <div class="mySlides fade"><img src="images/camera_gialla_1.jpg" alt="Camera gialla 1" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/camera_gialla_2.jpg" alt="Camera gialla 2" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/camera_gialla_3.jpg" alt="Camera gialla 3" loading="lazy" decoding="async"></div>
 
-          <!-- Parco condominiale -->
-          <div class="mySlides fade"><img src="images/Parco%20condominiale_1.jpg" alt="Parco condominiale 1"></div>
-          <div class="mySlides fade"><img src="images/Parco%20condominiale_2.jpg" alt="Parco condominiale 2"></div>
-          <div class="mySlides fade"><img src="images/Parco%20condominiale_3.jpg" alt="Parco condominiale 3"></div>
-          <div class="mySlides fade"><img src="images/Parco%20condominiale_4.jpg" alt="Parco condominiale 4"></div>
-          <div class="mySlides fade"><img src="images/Parco%20condominiale_5.jpg" alt="Parco condominiale 5"></div>
-          <div class="mySlides fade"><img src="images/Parco%20condominiale_6.jpg" alt="Parco condominiale 6"></div>
-          <div class="mySlides fade"><img src="images/Parco%20condominiale_7.jpg" alt="Parco condominiale 7"></div>
+          <!-- Camera grigia -->
+          <div class="mySlides fade"><img src="images/camera_grigia_1.jpg" alt="Camera grigia 1" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/camera_grigia_2.jpg" alt="Camera grigia 2" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/camera_grigia_3.jpg" alt="Camera grigia 3" loading="lazy" decoding="async"></div>
+          <div class="mySlides fade"><img src="images/camera_grigia_4.jpg" alt="Camera grigia 4" loading="lazy" decoding="async"></div>
 
-          <!-- Terrazza -->
-          <div class="mySlides fade"><img src="images/Terrazza_1.jpg" alt="Terrazza 1"></div>
-          <div class="mySlides fade"><img src="images/Terrazza_2.jpg" alt="Terrazza 2"></div>
-          <div class="mySlides fade"><img src="images/Terrazza_3.jpg" alt="Terrazza 3"></div>
-          <div class="mySlides fade"><img src="images/Terrazza_4.jpg" alt="Terrazza 4"></div>
-          <div class="mySlides fade"><img src="images/Terrazza_5.jpg" alt="Terrazza 5"></div>
-          <div class="mySlides fade"><img src="images/Terrazza_6.jpg" alt="Terrazza 6"></div>
-          <div class="mySlides fade"><img src="images/Terrazza_7.jpg" alt="Terrazza 7"></div>
-          <div class="mySlides fade"><img src="images/Terrazza_8.jpg" alt="Terrazza 8"></div>
-
-          <!-- Soggiorno -->
-          <div class="mySlides fade"><img src="images/Soggiorno_1.jpg" alt="Soggiorno 1"></div>
-          <div class="mySlides fade"><img src="images/Soggiorno_2.jpg" alt="Soggiorno 2"></div>
-          <div class="mySlides fade"><img src="images/Soggiorno_3.jpg" alt="Soggiorno 3"></div>
-          <div class="mySlides fade"><img src="images/Soggiorno_4.jpg" alt="Soggiorno 4"></div>
-          <div class="mySlides fade"><img src="images/Soggiorno_5.jpg" alt="Soggiorno 5"></div>
-          <div class="mySlides fade"><img src="images/Soggiorno_6.jpg" alt="Soggiorno 6"></div>
-
-          <!-- Cucina -->
-          <div class="mySlides fade"><img src="images/Cucina_1.jpg" alt="Cucina 1"></div>
-          <div class="mySlides fade"><img src="images/Cucina_2.jpg" alt="Cucina 2"></div>
-          <div class="mySlides fade"><img src="images/Cucina_3.jpg" alt="Cucina 3"></div>
-
-          <!-- Bagni -->
-          <div class="mySlides fade"><img src="images/Bagno%20piccolo_1.jpg" alt="Bagno piccolo 1"></div>
-          <div class="mySlides fade"><img src="images/Bagno%20piccolo_2.jpg" alt="Bagno piccolo 2"></div>
-          <div class="mySlides fade"><img src="images/Bagno%20piccolo_3.jpg" alt="Bagno piccolo 3"></div>
-
-          <div class="mySlides fade"><img src="images/Bagno%20grande_1.jpg" alt="Bagno grande 1"></div>
-          <div class="mySlides fade"><img src="images/Bagno%20grande_2.jpg" alt="Bagno grande 2"></div>
-          <div class="mySlides fade"><img src="images/Bagno%20grande_3.jpg" alt="Bagno grande 3"></div>
-          <div class="mySlides fade"><img src="images/Bagno%20grande_4.jpg" alt="Bagno grande 4"></div>
-
-          <!-- Camere -->
-          <div class="mySlides fade"><img src="images/Camera%20matrimoniale_1.jpg" alt="Camera matrimoniale 1"></div>
-          <div class="mySlides fade"><img src="images/Camera%20matrimoniale_2.jpg" alt="Camera matrimoniale 2"></div>
-          <div class="mySlides fade"><img src="images/Camera%20matrimoniale_3.jpg" alt="Camera matrimoniale 3"></div>
-
-          <div class="mySlides fade"><img src="images/Camera%20grigia_1.jpg" alt="Camera grigia 1"></div>
-          <div class="mySlides fade"><img src="images/Camera%20grigia_2.jpg" alt="Camera grigia 2"></div>
-          <div class="mySlides fade"><img src="images/Camera%20grigia_3.jpg" alt="Camera grigia 3"></div>
-          <div class="mySlides fade"><img src="images/Camera%20grigia_4.jpg" alt="Camera grigia 4"></div>
-
-          <div class="mySlides fade"><img src="images/Camera%20gialla_1.jpg" alt="Camera gialla 1"></div>
-          <div class="mySlides fade"><img src="images/Camera%20gialla_2.jpg" alt="Camera gialla 2"></div>
-          <div class="mySlides fade"><img src="images/Camera%20gialla_3.jpg" alt="Camera gialla 3"></div>
-
-          <div class="mySlides fade"><img src="images/Camera%20soppalco_1.jpg" alt="Camera soppalco 1"></div>
-          <div class="mySlides fade"><img src="images/Camera%20soppalco_2.jpg" alt="Camera soppalco 2"></div>
-          <div class="mySlides fade"><img src="images/Camera%20soppalco_3.jpg" alt="Camera soppalco 3"></div>
-
-          <!-- CONTROLLI -->
-          <button class="prev" onclick="plusSlides(-1)" aria-label="Immagine precedente">&#10094;</button>
-          <button class="next" onclick="plusSlides(1)" aria-label="Immagine successiva">&#10095;</button>
+          <!-- Pulsanti -->
+          <button class="prev" aria-label="Immagine precedente" onclick="plusSlides(-1)">&#10094;</button>
+          <button class="next" aria-label="Immagine successiva" onclick="plusSlides(1)">&#10095;</button>
         </div>
 
-        <!-- PALLINI dinamici -->
-        <div class="dots" id="dots"></div>
-
+        <!-- Dots -->
+        <div class="dots" aria-hidden="true">
+          <!-- 14 dots -->
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
+          <span class="dot" onclick="currentSlide(7)"></span>
+          <span class="dot" onclick="currentSlide(8)"></span>
+          <span class="dot" onclick="currentSlide(9)"></span>
+          <span class="dot" onclick="currentSlide(10)"></span>
+          <span class="dot" onclick="currentSlide(11)"></span>
+          <span class="dot" onclick="currentSlide(12)"></span>
+          <span class="dot" onclick="currentSlide(13)"></span>
+          <span class="dot" onclick="currentSlide(14)"></span>
+        </div>
       </article>
     </div>
   </section>
@@ -330,9 +293,7 @@
     <div class="container">
       <article class="card pad">
         <h2>Gli spazi</h2>
-        <p>
-          L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:
-        </p>
+        <p> L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:</p>
         <ul>
           <li>1 camera matrimoniale</li>
           <li>1 camera singola convertibile in matrimoniale</li>
@@ -370,7 +331,7 @@
         <h2>Spazi esterni</h2>
         <ul>
           <li><strong>Terrazza panoramica privata</strong> con tavolo, sedie e barbecue</li>
-          <li><strong>Piscina condominiale 7×15 m</strong> (indicativa 1/6–30/9)</li>
+          <li><strong>Piscina condominiale 7×15 m</strong> (da giugno a settembre)</li>
           <li><strong>Campo da tennis</strong> immerso nel verde</li>
           <li><strong>Grande parco secolare</strong> ideale per passeggiate e relax</li>
         </ul>
@@ -386,7 +347,7 @@
         <ul>
           <li>Numero massimo ospiti: <strong>5 (+1 con extra costo)</strong></li>
           <li>Soggiorno minimo: <strong>4 notti</strong></li>
-          <li>Check-in: dopo le <strong>15:00</strong> • Check-out: entro le <strong>10:00</strong> (flessibilità su richiesta)</li>
+          <li>Check-in: dopo le <strong>15:00</strong> • Check-out: entro le <strong>10:00</strong></li>
           <li><strong>No fumo</strong> all’interno</li>
           <li><strong>Animali non ammessi</strong></li>
         </ul>
@@ -405,7 +366,7 @@
             <p>Curo questo appartamento con la stessa dedizione che riservo alla mia casa: ogni dettaglio è pensato perché gli ospiti possano sentirsi accolti e a loro agio. È il rifugio ideale per chi desidera scoprire Livorno e la Toscana vivendo un’esperienza intima, silenziosa e immersa nel verde.</p>
           </div>
           <div class="host-photo">
-            <img src="images/host.jpg" alt="Alessandra – Host di La Luna nel Bosco">
+            <img src="images/host.jpg" alt="Alessandra – Host di La Luna nel Bosco" width="360" height="360" loading="lazy" decoding="async">
           </div>
         </div>
       </article>
@@ -418,26 +379,25 @@
       <article class="card pad">
         <h2>Recensioni</h2>
 
-        <div class="review-scores" style="margin:16px 0;">
-          <div class="score-box airbnb">
-            <img src="images/airbnb-logo.svg" alt="Airbnb" style="height:28px;margin-bottom:8px">
-            <div class="score">4.9<span class="small">/5</span></div>
-            <div class="muted">basato su 45 recensioni</div>
+        <div class="review-grid" style="margin:16px 0;">
+          <div class="score-box score-airbnb">
+            <img src="images/airbnb-logo.svg" alt="Airbnb">
+            <div class="score" style="font-size:30px;font-weight:700;">4.9<span style="font-size:16px;">/5</span></div>
+            <div class="muted" style="font-size:14px;">basato su 45 recensioni</div>
           </div>
-
-          <div class="score-box booking">
-            <img src="images/booking-logo.svg" alt="Booking.com" style="height:24px;margin-bottom:8px">
-            <div class="score">9.3<span class="small">/10</span></div>
-            <div class="muted">basato su 31 recensioni</div>
+          <div class="score-box score-booking">
+            <img src="images/booking-logo.svg" alt="Booking.com">
+            <div class="score" style="font-size:30px;font-weight:700;">9.3<span style="font-size:16px;">/10</span></div>
+            <div class="muted" style="font-size:14px;">basato su 31 recensioni</div>
           </div>
         </div>
 
-        <div class="reviews" style="display:grid;gap:16px;margin-top:12px;">
-          <blockquote class="airbnb">
+        <div class="reviews" style="display:grid;gap:16px;margin-top:8px;">
+          <blockquote style="border-left-color:#FF5A5F">
             “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli. Torneremo sicuramente!”
             <br><span class="muted">– Laura, Airbnb</span>
           </blockquote>
-          <blockquote class="booking">
+          <blockquote style="border-left-color:#0071c2">
             “Accoglienza fantastica, Alessandra è un’host speciale. Vista mozzafiato dalla terrazza.”
             <br><span class="muted">– Marco, Booking.com</span>
           </blockquote>
@@ -463,7 +423,7 @@
       <article class="card pad">
         <h2>Contatti</h2>
         <p>Email: <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a></p>
-        <p>Instagram: <a href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank">@lalunanelbosco</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener">@lalunanelbosco</a></p>
       </article>
     </div>
   </section>
@@ -472,15 +432,13 @@
 
 <!-- FOOTER -->
 <footer>
-  <div style="margin-bottom:12px;">
-    <img src="./logo.png" alt="Logo La Luna nel Bosco" style="max-height:60px;display:block;margin:0 auto;">
-  </div>
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120" decoding="async">
   <div>© <span id="year"></span> La Luna nel Bosco • Livorno</div>
   <div>CF: <strong>DFRLSN57M41E625C</strong></div>
 </footer>
 
 <!-- BANNER PRENOTAZIONE -->
-<div class="booking-banner">
+<div class="booking-banner" role="region" aria-label="Prenotazioni rapide">
   🌙 La Luna nel Bosco • Prenota ora:
   <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">Airbnb (–15%)</a>
   <a href="https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html" target="_blank" rel="noopener">Booking</a>
@@ -488,52 +446,36 @@
 </div>
 
 <script>
-  // anno footer
+  // Anno nel footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // SLIDESHOW
-  let slideIndex = 0;
+  // Slideshow (con autoplay)
+  let slideIndex = 1;
   let slideTimer;
-  const slides = document.getElementsByClassName("mySlides");
-  const dotsWrap = document.getElementById("dots");
 
-  // crea i pallini in base al numero di slide
-  for (let i = 0; i < slides.length; i++){
-    const sp = document.createElement('span');
-    sp.className = 'dot';
-    sp.setAttribute('aria-label', 'Vai alla foto ' + (i+1));
-    sp.addEventListener('click', () => currentSlide(i+1));
-    dotsWrap.appendChild(sp);
-  }
-  const dots = document.getElementsByClassName("dot");
+  function showSlides(n){
+    const slides = document.getElementsByClassName("mySlides");
+    const dots   = document.getElementsByClassName("dot");
+    if(!slides.length) return;
 
-  function showSlides() {
-    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-    slideIndex++;
-    if (slideIndex > slides.length) slideIndex = 1;
+    if(n > slides.length) slideIndex = 1;
+    if(n < 1) slideIndex = slides.length;
 
-    for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
+    for (let i=0;i<slides.length;i++) slides[i].style.display = "none";
+    for (let i=0;i<dots.length;i++)   dots[i].className = dots[i].className.replace(" active","");
 
-    if (slides.length) slides[slideIndex-1].style.display = "block";
-    if (dots.length) dots[slideIndex-1].classList.add("active");
+    slides[slideIndex-1].style.display = "block";
+    if (dots[slideIndex-1]) dots[slideIndex-1].className += " active";
 
-    slideTimer = setTimeout(showSlides, 5000); // 5s autoplay
-  }
-
-  function plusSlides(n) {
+    // autoplay 5s
     clearTimeout(slideTimer);
-    slideIndex += n - 1;
-    showSlides();
+    slideTimer = setTimeout(()=>{ plusSlides(1); }, 5000);
   }
-
-  function currentSlide(n) {
-    clearTimeout(slideTimer);
-    slideIndex = n - 1;
-    showSlides();
-  }
+  function plusSlides(n){ showSlides(slideIndex += n); }
+  function currentSlide(n){ showSlides(slideIndex = n); }
 
   // avvio
-  showSlides();
+  showSlides(slideIndex);
 </script>
 
 </body>
