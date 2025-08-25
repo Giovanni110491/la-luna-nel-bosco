@@ -68,25 +68,87 @@
     }
     nav.top .links a:hover{background:#f2f2f2}
 
-    /* HERO */
-    header.hero{
-      position:relative;min-height:70vh;display:grid;align-items:center;overflow:hidden;isolation:isolate;color:#fff;
-    }
-    header.hero::before{
-      content:"";position:absolute;inset:0;z-index:-2;
-      background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
-    }
-    header .wrap{max-width:var(--max);margin:auto;padding:60px 24px;display:grid;gap:18px}
-    .badge{display:inline-block;background:rgba(255,255,255,.22);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px}
-    .hero-title{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-    .hero-title img{height:96px;width:auto;display:block;filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));}
-    @media (max-width:600px){.hero-title img{height:72px}}
-    h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
-    .subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
-    .cta{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
-    .btn{border:none;border-radius:12px;padding:12px 18px;font-weight:600;cursor:pointer}
-    .btn-primary{background:var(--brand);color:#fff}
-    .btn-outline{background:transparent;border:2px solid #fff;color:#fff}
+/* HERO */
+header.hero{
+  position:relative;
+  min-height:70vh;
+  display:grid;
+  align-items:center;
+  overflow:hidden;
+  isolation:isolate;
+  color:#fff;
+}
+header.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  /* immagine + velo scuro per leggere meglio il testo */
+  background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
+}
+header .wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:60px 24px;
+  display:grid;
+  gap:18px;
+}
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.22);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px
+}
+.hero-title{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap
+}
+.hero-title img{
+  height:96px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.2))
+}
+@media (max-width:600px){.hero-title img{height:72px}}
+h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
+.subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
+
+/* === PATCH CTA: pulsanti tutti uguali === */
+.cta{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.cta .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:16px;
+  font-weight:600;
+  border-radius:12px;
+  padding:14px 22px;         /* stessa imbottitura */
+  min-width:180px;           /* stessa larghezza visiva */
+  line-height:1;             /* altezza coerente */
+  box-sizing:border-box;     /* includi il bordo nel calcolo */
+  text-align:center;
+  cursor:pointer;
+}
+
+.cta .btn-primary{
+  background:var(--brand);
+  color:#fff;
+  border:2px solid var(--brand);
+}
+
+.cta .btn-outline{
+  background:transparent;
+  color:#fff;
+  border:2px solid rgba(255,255,255,.9); /* contorno ben visibile */
+}
+
+.cta .btn:hover{ opacity:.95; }
+
 
     /* SEZIONI / CARD */
     section{scroll-margin-top:80px}
@@ -193,8 +255,8 @@
     </div>
     <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="#gallery">📷 Guarda le foto</a>
-      <a class="btn btn-outline" href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">🏡 Prenota</a>
+      <a class="btn btn-primary" href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">🏡 Prenota</a>
+      <a class="btn btn-outline" href="#gallery">📷 Guarda le foto</a>
       <a class="btn btn-outline" href="#contatti">✉️ Contattaci</a>
     </div>
   </div>
@@ -504,7 +566,7 @@
 
 <!-- BANNER PRENOTAZIONE -->
 <div class="booking-banner" role="region" aria-label="Prenotazioni rapide">
-  🌙 La Luna nel Bosco • Prenota su:
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="20" height="20" decoding="async"> La Luna nel Bosco • Prenota su:
   <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">
     Airbnb <span class="note-airbnb">(tariffa ~15% inferiore)</span>
   </a>
