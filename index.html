@@ -3,20 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>La Luna nel Bosco – Casa Vacanze a Livorno</title>
-  <meta name="description" content="La Luna nel Bosco: appartamento esclusivo con piscina, terrazza panoramica e parco secolare a Livorno. Prenota su Airbnb, Booking o VRBO." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="La Luna nel Bosco: appartamento esclusivo con piscina, terrazza panoramica e parco secolare a Livorno. Prenota su Airbnb, Booking o VRBO.">
+  <meta name="theme-color" content="#2e7d32">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://lalunanelbosco.com/">
+  <link rel="alternate" href="https://lalunanelbosco.com/" hreflang="it">
+  <link rel="alternate" href="https://lalunanelbosco.com/en/" hreflang="en">
+  <link rel="alternate" href="https://lalunanelbosco.com/" hreflang="x-default">
 
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
-  <!-- Social preview -->
+  <!-- Icona -->
+  <link rel="icon" href="/images/logo.png">
+
+  <!-- Font (consigliato per coerenza con la tua versione) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Preload hero per LCP -->
+  <link rel="preload" as="image" href="/images/hero.jpg">
+
+  <!-- Open Graph -->
+  <meta property="og:url" content="https://lalunanelbosco.com/">
   <meta property="og:title" content="La Luna nel Bosco – Casa Vacanze">
   <meta property="og:description" content="Appartamento spazioso con piscina, terrazza privata e parco secolare. A pochi minuti dal mare di Livorno.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="images/hero.jpg">
+  <meta property="og:image" content="https://lalunanelbosco.com/images/hero.jpg">
+  <meta property="og:site_name" content="La Luna nel Bosco">
   <meta property="og:locale" content="it_IT">
+
+  <!-- (Opzionale) Card per X/Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+</head>
 
   <style>
     :root{
@@ -309,67 +331,67 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
 
         <div class="gallery-grid">
           <div id="gallery-esterno"   class="thumb" data-group="esterno">
-            <img src="images/esterno_giardino_1.jpg" alt="Esterno e giardino">
+            <img src="images/esterno_giardino_1.jpg" alt="Esterno e giardino" loading="lazy" decoding="async">
             <span class="cap">Esterno e giardino</span>
           </div>
 
           <div id="gallery-piscina"   class="thumb" data-group="piscina">
-            <img src="images/piscina_1.jpg" alt="Piscina">
+            <img src="images/piscina_1.jpg" alt="Piscina" loading="lazy" decoding="async">
             <span class="cap">Piscina</span>
           </div>
 
           <div id="gallery-tennis"    class="thumb" data-group="tennis">
-            <img src="images/campo_tennis_1.jpg" alt="Campo da tennis">
+            <img src="images/campo_tennis_1.jpg" alt="Campo da tennis" loading="lazy" decoding="async">
             <span class="cap">Campo da tennis</span>
           </div>
 
           <div id="gallery-terrazza"  class="thumb" data-group="terrazza">
-            <img src="images/terrazza_1.jpg" alt="Terrazza">
+            <img src="images/terrazza_1.jpg" alt="Terrazza" loading="lazy" decoding="async">
             <span class="cap">Terrazza</span>
           </div>
 
           <div id="gallery-soggiorno" class="thumb" data-group="soggiorno">
-            <img src="images/soggiorno_1.jpg" alt="Soggiorno">
+            <img src="images/soggiorno_1.jpg" alt="Soggiorno" loading="lazy" decoding="async">
             <span class="cap">Soggiorno</span>
           </div>
 
           <div class="thumb" data-group="bagno_piccolo">
-            <img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo">
+            <img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo" loading="lazy" decoding="async">
             <span class="cap">Bagno piccolo</span>
           </div>
 
           <div class="thumb" data-group="bagno_grande">
-            <img src="images/bagno_grande_1.jpg" alt="Bagno grande">
+            <img src="images/bagno_grande_1.jpg" alt="Bagno grande" loading="lazy" decoding="async">
             <span class="cap">Bagno grande</span>
           </div>
 
           <div class="thumb" data-group="cucina">
-            <img src="images/cucina_1.jpg" alt="Cucina">
+            <img src="images/cucina_1.jpg" alt="Cucina" loading="lazy" decoding="async">
             <span class="cap">Cucina</span>
           </div>
 
           <div class="thumb" data-group="matrimoniale">
-            <img src="images/camera_matrimoniale_1.jpg" alt="Camera matrimoniale">
+            <img src="images/camera_matrimoniale_1.jpg" alt="Camera matrimoniale" loading="lazy" decoding="async">
             <span class="cap">Camera matrimoniale</span>
           </div>
 
           <div class="thumb" data-group="grigia">
-            <img src="images/camera_grigia_1.jpg" alt="Camera singola 1">
+            <img src="images/camera_grigia_1.jpg" alt="Camera singola 1" loading="lazy" decoding="async">
             <span class="cap">Camera singola 1</span>
           </div>
 
           <div class="thumb" data-group="gialla">
-            <img src="images/camera_gialla_1.jpg" alt="Camera singola 2">
+            <img src="images/camera_gialla_1.jpg" alt="Camera singola 2" loading="lazy" decoding="async">
             <span class="cap">Camera singola 2</span>
           </div>
 
           <div class="thumb" data-group="soppalco">
-            <img src="images/camera_soppalco_1.jpg" alt="Camera singola 3">
+            <img src="images/camera_soppalco_1.jpg" alt="Camera singola 3" loading="lazy" decoding="async">
             <span class="cap">Camera singola 3</span>
           </div>
 
           <div class="thumb" data-group="parco">
-            <img src="images/parco_condominiale_1.jpg" alt="Parco condominiale">
+            <img src="images/parco_condominiale_1.jpg" alt="Parco condominiale" loading="lazy" decoding="async">
             <span class="cap">Parco condominiale</span>
           </div>
         </div>
@@ -510,11 +532,11 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
 
         <div class="review-grid" style="margin:16px 0;">
           <div class="score-box score-airbnb">
-            <img src="images/airbnb-logo.svg" alt="Airbnb">
+            <img src="images/airbnb-logo.svg" alt="Airbnb" loading="lazy" decoding="async">
             <div class="score" style="font-size:50px;font-weight:700;">4.9<span style="font-size:16px;">/5</span></div>
           </div>
           <div class="score-box score-booking">
-            <img src="images/booking-logo.svg" alt="Booking.com">
+            <img src="images/booking-logo.svg" alt="Booking.com" loading="lazy" decoding="async">
             <div class="score" style="font-size:50px;font-weight:700;">9.6<span style="font-size:16px;">/10</span></div>
           </div>
         </div>
