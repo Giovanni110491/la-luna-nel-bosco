@@ -28,6 +28,7 @@
       --shadow:0 6px 20px rgba(0,0,0,.12);
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth} /* scorrimento morbido */
     body{
       margin:0;
       background:var(--bg);
@@ -43,92 +44,36 @@
     .container{max-width:var(--max);margin:0 auto;padding:24px}
     h1,h2,h3{margin:0}
 
-/* NAV */
-nav.top{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#ffffffd9;
-  backdrop-filter:saturate(1.2) blur(6px);
-  border-bottom:1px solid #eee;
-}
-
-nav.top {
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#ffffffd9;
-  backdrop-filter:saturate(1.2) blur(6px);
-  border-bottom:1px solid #eee;
-}
-
-nav.top .inner {
-  max-width:var(--max);
-  margin:0 auto;
-  display: flex;
-  flex-direction: column;   /* logo sopra, link sotto */
-  align-items: center;      /* centra tutto */
-  padding:10px 16px;
-  gap: 12px;                /* spazio tra titolo e link */
-}
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-  font-size:22px;           /* titolo più grande */
-}
-
-.brand img {
-  height:36px;
-  width:auto;
-}
-
-nav.top .links {
-  display:flex;
-  flex-wrap:wrap;           /* permette max 2 righe */
-  gap:16px;
-  justify-content:center;   /* centra i link */
-  max-width:100%;
-}
-
-nav.top .links a {
-  color:#000;
-  text-decoration:none;
-  padding:6px 10px;
-  border-radius:8px;
-  font-weight:500;
-  font-size:16px;           /* stessa dimensione per tutti */
-  text-align:center;
-  max-width:90px;           /* forza due righe max */
-  white-space:normal;       /* consente di andare a capo */
-  line-height:1.3;
-}
-
-    .links-row a{
-      color:#333;text-decoration:none;padding:8px 10px;border-radius:10px
+    /* NAV (unico blocco) */
+    nav.top{
+      position:sticky;top:0;z-index:20;
+      background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);
+      border-bottom:1px solid #eee;
     }
-    .links-row a:hover{background:#f2f2f2}
-
-    /* Badge Instagram */
-    .ig-link{
-      display:inline-flex;align-items:center;gap:6px;
-      background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-      color:#fff !important;padding:8px 10px;border-radius:10px;
-      font-weight:600;
+    nav.top .inner{
+      max-width:var(--max);margin:0 auto;
+      display:flex;flex-direction:column;align-items:center;
+      padding:10px 16px;gap:12px;
     }
-    .ig-link svg{width:16px;height:16px;fill:#fff}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px}
+    .brand img{height:36px;width:auto}
+    nav.top .links{
+      display:flex;gap:24px;flex-wrap:nowrap;
+      overflow-x:auto;scrollbar-width:none;
+    }
+    nav.top .links::-webkit-scrollbar{display:none}
+    nav.top .links a{
+      color:#000;text-decoration:none;padding:8px 12px;border-radius:8px;
+      font-weight:500;font-size:16px;white-space:nowrap;line-height:1.3;
+    }
+    nav.top .links a:hover{background:#f2f2f2}
 
     /* HERO */
     header.hero{
       position:relative;min-height:70vh;display:grid;align-items:center;overflow:hidden;isolation:isolate;color:#fff;
     }
     header.hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:-2;
+      content:"";position:absolute;inset:0;z-index:-2;
       background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
     }
     header .wrap{max-width:var(--max);margin:auto;padding:60px 24px;display:grid;gap:18px}
@@ -145,57 +90,28 @@ nav.top .links a {
 
     /* SEZIONI / CARD */
     section{scroll-margin-top:80px}
-    .section{padding:22px 0} /* leggermente ridotto rispetto a prima */
+    .section{padding:22px 0}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #eee}
     .pad{padding:22px}
     .muted{color:var(--muted)}
 
-    /* PUNTI DI FORZA & COMFORT */
-    .features-row{
-      display:flex;gap:14px;flex-wrap:wrap;margin-top:10px
-    }
+    /* COMFORT / PUNTI DI FORZA */
+    .features-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
     .features-row .feature{
-      flex:1 1 180px;
-      min-width:180px;
-      min-height:80px;
-      display:flex;align-items:center;justify-content:center;
-      text-align:center;font-weight:600;
+      flex:1 1 180px;min-width:180px;min-height:80px;
+      display:flex;align-items:center;justify-content:center;text-align:center;font-weight:600;
       background:#fafafa;border:1px solid #eee;border-radius:12px;
-      padding:16px;color:var(--text);text-decoration:none;
-      box-shadow:var(--shadow);
+      padding:16px;color:var(--text);text-decoration:none;box-shadow:var(--shadow);
     }
-    .features-row .feature:hover{ background:#f2f2f2; }
+    .features-row .feature:hover{background:#f2f2f2;}
 
-    /* GALLERY: anteprime uniformi e overlay didascalia */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-      gap:14px;
-      margin-top:12px;
-    }
-    .thumb{
-      position:relative;
-      border:1px solid #eee;
-      border-radius:12px;
-      overflow:hidden;
-      background:var(--card);
-      box-shadow:var(--shadow);
-      cursor:pointer;
-    }
-    .thumb img{
-      width:100%;
-      aspect-ratio:4/3;   /* tutte uguali */
-      object-fit:cover;
-      display:block;
-    }
-    .thumb .cap{
-      position:absolute;left:8px;bottom:8px;
-      background:rgba(0,0,0,.55);
-      color:#fff;font-size:14px;font-weight:600;
-      padding:4px 8px;border-radius:8px;
-    }
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+    .thumb{position:relative;border:1px solid #eee;border-radius:12px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);cursor:pointer}
+    .thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+    .thumb .cap{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;font-weight:600;padding:4px 8px;border-radius:8px}
 
-    /* SEZIONE HOST */
+    /* HOST */
     .host-card{display:grid;gap:16px}
     .host-photo{width:180px;height:180px;margin:0 auto;border-radius:50%;overflow:hidden;box-shadow:var(--shadow)}
     .host-photo img{display:block;width:100%;height:100%;object-fit:cover}
@@ -216,7 +132,7 @@ nav.top .links a {
     /* MAPPA + FOOTER */
     .map{border:0;width:100%;height:360px;border-radius:12px}
     footer{margin-top:36px;padding:20px;color:var(--muted);text-align:center;border-top:1px solid #ddd}
-    footer img{max-height:80px;width:auto;display:block;margin:0 auto 12px} /* non schiacciato */
+    footer img{max-height:80px;width:auto;display:block;margin:0 auto 12px}
 
     /* BANNER PRENOTAZIONE FISSO */
     .booking-banner{
@@ -230,18 +146,6 @@ nav.top .links a {
     }
     .booking-banner a:hover{background:#f2f2f2}
     .note-airbnb{font-weight:700;opacity:.95}
-
-    nav.top .links {
-    display: flex;
-    gap: 16px;
-    flex-wrap: nowrap;       /* tutte in una riga */
-    overflow-x: auto;        /* scroll se non ci sta tutto */
-    scrollbar-width: none;   /* nasconde scrollbar Firefox */
-    }
-    nav.top .links::-webkit-scrollbar {
-    display: none;           /* nasconde scrollbar Chrome/Safari */
-   }
-
   </style>
 
   <!-- Dati strutturati base -->
@@ -266,10 +170,9 @@ nav.top .links a {
     </div>
     <div class="links">
       <a href="#descrizione">Descrizione</a>
-      <a href="#punti">Punti di forza</a>
+      <a href="#comfort">Comfort</a>      
       <a href="#gallery">Galleria</a>
-      <a href="#spazi">Spazi</a>
-      <a href="#comfort">Comfort</a>
+      <a href="#spazi-interni">Spazi interni</a>
       <a href="#esterni">Spazi esterni</a>
       <a href="#regole">Regole</a>
       <a href="#host">L’host</a>
@@ -279,7 +182,6 @@ nav.top .links a {
     </div>
   </div>
 </nav>
-
 
 <!-- HERO -->
 <header class="hero" id="top">
@@ -291,10 +193,10 @@ nav.top .links a {
     </div>
     <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
     <div class="cta">
-    <a class="btn btn-primary" href="#gallery">📷 Guarda le foto</a>
-    <a class="btn btn-outline" href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">🏡 Prenota</a>
-    <a class="btn btn-outline" href="#contatti">✉️ Contattaci</a>
-   </div>
+      <a class="btn btn-primary" href="#gallery">📷 Guarda le foto</a>
+      <a class="btn btn-outline" href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">🏡 Prenota</a>
+      <a class="btn btn-outline" href="#contatti">✉️ Contattaci</a>
+    </div>
   </div>
 </header>
 
@@ -305,16 +207,16 @@ nav.top .links a {
     <div class="container">
       <article class="card pad">
         <h2>Descrizione</h2>
-          Immerso nella quiete delle colline di <strong>Montenero</strong>, “La Luna nel Bosco” è un appartamento di <strong>125 m²</strong> recentemente ristrutturato,
-          al primo piano della dependance di una villa ottocentesca con grande <strong>parco secolare</strong>, <strong>piscina stagionale</strong> e <strong>campo da tennis</strong>.
-          La posizione è ideale per visitare Livorno, Pisa, la Costa degli Etruschi e la Toscana, rientrando poi a rilassarsi
-          tra la <strong>terrazza solarium privata</strong> e l’atmosfera del <strong>camino</strong> in inverno.
+        Immerso nella quiete delle colline di <strong>Montenero</strong>, “La Luna nel Bosco” è un appartamento di <strong>125 m²</strong> recentemente ristrutturato,
+        al primo piano della dependance di una villa ottocentesca con grande <strong>parco secolare</strong>, <strong>piscina stagionale</strong> e <strong>campo da tennis</strong>.
+        La posizione è ideale per visitare Livorno, Pisa, Lucca, la Costa degli Etruschi e la Toscana, rientrando poi a rilassarsi
+        tra la <strong> bella terrazza panoramica privata</strong> o, in inverno, davanti all’<strong>accogliente atmosfera del caminetto acceso.</strong>
       </article>
     </div>
   </section>
 
   <!-- COMFORT -->
-  <section id="punti" class="section">
+  <section id="comfort" class="section">
     <div class="container">
       <article class="card pad">
         <h2>Comfort</h2>
@@ -469,10 +371,10 @@ nav.top .links a {
   </script>
 
   <!-- GLI SPAZI -->
-  <section id="spazi" class="section">
+  <section id="spazi-interni" class="section">
     <div class="container">
       <article class="card pad">
-        <h2>Gli spazi</h2>
+        <h2>Spazi interni</h2>
         <p> L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:</p>
         <ul>
           <li>1 camera matrimoniale</li>
@@ -480,7 +382,7 @@ nav.top .links a {
           <li>1 camera singola</li>
           <li>1 camera singola mansardata (accesso con scala a chiocciola)</li>
         </ul>
-        <p>Zona giorno con <strong>soggiorno e TV satellitare</strong>, ampia <strong>zona pranzo</strong> e <strong>2 bagni con doccia</strong>.</p>
+        <p>Zona giorno con <strong>comodi divani, TV, caminetto</strong>, ampia <strong>zona pranzo</strong> e <strong>2 bagni con doccia</strong>.</p>
       </article>
     </div>
   </section>
@@ -491,7 +393,7 @@ nav.top .links a {
       <article class="card pad">
         <h2>Spazi esterni</h2>
         <ul>
-          <li><strong>Terrazza panoramica privata</strong> con tavolo, sedie e barbecue</li>
+          <li><strong>Terrazza panoramica privata</strong> con tavolo, sedie, barbecue, divanetti e lettini da sole</li>
           <li><strong>Piscina condominiale 7×15 m</strong> (da giugno a settembre)</li>
           <li><strong>Campo da tennis</strong> immerso nel verde</li>
           <li><strong>Grande parco secolare</strong> ideale per passeggiate e relax</li>
@@ -510,6 +412,7 @@ nav.top .links a {
           <li>Soggiorno minimo: <strong>4 notti</strong></li>
           <li>Check-in: dopo le <strong>15:00</strong> • Check-out: entro le <strong>10:00</strong></li>
           <li><strong>No fumo</strong> all’interno</li>
+          <li><strong>No feste</strong></li>
           <li><strong>Animali non ammessi</strong></li>
         </ul>
       </article>
@@ -523,8 +426,8 @@ nav.top .links a {
         <h2>L’host</h2>
         <div class="host-card" style="margin-top:10px;">
           <div>
-            <p>Sono Alessandra, livornese doc, e da oltre trent’anni vivo immersa nella natura di questo parco che porto nel cuore. Amo il design, l’arte e le piccole magie della vita quotidiana.</p>
-            <p>Curo questo appartamento con la stessa dedizione che riservo alla mia casa: ogni dettaglio è pensato perché gli ospiti possano sentirsi accolti e a loro agio. È il rifugio ideale per chi desidera scoprire Livorno e la Toscana vivendo un’esperienza intima, silenziosa e immersa nel verde.</p>
+            <p>Sono Alessandra e da oltre quarant'anni vivo immersa nella natura di questo parco che porto nel cuore. Amo il design, l’arte e le piccole magie della vita quotidiana.</p>
+            <p>Curo questo appartamento con la stessa dedizione che riservo alla mia casa: ogni dettaglio è pensato affinché gli ospiti possano sentirsi accolti e a loro agio. È il rifugio ideale per chi desidera scoprire Livorno e la Toscana vivendo un’esperienza intima, silenziosa e immersa nel verde.</p>
           </div>
           <div class="host-photo">
             <img src="images/host.jpg" alt="Alessandra – Host di La Luna nel Bosco" width="360" height="360" loading="lazy" decoding="async">
