@@ -17,16 +17,13 @@
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
-  <!-- Icona -->
-  <link rel="icon" href="/images/logo.png">
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <!-- Favicons (in root del dominio) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="alternate icon" href="/favicon.ico" sizes="any">
+  <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  <!-- Font (consigliato per coerenza con la tua versione) -->
+
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -42,9 +39,8 @@
   <meta property="og:site_name" content="La Luna nel Bosco">
   <meta property="og:locale" content="it_IT">
 
-  <!-- (Opzionale) Card per X/Twitter -->
+  <!-- Card X/Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-</head>
 
   <style>
     :root{
@@ -59,7 +55,7 @@
       --shadow:0 6px 20px rgba(0,0,0,.12);
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth} /* scorrimento morbido */
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       background:var(--bg);
@@ -75,7 +71,7 @@
     .container{max-width:var(--max);margin:0 auto;padding:24px}
     h1,h2,h3{margin:0}
 
-    /* NAV (unico blocco) */
+    /* NAV */
     nav.top{
       position:sticky;top:0;z-index:20;
       background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);
@@ -99,87 +95,58 @@
     }
     nav.top .links a:hover{background:#f2f2f2}
 
-/* HERO */
-header.hero{
-  position:relative;
-  min-height:70vh;
-  display:grid;
-  align-items:center;
-  overflow:hidden;
-  isolation:isolate;
-  color:#fff;
-}
-header.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  /* immagine + velo scuro per leggere meglio il testo */
-  background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
-}
-header .wrap{
-  max-width:var(--max);
-  margin:auto;
-  padding:60px 24px;
-  display:grid;
-  gap:18px;
-}
-.badge{
-  display:inline-block;
-  background:rgba(255,255,255,.22);
-  color:#fff;
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:12px
-}
-.hero-title{
-  display:flex;align-items:center;gap:18px;flex-wrap:wrap
-}
-.hero-title img{
-  height:96px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.2))
-}
-@media (max-width:600px){.hero-title img{height:72px}}
-h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
-.subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
+    /* HERO */
+    header.hero{
+      position:relative;
+      min-height:70vh;
+      display:grid;
+      align-items:center;
+      overflow:hidden;
+      isolation:isolate;
+      color:#fff;
+    }
+    header.hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
+    }
+    header .wrap{
+      max-width:var(--max);
+      margin:auto;
+      padding:60px 24px;
+      display:grid;
+      gap:18px;
+    }
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,.22);
+      color:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px
+    }
+    .hero-title{
+      display:flex;align-items:center;gap:18px;flex-wrap:wrap
+    }
+    .hero-title img{
+      height:96px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.2))
+    }
+    @media (max-width:600px){.hero-title img{height:72px}}
+    h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
+    .subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
 
-/* === PATCH CTA: pulsanti tutti uguali === */
-.cta{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-
-.cta .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  font-size:16px;
-  font-weight:600;
-  border-radius:12px;
-  padding:14px 22px;         /* stessa imbottitura */
-  min-width:180px;           /* stessa larghezza visiva */
-  line-height:1;             /* altezza coerente */
-  box-sizing:border-box;     /* includi il bordo nel calcolo */
-  text-align:center;
-  cursor:pointer;
-}
-
-.cta .btn-primary{
-  background:var(--brand);
-  color:#fff;
-  border:2px solid var(--brand);
-}
-
-.cta .btn-outline{
-  background:transparent;
-  color:#fff;
-  border:2px solid rgba(255,255,255,.9); /* contorno ben visibile */
-}
-
-.cta .btn:hover{ opacity:.95; }
-
+    /* CTA */
+    .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+    .cta .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      font-size:16px;font-weight:600;border-radius:12px;padding:14px 22px;
+      min-width:180px;line-height:1;box-sizing:border-box;text-align:center;cursor:pointer;
+    }
+    .cta .btn-primary{background:var(--brand);color:#fff;border:2px solid var(--brand)}
+    .cta .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.9)}
+    .cta .btn:hover{opacity:.95}
 
     /* SEZIONI / CARD */
     section{scroll-margin-top:80px}
@@ -188,7 +155,7 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     .pad{padding:22px}
     .muted{color:var(--muted)}
 
-    /* COMFORT / PUNTI DI FORZA */
+    /* COMFORT */
     .features-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
     .features-row .feature{
       flex:1 1 180px;min-width:180px;min-height:80px;
@@ -247,8 +214,18 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
     "name": "La Luna nel Bosco",
-    "address": { "@type": "PostalAddress", "streetAddress": "Via del Pino", "addressLocality": "Livorno", "addressCountry": "IT" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "bestRating": "5", "ratingCount": "45" }
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via del Pino",
+      "addressLocality": "Livorno",
+      "addressCountry": "IT"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "ratingCount": "45"
+    }
   }
   </script>
 </head>
@@ -263,7 +240,7 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     </div>
     <div class="links">
       <a href="#descrizione">Descrizione</a>
-      <a href="#comfort">Comfort</a>      
+      <a href="#comfort">Comfort</a>
       <a href="#gallery">Galleria</a>
       <a href="#spazi-interni">Spazi interni</a>
       <a href="#esterni">Spazi esterni</a>
@@ -286,7 +263,7 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     </div>
     <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">🏡 Prenota</a>
+      <a class="btn btn-primary" href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener noreferrer">🏡 Prenota</a>
       <a class="btn btn-outline" href="#gallery">📷 Guarda le foto</a>
       <a class="btn btn-outline" href="#contatti">✉️ Contattaci</a>
     </div>
@@ -303,7 +280,7 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
         Immerso nella quiete delle colline di <strong>Montenero</strong>, “La Luna nel Bosco” è un appartamento di <strong>125 m²</strong> recentemente ristrutturato,
         al primo piano della dependance di una villa ottocentesca con grande <strong>parco secolare</strong>, <strong>piscina stagionale</strong> e <strong>campo da tennis</strong>.
         La posizione è ideale per visitare Livorno, Pisa, Lucca, la Costa degli Etruschi e la Toscana, rientrando poi a rilassarsi
-        tra la <strong> bella terrazza panoramica privata</strong> o, in inverno, davanti all’<strong>accogliente atmosfera del caminetto acceso.</strong>
+        tra la <strong>bella terrazza panoramica privata</strong> o, in inverno, davanti all’<strong>accogliente atmosfera del caminetto acceso</strong>.
       </article>
     </div>
   </section>
@@ -329,29 +306,29 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     </div>
   </section>
 
-  <!-- GALLERIA (13 anteprime uniformi + lightbox gruppi) -->
+  <!-- GALLERIA -->
   <section id="gallery" class="section">
     <div class="container">
       <article class="card pad">
         <h2>Galleria</h2>
 
         <div class="gallery-grid">
-          <div id="gallery-esterno"   class="thumb" data-group="esterno">
+          <div id="gallery-esterno" class="thumb" data-group="esterno">
             <img src="images/esterno_giardino_1.jpg" alt="Esterno e giardino" loading="lazy" decoding="async">
             <span class="cap">Esterno e giardino</span>
           </div>
 
-          <div id="gallery-piscina"   class="thumb" data-group="piscina">
+          <div id="gallery-piscina" class="thumb" data-group="piscina">
             <img src="images/piscina_1.jpg" alt="Piscina" loading="lazy" decoding="async">
             <span class="cap">Piscina</span>
           </div>
 
-          <div id="gallery-tennis"    class="thumb" data-group="tennis">
+          <div id="gallery-tennis" class="thumb" data-group="tennis">
             <img src="images/campo_tennis_1.jpg" alt="Campo da tennis" loading="lazy" decoding="async">
             <span class="cap">Campo da tennis</span>
           </div>
 
-          <div id="gallery-terrazza"  class="thumb" data-group="terrazza">
+          <div id="gallery-terrazza" class="thumb" data-group="terrazza">
             <img src="images/terrazza_1.jpg" alt="Terrazza" loading="lazy" decoding="async">
             <span class="cap">Terrazza</span>
           </div>
@@ -468,7 +445,7 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
     <div class="container">
       <article class="card pad">
         <h2>Spazi interni</h2>
-        <p> L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:</p>
+        <p>L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:</p>
         <ul>
           <li>1 camera matrimoniale</li>
           <li>1 camera singola convertibile in matrimoniale</li>
@@ -578,8 +555,8 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
       <article class="card pad">
         <h2>Contatti</h2>
         <p>Email: <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a></p>
-        <p>Instagram: <a class="ig-link" href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px">
-          <svg viewBox="0 0 448 512" width="16" height="16" aria-hidden="true"><path fill="#fff" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9 0 63.6 51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.2 0-74.7-33.4-74.7-74.7s33.4-74.7 74.7-74.7 74.7 33.4 74.7 74.7-33.5 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.9-26.9 26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 26.9-26.9 26.9 12 26.9 26.9zM446.6 124c-1-20.9-5.5-39.4-20.1-54C412 55.5 393.6 51 372.7 50c-21.2-1.2-84.8-1.6-148.6-1.6s-127.4.4-148.6 1.6C54.6 51 36.1 55.5 21.5 70.1 7 84.7 2.4 103.1 1.4 124c-1.2 21.2-1.6 84.8-1.6 148.6s.4 127.4 1.6 148.6c1 20.9 5.5 39.4 20.1 54 14.6 14.6 33.1 19.1 54 20.1 21.2 1.2 84.8 1.6 148.6 1.6s127.4-.4 148.6-1.6c20.9-1 39.4-5.5 54-20.1 14.6-14.6 19.1-33.1 20.1-54 1.2-21.2 1.6-84.8 1.6-148.6s-.4-127.4-1.6-148.6z"/></svg>
+        <p>Instagram: <a class="ig-link" href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px">
+          <svg viewBox="0 0 448 512" width="16" height="16" aria-hidden="true"><path fill="#fff" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9 0 63.6 51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.2 0-74.7-33.4-74.7-74.7s33.4-74.7 74.7-74.7 74.7 33.4 74.7 74.7-33.5 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.9-26.9 26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 26.9-26.9 26.9 12 26.9 26.9zM446.6 124c-1-20.9-5.5-39.4-20.1-54C412 55.5 393.6 51 372.7 50c-21.2-1.2-84.8-1.6-148.6-1.6s-127.4.4-148.6 1.6C54.6 51 36.1 55.5 21.5 70.1 7 84.7 2.4 103.1 1.4 124c-1.2 21.2-1.6 84.8-1.6 148.6s.4 127.4 1.6 148.6c1 20.9 5.5 39.4 20.1 54 14.6 14.6 33.1 19.1 54 20.1 21.2 1.2 84.8 1.6 148.6 1.6s127.4-.4 148.6-1.6c20.9-1 39.4-5.5 54-20.1 14.6 14.6 19.1 33.1 20.1 54 1.2 21.2 1.6 84.8 1.6 148.6s-.4 127.4-1.6 148.6z"/></svg>
           <span>@lalunanelbosco</span>
         </a></p>
       </article>
@@ -590,19 +567,19 @@ h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
 
 <!-- FOOTER -->
 <footer>
-  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120" decoding="async">
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120" decoding="async" loading="lazy">
   <div>© <span id="year"></span> La Luna nel Bosco • Livorno</div>
   <div>CF: <strong>DFRLSN57M41E625C</strong></div>
 </footer>
 
 <!-- BANNER PRENOTAZIONE -->
 <div class="booking-banner" role="region" aria-label="Prenotazioni rapide">
-  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="40" height="40" decoding="async"> La Luna nel Bosco • Prenota su:
-  <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener">
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="40" height="40" decoding="async" loading="lazy"> La Luna nel Bosco • Prenota su:
+  <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener noreferrer">
     Airbnb <span class="note-airbnb">(tariffa ~15% inferiore)</span>
   </a>
-  <a href="https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html" target="_blank" rel="noopener">Booking</a>
-  <a href="https://www.vrbo.com/it-it/affitto-vacanze/p6814788" target="_blank" rel="noopener">VRBO</a>
+  <a href="https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html" target="_blank" rel="noopener noreferrer">Booking</a>
+  <a href="https://www.vrbo.com/it-it/affitto-vacanze/p6814788" target="_blank" rel="noopener noreferrer">VRBO</a>
 </div>
 
 <script>
