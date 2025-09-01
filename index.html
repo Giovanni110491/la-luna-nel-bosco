@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>La Luna nel Bosco – Casa Vacanze a Livorno</title>
-  <meta name="description" content="La Luna nel Bosco: appartamento esclusivo con piscina, terrazza panoramica e parco secolare a Livorno. Prenota su Airbnb, Booking o VRBO.">
+  <title>La Luna nel Bosco | Casa vacanze a Livorno Montenero (Sito ufficiale)</title>
+  <meta name="description" content="Sito ufficiale de La Luna nel Bosco: appartamento con piscina, terrazza panoramica e parco secolare a Montenero (Livorno). Prenota al miglior prezzo diretto su Airbnb.">
   <meta name="theme-color" content="#2e7d32">
 
   <!-- Canonical + hreflang -->
@@ -17,7 +17,7 @@
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
-  <!-- Favicons -->
+  <!-- Favicons (in root del dominio) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="shortcut icon" href="/favicon.ico?v=2">
@@ -27,78 +27,221 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Preload hero -->
-  <link rel="preload" as="image" href="/images/hero.webp" fetchpriority="high">
+  <!-- Preload hero per LCP -->
+  <link rel="preload" as="image" href="/images/hero.jpg">
 
   <!-- Open Graph -->
   <meta property="og:url" content="https://lalunanelbosco.com/">
-  <meta property="og:title" content="La Luna nel Bosco – Casa Vacanze">
-  <meta property="og:description" content="Appartamento spazioso con piscina, terrazza privata e parco secolare. A pochi minuti dal mare di Livorno.">
+  <meta property="og:title" content="La Luna nel Bosco | Casa vacanze a Livorno (Sito ufficiale)">
+  <meta property="og:description" content="Sito ufficiale: appartamento spazioso con piscina, terrazza privata e parco secolare a Montenero (Livorno). Prenota diretto su Airbnb.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://lalunanelbosco.com/images/hero.jpg">
   <meta property="og:site_name" content="La Luna nel Bosco">
   <meta property="og:locale" content="it_IT">
 
-  <!-- Twitter Card -->
+  <!-- Card X/Twitter -->
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
-    :root{--bg:#fdfcf8;--card:#ffffff;--muted:#6b7280;--brand:#2e7d32;--brand-2:#42a5f5;--text:#333;--max:1080px;--radius:14px;--shadow:0 6px 20px rgba(0,0,0,.12);}
+    :root{
+      --bg:#fdfcf8;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --brand:#2e7d32;
+      --brand-2:#42a5f5;
+      --text:#333333;
+      --max:1080px;
+      --radius:14px;
+      --shadow:0 6px 20px rgba(0,0,0,.12);
+    }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;padding-bottom:72px}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      line-height:1.6;
+      padding-bottom:72px; /* spazio per banner fisso */
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
     a{color:var(--brand-2);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--max);margin:0 auto;padding:24px}
     h1,h2,h3{margin:0}
-    nav.top{position:sticky;top:0;z-index:20;background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #eee}
-    nav.top .inner{max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;align-items:center;padding:10px 16px;gap:12px}
+
+    /* NAV */
+    nav.top{
+      position:sticky;top:0;z-index:20;
+      background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);
+      border-bottom:1px solid #eee;
+    }
+    nav.top .inner{
+      max-width:var(--max);margin:0 auto;
+      display:flex;flex-direction:column;align-items:center;
+      padding:10px 16px;gap:12px;
+    }
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px}
     .brand img{height:36px;width:auto}
-    nav.top .links{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}
+    nav.top .links{
+      display:flex;gap:24px;flex-wrap:nowrap;
+      overflow-x:auto;scrollbar-width:none;
+    }
     nav.top .links::-webkit-scrollbar{display:none}
-    nav.top .links a{color:#000;padding:8px 12px;border-radius:8px;font-weight:500;font-size:16px;white-space:nowrap}
+    nav.top .links a{
+      color:#000;text-decoration:none;padding:8px 12px;border-radius:8px;
+      font-weight:500;font-size:16px;white-space:nowrap;line-height:1.3;
+    }
     nav.top .links a:hover{background:#f2f2f2}
-    header.hero{position:relative;min-height:70vh;display:grid;align-items:center;overflow:hidden;color:#fff}
-    /* fallback JPG */
-    header.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat}
-    /* WebP moderno */
-    @supports (background-image: image-set(url('images/hero.webp') type('image/webp') 1x, url('images/hero.jpg') type('image/jpeg') 1x)) {
-      header.hero::before{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),image-set(url('images/hero.webp') type('image/webp') 1x,url('images/hero.jpg') type('image/jpeg') 1x) center/cover no-repeat}
+
+    /* HERO */
+    header.hero{
+      position:relative;
+      min-height:70vh;
+      display:grid;
+      align-items:center;
+      overflow:hidden;
+      isolation:isolate;
+      color:#fff;
     }
-    /* Safari prefix */
-    @supports (-webkit-image-set(url('images/hero.webp') 1x)) {
-      header.hero::before{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),-webkit-image-set(url('images/hero.webp') 1x,url('images/hero.jpg') 1x) center/cover no-repeat}
+    header.hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url('images/hero.jpg') center/cover no-repeat;
     }
-    header .wrap{max-width:var(--max);margin:auto;padding:60px 24px;display:grid;gap:18px}
-    .badge{display:inline-block;background:rgba(255,255,255,.22);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px}
+    header .wrap{
+      max-width:var(--max);
+      margin:auto;
+      padding:60px 24px;
+      display:grid;
+      gap:18px;
+    }
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,.22);
+      color:#fff;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px
+    }
+    .hero-title{
+      display:flex;align-items:center;gap:18px;flex-wrap:wrap
+    }
+    .hero-title img{
+      height:96px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.2))
+    }
+    @media (max-width:600px){.hero-title img{height:72px}}
     h1{font-size:clamp(28px,6vw,52px);line-height:1.2}
+    .subtitle{color:#f0f0f0;font-size:18px;max-width:720px}
+
+    /* CTA */
     .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
-    .cta .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:16px;font-weight:600;border-radius:12px;padding:14px 22px;min-width:180px;text-align:center;cursor:pointer}
+    .cta .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      font-size:16px;font-weight:600;border-radius:12px;padding:14px 22px;
+      min-width:180px;line-height:1;box-sizing:border-box;text-align:center;cursor:pointer;
+    }
     .cta .btn-primary{background:var(--brand);color:#fff;border:2px solid var(--brand)}
     .cta .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.9)}
+    .cta .btn:hover{opacity:.95}
+
+    /* SEZIONI / CARD */
     section{scroll-margin-top:80px}
     .section{padding:22px 0}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #eee}
     .pad{padding:22px}
+    .muted{color:var(--muted)}
+
+    /* COMFORT */
+    .features-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+    .features-row .feature{
+      flex:1 1 180px;min-width:180px;min-height:80px;
+      display:flex;align-items:center;justify-content:center;text-align:center;font-weight:600;
+      background:#fafafa;border:1px solid #eee;border-radius:12px;
+      padding:16px;color:var(--text);text-decoration:none;box-shadow:var(--shadow);
+    }
+    .features-row .feature:hover{background:#f2f2f2;}
+
+    /* GALLERY */
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
     .thumb{position:relative;border:1px solid #eee;border-radius:12px;overflow:hidden;background:var(--card);box-shadow:var(--shadow);cursor:pointer}
+    .thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
     .thumb .cap{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;font-weight:600;padding:4px 8px;border-radius:8px}
+
+    /* HOST */
+    .host-card{display:grid;gap:16px}
     .host-photo{width:180px;height:180px;margin:0 auto;border-radius:50%;overflow:hidden;box-shadow:var(--shadow)}
+    .host-photo img{display:block;width:100%;height:100%;object-fit:cover}
+    @media(min-width:860px){
+      .host-card{grid-template-columns:auto 220px;align-items:center}
+      .host-photo{margin:0}
+    }
+
+    /* RECENSIONI */
+    .review-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:860px){.review-grid{grid-template-columns:1fr 1fr}}
+    .score-box{padding:18px;border:1px solid #eee;border-radius:12px;background:#fafafa;text-align:center}
+    .score-box img{height:26px;margin-bottom:8px}
+    .score-airbnb .score{color:#FF5A5F}
+    .score-booking .score{color:#0071c2}
+    blockquote{background:#fafafa;border-left:4px solid #ddd;padding:12px 16px;border-radius:8px;margin:0}
+
+    /* MAPPA + FOOTER */
     .map{border:0;width:100%;height:360px;border-radius:12px}
     footer{margin-top:36px;padding:20px;color:var(--muted);text-align:center;border-top:1px solid #ddd}
-    .booking-banner{position:fixed;bottom:0;left:0;right:0;z-index:100;background:#2e7d32;color:#fff;padding:12px 20px;display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;font-size:16px;font-weight:600}
-    .booking-banner a{background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none}
+    footer img{max-height:80px;width:auto;display:block;margin:0 auto 12px}
+
+    /* BANNER PRENOTAZIONE FISSO */
+    .booking-banner{
+      position:fixed;bottom:0;left:0;right:0;z-index:100;
+      background:#2e7d32;color:#fff;padding:12px 20px;
+      display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
+      font-size:16px;font-weight:600
+    }
+    .booking-banner a{
+      background:#fff;color:#2e7d32;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none
+    }
+    .booking-banner a:hover{background:#f2f2f2}
     .note-airbnb{font-weight:700;opacity:.95}
   </style>
+
+  <!-- Dati strutturati -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "La Luna nel Bosco",
+    "url": "https://lalunanelbosco.com/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via del Pino",
+      "addressLocality": "Livorno",
+      "addressCountry": "IT"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "ratingCount": "45"
+    },
+    "sameAs": [
+      "https://www.instagram.com/lalunanelbosco/",
+      "https://www.airbnb.it/rooms/15109094",
+      "https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html"
+    ]
+  }
+  </script>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="top">
+<nav class="top" aria-label="Navigazione principale">
   <div class="inner">
     <div class="brand">
-      <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="Logo La Luna nel Bosco" width="96" height="96"></picture>
+      <img src="./logo.png" alt="Logo La Luna nel Bosco" width="96" height="96" decoding="async">
       <span>La Luna nel Bosco</span>
     </div>
     <div class="links">
@@ -121,84 +264,332 @@
   <div class="wrap">
     <span class="badge">Casa vacanze a Livorno • Montenero</span>
     <div class="hero-title">
-      <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120"></picture>
+      <img src="./logo.png" alt="" width="120" height="120" decoding="async">
       <h1>La Luna nel Bosco</h1>
     </div>
     <p class="subtitle">Appartamento esclusivo con piscina, terrazza panoramica e parco secolare. Un’oasi di pace sulle colline di Montenero, a pochi minuti dal mare.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="https://www.airbnb.it/rooms/15109094" target="_blank">🏡 Prenota</a>
+      <a class="btn btn-primary" href="https://www.airbnb.it/rooms/15109094?utm_source=site&utm_medium=cta&utm_campaign=prenota" target="_blank" rel="noopener noreferrer">🏡 Prenota</a>
       <a class="btn btn-outline" href="#gallery">📷 Guarda le foto</a>
       <a class="btn btn-outline" href="#contatti">✉️ Contattaci</a>
     </div>
   </div>
 </header>
 
-<!-- GALLERIA -->
-<section id="gallery" class="section">
-  <div class="container">
-    <article class="card pad">
-      <h2>Galleria</h2>
-      <div class="gallery-grid">
-        <!-- Esterno e giardino -->
-        <div class="thumb"><picture><source srcset="images/esterno_giardino_1.webp" type="image/webp"><img src="images/esterno_giardino_1.jpg" alt="Esterno e giardino" loading="lazy"></picture><span class="cap">Esterno e giardino</span></div>
-        <!-- Piscina -->
-        <div class="thumb"><picture><source srcset="images/piscina_1.webp" type="image/webp"><img src="images/piscina_1.jpg" alt="Piscina" loading="lazy"></picture><span class="cap">Piscina</span></div>
-        <!-- Campo da tennis -->
-        <div class="thumb"><picture><source srcset="images/campo_tennis_1.webp" type="image/webp"><img src="images/campo_tennis_1.jpg" alt="Campo da tennis" loading="lazy"></picture><span class="cap">Campo da tennis</span></div>
-        <!-- Terrazza -->
-        <div class="thumb"><picture><source srcset="images/terrazza_1.webp" type="image/webp"><img src="images/terrazza_1.jpg" alt="Terrazza" loading="lazy"></picture><span class="cap">Terrazza</span></div>
-        <!-- Soggiorno -->
-        <div class="thumb"><picture><source srcset="images/soggiorno_1.webp" type="image/webp"><img src="images/soggiorno_1.jpg" alt="Soggiorno" loading="lazy"></picture><span class="cap">Soggiorno</span></div>
-        <!-- Bagno piccolo -->
-        <div class="thumb"><picture><source srcset="images/bagno_piccolo_1.webp" type="image/webp"><img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo" loading="lazy"></picture><span class="cap">Bagno piccolo</span></div>
-        <!-- Bagno grande -->
-        <div class="thumb"><picture><source srcset="images/bagno_grande_1.webp" type="image/webp"><img src="images/bagno_grande_1.jpg" alt="Bagno grande" loading="lazy"></picture><span class="cap">Bagno grande</span></div>
-        <!-- Cucina -->
-        <div class="thumb"><picture><source srcset="images/cucina_1.webp" type="image/webp"><img src="images/cucina_1.jpg" alt="Cucina" loading="lazy"></picture><span class="cap">Cucina</span></div>
-        <!-- Camera matrimoniale -->
-        <div class="thumb"><picture><source srcset="images/camera_matrimoniale_1.webp" type="image/webp"><img src="images/camera_matrimoniale_1.jpg" alt="Camera matrimoniale" loading="lazy"></picture><span class="cap">Camera matrimoniale</span></div>
-        <!-- Camera singola 1 -->
-        <div class="thumb"><picture><source srcset="images/camera_grigia_1.webp" type="image/webp"><img src="images/camera_grigia_1.jpg" alt="Camera singola 1" loading="lazy"></picture><span class="cap">Camera singola 1</span></div>
-        <!-- Camera singola 2 -->
-        <div class="thumb"><picture><source srcset="images/camera_gialla_1.webp" type="image/webp"><img src="images/camera_gialla_1.jpg" alt="Camera singola 2" loading="lazy"></picture><span class="cap">Camera singola 2</span></div>
-        <!-- Camera singola 3 -->
-        <div class="thumb"><picture><source srcset="images/camera_soppalco_1.webp" type="image/webp"><img src="images/camera_soppalco_1.jpg" alt="Camera singola 3" loading="lazy"></picture><span class="cap">Camera singola 3</span></div>
-        <!-- Parco condominiale -->
-        <div class="thumb"><picture><source srcset="images/parco_condominiale_1.webp" type="image/webp"><img src="images/parco_condominiale_1.jpg" alt="Parco condominiale" loading="lazy"></picture><span class="cap">Parco condominiale</span></div>
-      </div>
-    </article>
-  </div>
-</section>
+<main>
 
-<!-- HOST -->
-<section id="host" class="section">
-  <div class="container">
-    <article class="card pad">
-      <h2>L’host</h2>
-      <div class="host-card">
-        <div><p>Sono Alessandra e da oltre quarant'anni vivo immersa nella natura di questo parco...</p></div>
-        <div class="host-photo"><picture><source srcset="images/host.webp" type="image/webp"><img src="images/host.jpg" alt="Alessandra – Host La Luna nel Bosco" width="360" height="360" loading="lazy"></picture></div>
-      </div>
-    </article>
+  <!-- DESCRIZIONE -->
+  <section id="descrizione" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Descrizione</h2>
+        Immerso nella quiete delle colline di <strong>Montenero</strong>, “La Luna nel Bosco” è un appartamento di <strong>125 m²</strong> recentemente ristrutturato,
+        al primo piano della dependance di una villa ottocentesca con grande <strong>parco secolare</strong>, <strong>piscina stagionale</strong> e <strong>campo da tennis</strong>.
+        La posizione è ideale per visitare Livorno, Pisa, Lucca, la Costa degli Etruschi e la Toscana, rientrando poi a rilassarsi
+        tra la <strong>bella terrazza panoramica privata</strong> o, in inverno, davanti all’<strong>accogliente atmosfera del caminetto acceso</strong>.
+      </article>
+    </div>
+  </section>
+
+  <!-- COMFORT -->
+  <section id="comfort" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Comfort</h2>
+        <div class="features-row">
+          <a href="#gallery-esterno"   class="feature">🌿 Parco secolare</a>
+          <a href="#gallery-piscina"   class="feature">🏊 Piscina 7×15 m</a>
+          <a href="#gallery-tennis"    class="feature">🎾 Campo da tennis</a>
+          <a href="#gallery-terrazza"  class="feature">🌞 Terrazza privata</a>
+          <a href="#gallery-soggiorno" class="feature">🔥 Camino</a>
+          <div class="feature">🍳 Cucina completa</div>
+          <div class="feature">📶 Wi-Fi</div>
+          <div class="feature">🅿️ Parcheggio</div>
+          <div class="feature">🧺 Biancheria e lavatrice</div>
+          <div class="feature">🧯 Sicurezza</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- GALLERIA -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Galleria</h2>
+
+        <div class="gallery-grid">
+          <div id="gallery-esterno" class="thumb" data-group="esterno">
+            <img src="images/esterno_giardino_1.jpg" alt="Esterno e giardino" loading="lazy" decoding="async">
+            <span class="cap">Esterno e giardino</span>
+          </div>
+
+          <div id="gallery-piscina" class="thumb" data-group="piscina">
+            <img src="images/piscina_1.jpg" alt="Piscina" loading="lazy" decoding="async">
+            <span class="cap">Piscina</span>
+          </div>
+
+          <div id="gallery-tennis" class="thumb" data-group="tennis">
+            <img src="images/campo_tennis_1.jpg" alt="Campo da tennis" loading="lazy" decoding="async">
+            <span class="cap">Campo da tennis</span>
+          </div>
+
+          <div id="gallery-terrazza" class="thumb" data-group="terrazza">
+            <img src="images/terrazza_1.jpg" alt="Terrazza" loading="lazy" decoding="async">
+            <span class="cap">Terrazza</span>
+          </div>
+
+          <div id="gallery-soggiorno" class="thumb" data-group="soggiorno">
+            <img src="images/soggiorno_1.jpg" alt="Soggiorno" loading="lazy" decoding="async">
+            <span class="cap">Soggiorno</span>
+          </div>
+
+          <div class="thumb" data-group="bagno_piccolo">
+            <img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo" loading="lazy" decoding="async">
+            <span class="cap">Bagno piccolo</span>
+          </div>
+
+          <div class="thumb" data-group="bagno_grande">
+            <img src="images/bagno_grande_1.jpg" alt="Bagno grande" loading="lazy" decoding="async">
+            <span class="cap">Bagno grande</span>
+          </div>
+
+          <div class="thumb" data-group="cucina">
+            <img src="images/cucina_1.jpg" alt="Cucina" loading="lazy" decoding="async">
+            <span class="cap">Cucina</span>
+          </div>
+
+          <div class="thumb" data-group="matrimoniale">
+            <img src="images/camera_matrimoniale_1.jpg" alt="Camera matrimoniale" loading="lazy" decoding="async">
+            <span class="cap">Camera matrimoniale</span>
+          </div>
+
+          <div class="thumb" data-group="grigia">
+            <img src="images/camera_grigia_1.jpg" alt="Camera singola 1" loading="lazy" decoding="async">
+            <span class="cap">Camera singola 1</span>
+          </div>
+
+          <div class="thumb" data-group="gialla">
+            <img src="images/camera_gialla_1.jpg" alt="Camera singola 2" loading="lazy" decoding="async">
+            <span class="cap">Camera singola 2</span>
+          </div>
+
+          <div class="thumb" data-group="soppalco">
+            <img src="images/camera_soppalco_1.jpg" alt="Camera singola 3" loading="lazy" decoding="async">
+            <span class="cap">Camera singola 3</span>
+          </div>
+
+          <div class="thumb" data-group="parco">
+            <img src="images/parco_condominiale_1.jpg" alt="Parco condominiale" loading="lazy" decoding="async">
+            <span class="cap">Parco condominiale</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" style="position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000">
+    <button class="lb-btn lb-prev" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;font-size:30px;padding:10px;cursor:pointer;border-radius:8px">❮</button>
+    <img src="" alt="" style="max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px">
+    <button class="lb-btn lb-next" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;font-size:30px;padding:10px;cursor:pointer;border-radius:8px">❯</button>
+    <button class="lb-btn lb-close" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:24px;padding:8px;cursor:pointer;border-radius:8px">✕</button>
   </div>
-</section>
+
+  <script>
+    // Gruppi foto per ogni area
+    const photos = {
+      esterno: ["esterno_giardino_1.jpg","esterno_giardino_2.jpg","esterno_giardino_3.jpg"],
+      piscina: ["piscina_1.jpg","piscina_2.jpg","piscina_3.jpg","piscina_4.jpg"],
+      tennis: ["campo_tennis_1.jpg","campo_tennis_2.jpg"],
+      terrazza: ["terrazza_1.jpg","terrazza_2.jpg","terrazza_3.jpg","terrazza_4.jpg","terrazza_5.jpg","terrazza_6.jpg","terrazza_7.jpg","terrazza_8.jpg"],
+      soggiorno: ["soggiorno_1.jpg","soggiorno_2.jpg","soggiorno_3.jpg","soggiorno_4.jpg","soggiorno_5.jpg","soggiorno_6.jpg"],
+      bagno_piccolo: ["bagno_piccolo_1.jpg","bagno_piccolo_2.jpg","bagno_piccolo_3.jpg"],
+      bagno_grande: ["bagno_grande_1.jpg","bagno_grande_2.jpg","bagno_grande_3.jpg","bagno_grande_4.jpg"],
+      cucina: ["cucina_1.jpg","cucina_2.jpg","cucina_3.jpg"],
+      matrimoniale: ["camera_matrimoniale_1.jpg","camera_matrimoniale_2.jpg","camera_matrimoniale_3.jpg"],
+      grigia: ["camera_grigia_1.jpg","camera_grigia_2.jpg","camera_grigia_3.jpg","camera_grigia_4.jpg"],
+      gialla: ["camera_gialla_1.jpg","camera_gialla_2.jpg","camera_gialla_3.jpg"],
+      soppalco: ["camera_soppalco_1.jpg","camera_soppalco_2.jpg","camera_soppalco_3.jpg"],
+      parco: ["parco_condominiale_1.jpg","parco_condominiale_2.jpg","parco_condominiale_3.jpg","parco_condominiale_4.jpg","parco_condominiale_5.jpg","parco_condominiale_6.jpg","parco_condominiale_7.jpg"]
+    };
+
+    // Lightbox
+    const lb = document.getElementById("lightbox");
+    const lbImg = lb.querySelector("img");
+    let currentGroup=[], currentIndex=0;
+
+    function openLightbox(group,i=0){
+      currentGroup = photos[group].map(f=>"images/"+f);
+      currentIndex = i;
+      lbImg.src = currentGroup[currentIndex];
+      lb.style.display="flex";
+    }
+    function closeLightbox(){ lb.style.display="none"; }
+    function next(){ currentIndex=(currentIndex+1)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
+    function prev(){ currentIndex=(currentIndex-1+currentGroup.length)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
+
+    // Click sulle anteprime
+    document.querySelectorAll(".thumb").forEach((el)=>{
+      el.addEventListener("click",()=> openLightbox(el.dataset.group,0));
+    });
+
+    // Pulsanti / tastiera
+    lb.querySelector(".lb-close").onclick = closeLightbox;
+    lb.querySelector(".lb-next").onclick  = next;
+    lb.querySelector(".lb-prev").onclick  = prev;
+    window.addEventListener("keydown",(e)=>{
+      if(lb.style.display!=="flex") return;
+      if(e.key==="Escape") closeLightbox();
+      if(e.key==="ArrowRight") next();
+      if(e.key==="ArrowLeft")  prev();
+    });
+  </script>
+
+  <!-- GLI SPAZI -->
+  <section id="spazi-interni" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Spazi interni</h2>
+        <p>L’appartamento può ospitare fino a <strong>5 persone (+1 con extra costo)</strong> e include:</p>
+        <ul>
+          <li>1 camera matrimoniale</li>
+          <li>1 camera singola convertibile in matrimoniale</li>
+          <li>1 camera singola</li>
+          <li>1 camera singola mansardata (accesso con scala a chiocciola)</li>
+        </ul>
+        <p>Zona giorno con <strong>comodi divani, TV, caminetto</strong>, ampia <strong>zona pranzo</strong> e <strong>2 bagni con doccia</strong>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SPAZI ESTERNI -->
+  <section id="esterni" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Spazi esterni</h2>
+        <ul>
+          <li><strong>Terrazza panoramica privata</strong> con tavolo, sedie, barbecue, divanetti e lettini da sole</li>
+          <li><strong>Piscina condominiale 7×15 m</strong> (da giugno a settembre)</li>
+          <li><strong>Campo da tennis</strong> immerso nel verde</li>
+          <li><strong>Grande parco secolare</strong> ideale per passeggiate e relax</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- REGOLE -->
+  <section id="regole" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Regole della casa</h2>
+        <ul>
+          <li>Numero massimo ospiti: <strong>5 (+1 con extra costo)</strong></li>
+          <li>Soggiorno minimo: <strong>4 notti</strong></li>
+          <li>Check-in: dopo le <strong>15:00</strong> • Check-out: entro le <strong>10:00</strong></li>
+          <li><strong>No fumo</strong> all’interno</li>
+          <li><strong>No feste</strong></li>
+          <li><strong>Animali non ammessi</strong></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- L'HOST -->
+  <section id="host" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>L’host</h2>
+        <div class="host-card" style="margin-top:10px;">
+          <div>
+            <p>Sono Alessandra e da oltre quarant'anni vivo immersa nella natura di questo parco che porto nel cuore. Amo il design, l’arte e le piccole magie della vita quotidiana.</p>
+            <p>Curo questo appartamento con la stessa dedizione che riservo alla mia casa: ogni dettaglio è pensato affinché gli ospiti possano sentirsi accolti e a loro agio. È il rifugio ideale per chi desidera scoprire Livorno e la Toscana vivendo un’esperienza intima, silenziosa e immersa nel verde.</p>
+          </div>
+          <div class="host-photo">
+            <img src="images/host.jpg" alt="Alessandra – Host di La Luna nel Bosco" width="360" height="360" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RECENSIONI -->
+  <section id="recensioni" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Recensioni</h2>
+
+        <div class="review-grid" style="margin:16px 0;">
+          <div class="score-box score-airbnb">
+            <img src="images/airbnb-logo.svg" alt="Airbnb" loading="lazy" decoding="async">
+            <div class="score" style="font-size:50px;font-weight:700;">4.9<span style="font-size:16px;">/5</span></div>
+          </div>
+          <div class="score-box score-booking">
+            <img src="images/booking-logo.svg" alt="Booking.com" loading="lazy" decoding="async">
+            <div class="score" style="font-size:50px;font-weight:700;">9.6<span style="font-size:16px;">/10</span></div>
+          </div>
+        </div>
+
+        <div class="reviews" style="display:grid;gap:16px;margin-top:8px;">
+          <blockquote style="border-left-color:#FF5A5F">
+            “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli. Torneremo sicuramente!”
+            <br><span class="muted">– Laura, Airbnb</span>
+          </blockquote>
+          <blockquote style="border-left-color:#0071c2">
+            “Accoglienza fantastica, Alessandra è un’host speciale. Vista mozzafiato dalla terrazza.”
+            <br><span class="muted">– Marco, Booking.com</span>
+          </blockquote>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MAPPA -->
+  <section id="mappa" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Dove siamo</h2>
+        <p>L’appartamento si trova in <strong>Via del Pino, Livorno</strong>, sulle colline di Montenero.</p>
+        <iframe class="map" src="https://www.google.com/maps?q=Via%20del%20Pino%20Livorno&output=embed" title="Mappa La Luna nel Bosco" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Contatti</h2>
+        <p>Email: <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a></p>
+        <p>Instagram: <a class="ig-link" href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px">
+          <svg viewBox="0 0 448 512" width="16" height="16" aria-hidden="true"><path fill="#fff" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9 0 63.6 51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.2 0-74.7-33.4-74.7-74.7s33.4-74.7 74.7-74.7 74.7 33.4 74.7 74.7-33.5 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.9-26.9 26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 26.9-26.9 26.9 12 26.9 26.9zM446.6 124c-1-20.9-5.5-39.4-20.1-54C412 55.5 393.6 51 372.7 50c-21.2-1.2-84.8-1.6-148.6-1.6s-127.4.4-148.6 1.6C54.6 51 36.1 55.5 21.5 70.1 7 84.7 2.4 103.1 1.4 124c-1.2 21.2-1.6 84.8-1.6 148.6s.4 127.4 1.6 148.6c1 20.9 5.5 39.4 20.1 54 14.6 14.6 19.1 33.1 20.1 54 1.2 21.2 1.6 84.8 1.6 148.6s-.4 127.4-1.6 148.6z"/></svg>
+          <span>@lalunanelbosco</span>
+        </a></p>
+      </article>
+    </div>
+  </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
-  <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120" loading="lazy"></picture>
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120" decoding="async" loading="lazy">
   <div>© <span id="year"></span> La Luna nel Bosco • Livorno</div>
+  <div>CF: <strong>DFRLSN57M41E625C</strong></div>
 </footer>
 
 <!-- BANNER PRENOTAZIONE -->
-<div class="booking-banner">
-  <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="Logo La Luna nel Bosco" width="40" height="40"></picture>
-  La Luna nel Bosco • Prenota su:
-  <a href="https://www.airbnb.it/rooms/15109094" target="_blank">Airbnb <span class="note-airbnb">(tariffa ~15% inferiore)</span></a>
-  <a href="https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html" target="_blank">Booking</a>
-  <a href="https://www.vrbo.com/it-it/affitto-vacanze/p6814788" target="_blank">VRBO</a>
+<div class="booking-banner" role="region" aria-label="Prenotazioni rapide">
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="40" height="40" decoding="async" loading="lazy"> La Luna nel Bosco • Prenota su:
+  <a href="https://www.airbnb.it/rooms/15109094?utm_source=site&utm_medium=banner&utm_campaign=prenota" target="_blank" rel="noopener noreferrer">
+    Airbnb <span class="note-airbnb">(tariffa ~15% inferiore)</span>
+  </a>
+  <a href="https://www.booking.com/hotel/it/la-luna-nel-bosco.it.html" target="_blank" rel="noopener nofollow">Booking</a>
+  <a href="https://www.vrbo.com/it-it/affitto-vacanze/p6814788" target="_blank" rel="noopener nofollow">VRBO</a>
 </div>
 
 <script>
+  // Anno nel footer
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
