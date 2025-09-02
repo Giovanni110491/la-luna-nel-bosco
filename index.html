@@ -597,32 +597,6 @@
   </div>
 </section>
 
-<!-- Dati strutturati FAQ schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Qual è il soggiorno minimo presso La Luna nel Bosco a Livorno?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Il soggiorno minimo è di 4 notti. Questo permette di godere appieno dell’esperienza della casa vacanza e scoprire con calma le colline di Montenero, il mare di Livorno e le città vicine come Pisa e Lucca."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quante persone può ospitare l’appartamento La Luna nel Bosco?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "L’appartamento può accogliere comodamente fino a 5 persone (+1 extra su richiesta). È quindi ideale per famiglie o piccoli gruppi di amici che vogliono trascorrere una vacanza insieme."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "La casa vacanza è adatta a famiglie con bambi
-
 </main>
 
 <!-- FOOTER -->
@@ -637,11 +611,37 @@
   <img src="./logo.png" alt="Logo La Luna nel Bosco" width="40" height="40" decoding="async" loading="lazy"> La Luna nel Bosco • Prenota su:
   <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener noreferrer">
     Airbnb <span class="note-airbnb">(tariffa ~15% inferiore alle altre piattaforme)</span>
-  </a>
-</div>
+
+<!-- Script: anno footer -->
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
+<!-- Dati strutturati FAQ schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qual è il soggiorno minimo presso La Luna nel Bosco a Livorno?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il soggiorno minimo è di 4 notti. Questo permette di godere appieno dell’esperienza della casa vacanza..."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quante persone può ospitare l’appartamento La Luna nel Bosco?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L’appartamento può accogliere comodamente fino a 5 persone (+1 extra su richiesta)."
+      }
+    }
+    <!-- ... resto delle FAQ ... -->
+  ]
+}
+</script>
 </body>
 </html>
