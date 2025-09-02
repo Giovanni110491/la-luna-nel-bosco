@@ -1,13 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lalunanelbosco.com/</loc></url>
-  <url><loc>https://lalunanelbosco.com/#descrizione</loc></url>
-  <url><loc>https://lalunanelbosco.com/#comfort</loc></url>
-  <url><loc>https://lalunanelbosco.com/#gallery</loc></url>
-  <url><loc>https://lalunanelbosco.com/#spazi-interni</loc></url>
-  <url><loc>https://lalunanelbosco.com/#esterni</loc></url>
-  <url><loc>https://lalunanelbosco.com/#regole</loc></url>
-  <url><loc>https://lalunanelbosco.com/#host</loc></url>
-  <url><loc>https://lalunanelbosco.com/#mappa</loc></url>
-  <url><loc>https://lalunanelbosco.com/#contatti</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://lalunanelbosco.com/</loc>
+    <lastmod>2025-09-02</lastmod>
+    <priority>1.0</priority>
+
+    <!-- Hero -->
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/hero-1280.webp</image:loc>
+      <image:caption>La Luna nel Bosco - Vista terrazza e piscina</image:caption>
+    </image:image>
+
+    <!-- Piscina -->
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/piscina_1.webp</image:loc>
+      <image:caption>Piscina condominiale 7×15 m</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/piscina_2.webp</image:loc>
+      <image:caption>Piscina immersa nel verde</image:caption>
+    </image:image>
+
+    <!-- Terrazza -->
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/terrazza_1.webp</image:loc>
+      <image:caption>Terrazza panoramica privata</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/terrazza_2.webp</image:loc>
+      <image:caption>Terrazza arredata con tavolo e barbecue</image:caption>
+    </image:image>
+
+    <!-- Camere -->
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/camera_matrimoniale_1.webp</image:loc>
+      <image:caption>Camera matrimoniale</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/camera_gialla_1.webp</image:loc>
+      <image:caption>Camera singola gialla</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/camera_grigia_1.webp</image:loc>
+      <image:caption>Camera singola grigia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/camera_soppalco_1.webp</image:loc>
+      <image:caption>Camera mansardata con soppalco</image:caption>
+    </image:image>
+
+    <!-- Cucina & Soggiorno -->
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/cucina_1.webp</image:loc>
+      <image:caption>Cucina attrezzata</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/soggiorno_1.webp</image:loc>
+      <image:caption>Soggiorno con caminetto</image:caption>
+    </image:image>
+
+    <!-- Bagni -->
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/bagno_grande_1.webp</image:loc>
+      <image:caption>Bagno principale con doccia</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/bagno_piccolo_1.webp</image:loc>
+      <image:caption>Bagno secondario</image:caption>
+    </image:image>
+
+    <!-- Parco -->
+    <image:image>
+      <image:loc>https://lalunanelbosco.com/images/parco_condominiale_1.webp</image:loc>
+      <image:caption>Parco secolare della villa</image:caption>
+    </image:image>
+  </url>
+
 </urlset>
