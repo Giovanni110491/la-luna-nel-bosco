@@ -437,8 +437,7 @@
   </section>
 
 <script>
-(() => {
-  // --- Mappa gruppi -> file JPG (come le tue cartelle /images) ---
+  // Gruppi di immagini (solo JPG per la lightbox)
   const photos = {
     esterno: ["esterno_giardino_1.jpg","esterno_giardino_2.jpg","esterno_giardino_3.jpg"],
     piscina: ["piscina_1.jpg","piscina_2.jpg","piscina_3.jpg","piscina_4.jpg"],
@@ -455,75 +454,39 @@
     parco: ["parco_condominiale_1.jpg","parco_condominiale_2.jpg","parco_condominiale_3.jpg","parco_condominiale_4.jpg","parco_condominiale_5.jpg","parco_condominiale_6.jpg","parco_condominiale_7.jpg"]
   };
 
-  // --- Elementi della lightbox (usa il tuo markup esistente) ---
   const lb = document.getElementById("lightbox");
-  if (!lb) return;
   const lbImg = lb.querySelector("img");
-  const btnPrev = lb.querySelector(".lb-prev");
-  const btnNext = lb.querySelector(".lb-next");
-  const btnClose = lb.querySelector(".lb-close");
+  let currentGroup = [], currentIndex = 0;
 
-  let currentGroup = [];
-  let currentIndex = 0;
-  let lastBodyOverflow = "";
-
-  // Helpers
-  const buildSrc = (file) => "images/" + file;
-
-  function show(index){
-    currentIndex = (index + currentGroup.length) % currentGroup.length;
-    const src = buildSrc(currentGroup[currentIndex]);
-    lbImg.src = src;
-    // Preload vicini
-    preload((currentIndex + 1) % currentGroup.length);
-    preload((currentIndex - 1 + currentGroup.length) % currentGroup.length);
-  }
-  function preload(i){
-    const img = new Image();
-    img.src = buildSrc(currentGroup[i]);
-  }
-
-  function open(group, i=0){
-    const arr = photos[group];
-    if (!arr || !arr.length) return;
-    currentGroup = arr;
-    show(i);
-    lastBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden"; // blocca lo scroll sotto
+  function openLightbox(group, i=0){
+    currentGroup = photos[group].map(f=>"images/"+f);
+    currentIndex = i;
+    lbImg.src = currentGroup[currentIndex];
     lb.style.display = "flex";
-    lb.setAttribute("aria-hidden","false");
   }
-  function close(){
-    lb.style.display = "none";
-    lb.setAttribute("aria-hidden","true");
-    document.body.style.overflow = lastBodyOverflow || "";
-  }
-  function next(){ show(currentIndex + 1); }
-  function prev(){ show(currentIndex - 1); }
+  function closeLightbox(){ lb.style.display = "none"; }
+  function next(){ currentIndex=(currentIndex+1)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
+  function prev(){ currentIndex=(currentIndex-1+currentGroup.length)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
 
-  // Click sulle thumb
-  document.querySelectorAll(".thumb").forEach((el) => {
-    const group = el.dataset.group;
-    el.addEventListener("click", () => open(group, 0), { passive: true });
+  // Clic sulle miniature
+  document.querySelectorAll(".thumb").forEach(el=>{
+    el.addEventListener("click", ()=> openLightbox(el.dataset.group,0));
   });
 
-  // Controlli
-  btnClose && btnClose.addEventListener("click", close);
-  btnNext  && btnNext .addEventListener("click", next);
-  btnPrev  && btnPrev .addEventListener("click", prev);
-
-  // Chiudi cliccando fuori dall’immagine
-  lb.addEventListener("click", (e) => {
-    if (e.target === lb) close();
-  });
+  // Pulsanti
+  lb.querySelector(".lb-close").onclick = closeLightbox;
+  lb.querySelector(".lb-next").onclick  = next;
+  lb.querySelector(".lb-prev").onclick  = prev;
 
   // Tastiera
-  window.addEventListener("keydown", (e) => {
-    if (lb.style.display !== "flex") return;
-    if (e.key === "Escape") close();
-    if (e.key === "ArrowRight") next();
-    if (e.key === "ArrowLeft") prev();
+  window.addEventListener("keydown",(e)=>{
+    if(lb.style.display!=="flex") return;
+    if(e.key==="Escape") closeLightbox();
+    if(e.key==="ArrowRight") next();
+    if(e.key==="ArrowLeft")  prev();
   });
+</script>
+
 
   // Swipe mobile
   let startX = 0, startY = 0, dx = 0, dy = 0;
