@@ -48,7 +48,8 @@
 
 <style>
   :root{
-    --bg:#fdfcf8; --card:#ffffff; --muted:#6b7280; --brand:#2e7d32; --brand-2:#42a5f5; --text:#333333;
+    --bg:#fdfcf8; --card:#ffffff; --muted:#6b7280;
+    --brand:#2e7d32; --brand-2:#42a5f5; --text:#111111; /* testo più scuro */
     --max:1080px; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.12); --navH:86px;
   }
 
@@ -61,80 +62,80 @@
   /* Media non devono "spingere" il layout */
   img,picture,video,canvas{ max-width:100%; height:auto; display:block }
 
-  a{ color:var(--brand-2); text-decoration:none }
+  a{ color:var(--brand-2); text-decoration:none }  /* “frase celeste” invariata */
   a:hover{ text-decoration:underline }
-  .container{ max-width:var(--max); margin:0 auto; padding:24px }
-  h1,h2,h3{ margin:0 }
+  .container{ max-width:var(--max); margin:0 auto; padding:20px 24px } /* leggermente meno padding */
+  h1,h2,h3{ margin:0; color:#000 } /* titoli neri */
 
   /* --- Lang switch (desktop: in alto a dx; mobile: riga propria centrata) --- */
   .lang-switch{
     position:absolute; top:12px; right:16px;
     display:flex; align-items:center; gap:10px; z-index:30;
   }
-  .lang-switch img{ width:15px; height:auto; border:none; border-radius:3px; display:block }
+  .lang-switch img{ width:28px; height:auto; border:none; display:block }
 
   /* NAV */
   nav.top{ position:sticky; top:0; z-index:20; background:#ffffffd9; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid #eee }
-  nav.top .inner{ max-width:var(--max); margin:0 auto; display:flex; flex-direction:column; align-items:center; padding:10px 16px; gap:12px; position:relative }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:22px }
+  nav.top .inner{ max-width:var(--max); margin:0 auto; display:flex; flex-direction:column; align-items:center; padding:10px 16px; gap:10px; position:relative }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:22px; color:#000 }
   .brand img{ height:36px; width:auto }
-  nav.top .links{ display:flex; gap:24px; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none }
+  nav.top .links{ display:flex; gap:18px; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none }
   nav.top .links::-webkit-scrollbar{ display:none }
-  nav.top .links a{ color:#000; text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:500; font-size:16px; white-space:nowrap; line-height:1.3 }
+  nav.top .links a{ color:#000; text-decoration:none; padding:8px 10px; border-radius:8px; font-weight:500; font-size:16px; white-space:nowrap; line-height:1.3 }
   nav.top .links a:hover{ background:#f2f2f2 }
 
   /* HERO */
   header.hero{ position:relative; min-height:70vh; display:grid; align-items:center; overflow:hidden; color:#fff }
   .hero-bg{ position:absolute; inset:0; z-index:-2 }
-  .hero-bg img{ width:100%; height:100%; object-fit:cover; display:block }
+  .hero-bg img{ width:100%; height:100%; object-fit:cover }
   .hero-overlay{ position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)); z-index:-1 }
-  header .wrap{ max-width:var(--max); margin:auto; padding:60px 24px; display:grid; gap:18px }
+  header .wrap{ max-width:var(--max); margin:auto; padding:52px 24px; display:grid; gap:16px } /* meno spazio */
   .badge{ display:inline-block; background:rgba(255,255,255,.22); color:#fff; padding:6px 10px; border-radius:999px; font-size:12px }
-  .hero-title{ display:flex; align-items:center; gap:18px; flex-wrap:wrap }
+  .hero-title{ display:flex; align-items:center; gap:16px; flex-wrap:wrap }
   .hero-title img{ height:96px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.2)) }
   @media (max-width:600px){ .hero-title img{ height:72px } }
-  h1{ font-size:clamp(28px,6vw,52px); line-height:1.2 }
+  h1{ font-size:clamp(28px,6vw,52px); line-height:1.2; color:#fff }
   .subtitle{ color:#f0f0f0; font-size:18px; max-width:720px }
-  .cta{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px }
-  .cta .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-size:16px; font-weight:600; border-radius:12px; padding:14px 22px; min-width:180px; line-height:1; text-align:center; cursor:pointer }
+  .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px }
+  .cta .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-size:16px; font-weight:600; border-radius:12px; padding:12px 18px; min-width:170px; line-height:1; text-align:center; cursor:pointer }
   .cta .btn-primary{ background:var(--brand); color:#fff; border:2px solid var(--brand) }
   .cta .btn-outline{ background:transparent; color:#fff; border:2px solid rgba(255,255,255,.9) }
   .cta .btn:hover{ opacity:.95 }
 
   /* SEZIONI / CARD */
-  section{ scroll-margin-top:80px }
-  .section{ padding:22px 0 }
-  .card{ background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #eee }
-  .pad{ padding:22px }
+  section{ scroll-margin-top:80px; content-visibility:auto; contain-intrinsic-size:1px 800px } /* velocizza rendering off-screen */
+  .section{ padding:16px 0 } /* meno spazio tra sezioni */
+  .card{ background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #eee; color:#111 } /* testo scuro */
+  .pad{ padding:18px } /* leggermente meno padding interno */
   .muted{ color:var(--muted) }
 
   /* COMFORT */
-  .features-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:10px }
+  .features-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px }
   .features-row .feature{
-    flex:1 1 180px; min-width:180px; min-height:80px;
+    flex:1 1 180px; min-width:180px; min-height:72px;
     display:flex; align-items:center; justify-content:center; text-align:center;
-    font-weight:600; background:#fafafa; border:1px solid #eee; border-radius:12px; padding:16px;
-    color:var(--text); text-decoration:none; box-shadow:var(--shadow)
+    font-weight:600; background:#fafafa; border:1px solid #eee; border-radius:12px; padding:14px;
+    color:#111; text-decoration:none; box-shadow:var(--shadow)
   }
   .features-row .feature:hover{ background:#f2f2f2 }
 
   /* GALLERY */
   .gallery-grid{
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:14px; margin-top:12px;
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:12px; margin-top:10px;
   }
   .thumb{
     position:relative; border:1px solid #eee; border-radius:12px; overflow:hidden;
     background:var(--card); box-shadow:var(--shadow); cursor:pointer; aspect-ratio:4/3;
   }
-  .thumb picture,.thumb img{ width:100%; height:100%; object-fit:cover; display:block }
+  .thumb picture,.thumb img{ width:100%; height:100%; object-fit:cover }
   .thumb .cap{
-    position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.55); color:#fff;
+    position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.6); color:#fff;
     font-size:14px; font-weight:600; padding:4px 8px; border-radius:8px;
   }
 
   /* HOST */
-  .host-card{ display:grid; gap:16px }
+  .host-card{ display:grid; gap:14px }
   .host-photo{ width:180px; height:180px; margin:0 auto; border-radius:50%; overflow:hidden; box-shadow:var(--shadow) }
   .host-photo img{ width:100%; height:100%; object-fit:cover }
   @media(min-width:860px){
@@ -143,26 +144,26 @@
   }
 
   /* RECENSIONI */
-  .review-grid{ display:grid; grid-template-columns:1fr; gap:16px }
+  .review-grid{ display:grid; grid-template-columns:1fr; gap:14px }
   @media(min-width:860px){ .review-grid{ grid-template-columns:1fr 1fr } }
-  .score-box{ padding:18px; border:1px solid #eee; border-radius:12px; background:#fafafa; text-align:center }
+  .score-box{ padding:16px; border:1px solid #eee; border-radius:12px; background:#fafafa; text-align:center; color:#111 }
   .score-box img{ height:26px; margin-bottom:8px }
   .score-airbnb .score{ color:#FF5A5F }
   .score-booking .score{ color:#0071c2 }
-  blockquote{ background:#fafafa; border-left:4px solid #ddd; padding:12px 16px; border-radius:8px; margin:0 }
+  blockquote{ background:#fafafa; border-left:4px solid #ddd; padding:12px 16px; border-radius:8px; margin:0; color:#111 }
 
   /* MAPPA + FOOTER */
   .map{ border:0; width:100%; height:360px; border-radius:12px }
-  footer{ margin-top:36px; padding:20px; color:var(--muted); text-align:center; border-top:1px solid #ddd }
-  footer img{ max-height:80px; width:auto; display:block; margin:0 auto 12px }
+  footer{ margin-top:28px; padding:18px; color:#111; text-align:center; border-top:1px solid #ddd; background:#fff } /* footer testo scuro */
+  footer img{ max-height:80px; width:auto; display:block; margin:0 auto 10px }
 
   /* BANNER PRENOTAZIONE FISSO */
   .booking-banner{
     position:fixed; bottom:0; left:0; right:0; z-index:100;
-    background:#2e7d32; color:#fff; padding:12px 20px;
-    display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:wrap; font-size:16px; font-weight:600
+    background:#2e7d32; color:#fff; padding:10px 16px;
+    display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap; font-size:16px; font-weight:600
   }
-  .booking-banner a{ background:#fff; color:#2e7d32; padding:8px 14px; border-radius:8px; font-weight:700; text-decoration:none }
+  .booking-banner a{ background:#fff; color:#2e7d32; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none }
   .booking-banner a:hover{ background:#f2f2f2 }
   .note-airbnb{ font-weight:700; opacity:.95 }
 
@@ -176,16 +177,14 @@
 
   /* --- Mobile tweaks --- */
   @media (max-width:640px){
-    :root{ --navH:130px }               /* nav più alto su mobile */
-    .lang-switch{
-      position:static; margin:6px auto 0; justify-content:center; gap:14px;
-    }
+    :root{ --navH:130px }
+    .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px; }
     nav.top .inner{ gap:8px }
     nav.top .links a{ padding:6px 10px; font-size:15px }
-    section{ scroll-margin-top:calc(var(--navH) + 10px) }  /* ancore corrette sotto il nav */
+    .section{ padding:12px 0 } /* ancora meno spazio su mobile */
+    section{ scroll-margin-top:calc(var(--navH) + 8px) }
   }
 
-  /* Accessibilità: riduci animazioni se preferito dall’utente */
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto }
   }
@@ -231,10 +230,10 @@
     <!-- Switch lingue con bandierine -->
     <div class="lang-switch" aria-label="Cambio lingua">
       <a href="/" hreflang="it" lang="it" aria-label="Italiano" title="Italiano">
-        <img src="/images/it.svg?v=1" alt="Italiano" width="28" height="20" loading="lazy">
+        <img src="/images/it.svg?v=1" alt="Italiano" width="28" height="20" loading="lazy" decoding="async">
       </a>
       <a href="/en/" hreflang="en" lang="en" aria-label="English" title="English">
-        <img src="/images/gb.svg?v=1" alt="English" width="28" height="20" loading="lazy">
+        <img src="/images/gb.svg?v=1" alt="English" width="28" height="20" loading="lazy" decoding="async">
       </a>
     </div>
 
@@ -436,100 +435,13 @@
     </div>
   </section>
 
-<script>
-  // --- LIGHTBOX + SWIPE MOBILE ---
-  const photos = {
-    esterno: ["esterno_giardino_1.jpg","esterno_giardino_2.jpg","esterno_giardino_3.jpg"],
-    piscina: ["piscina_1.jpg","piscina_2.jpg","piscina_3.jpg","piscina_4.jpg"],
-    tennis: ["campo_tennis_1.jpg","campo_tennis_2.jpg"],
-    terrazza: ["terrazza_1.jpg","terrazza_2.jpg","terrazza_3.jpg","terrazza_4.jpg","terrazza_5.jpg","terrazza_6.jpg","terrazza_7.jpg","terrazza_8.jpg"],
-    soggiorno: ["soggiorno_1.jpg","soggiorno_2.jpg","soggiorno_3.jpg","soggiorno_4.jpg","soggiorno_5.jpg","soggiorno_6.jpg"],
-    bagno_piccolo: ["bagno_piccolo_1.jpg","bagno_piccolo_2.jpg","bagno_piccolo_3.jpg"],
-    bagno_grande: ["bagno_grande_1.jpg","bagno_grande_2.jpg","bagno_grande_3.jpg","bagno_grande_4.jpg"],
-    cucina: ["cucina_1.jpg","cucina_2.jpg","cucina_3.jpg"],
-    matrimoniale: ["camera_matrimoniale_1.jpg","camera_matrimoniale_2.jpg","camera_matrimoniale_3.jpg"],
-    grigia: ["camera_grigia_1.jpg","camera_grigia_2.jpg","camera_grigia_3.jpg","camera_grigia_4.jpg"],
-    gialla: ["camera_gialla_1.jpg","camera_gialla_2.jpg","camera_gialla_3.jpg"],
-    soppalco: ["camera_soppalco_1.jpg","camera_soppalco_2.jpg","camera_soppalco_3.jpg"],
-    parco: ["parco_condominiale_1.jpg","parco_condominiale_2.jpg","parco_condominiale_3.jpg","parco_condominiale_4.jpg","parco_condominiale_5.jpg","parco_condominiale_6.jpg","parco_condominiale_7.jpg"]
-  };
-
-  const lb = document.getElementById("lightbox");
-  const lbImg = lb.querySelector("img");
-  let currentGroup = [], currentIndex = 0;
-
-  function openLightbox(group, i=0){
-    currentGroup = photos[group].map(f=>"images/"+f);
-    currentIndex = i;
-    lbImg.src = currentGroup[currentIndex];
-    lb.style.display = "flex";
-  }
-  function closeLightbox(){ lb.style.display = "none"; }
-  function next(){ currentIndex=(currentIndex+1)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
-  function prev(){ currentIndex=(currentIndex-1+currentGroup.length)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
-
-  // Click miniature
-  document.querySelectorAll(".thumb").forEach(el=>{
-    el.addEventListener("click", ()=> openLightbox(el.dataset.group,0));
-  });
-
-  // Pulsanti lightbox
-  lb.querySelector(".lb-close").onclick = closeLightbox;
-  lb.querySelector(".lb-next").onclick  = next;
-  lb.querySelector(".lb-prev").onclick  = prev;
-
-  // Tastiera
-  window.addEventListener("keydown",(e)=>{
-    if(lb.style.display!=="flex") return;
-    if(e.key==="Escape") closeLightbox();
-    if(e.key==="ArrowRight") next();
-    if(e.key==="ArrowLeft")  prev();
-  });
-
-  // Swipe mobile
-  let startX = 0, startY = 0, dx = 0, dy = 0;
-  lb.addEventListener("touchstart", (e) => {
-    if (lb.style.display !== "flex") return;
-    const t = e.changedTouches[0];
-    startX = t.clientX; startY = t.clientY;
-    dx = 0; dy = 0;
-  }, { passive: true });
-
-  lb.addEventListener("touchmove", (e) => {
-    const t = e.changedTouches[0];
-    dx = t.clientX - startX;
-    dy = t.clientY - startY;
-  }, { passive: true });
-
-  lb.addEventListener("touchend", () => {
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      dx < 0 ? next() : prev();
-    }
-  }, { passive: true });
-</script>
-
-  // Swipe mobile
-  let startX = 0, startY = 0, dx = 0, dy = 0;
-  lb.addEventListener("touchstart", (e) => {
-    if (lb.style.display !== "flex") return;
-    const t = e.changedTouches[0];
-    startX = t.clientX; startY = t.clientY; dx = 0; dy = 0;
-  }, { passive: true });
-
-  lb.addEventListener("touchmove", (e) => {
-    const t = e.changedTouches[0];
-    dx = t.clientX - startX;
-    dy = t.clientY - startY;
-  }, { passive: true });
-
-  lb.addEventListener("touchend", () => {
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      dx < 0 ? next() : prev();
-    }
-  }, { passive: true });
-})();
-</script>
-
+  <!-- LIGHTBOX (markup) -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galleria immagini">
+    <button class="lb-btn lb-prev" aria-label="Precedente">❮</button>
+    <img src="" alt="" decoding="async">
+    <button class="lb-btn lb-next" aria-label="Successiva">❯</button>
+    <button class="lb-btn lb-close" aria-label="Chiudi">✕</button>
+  </div>
 
   <!-- GLI SPAZI -->
   <section id="spazi-interni" class="section">
@@ -585,7 +497,7 @@
     <div class="container">
       <article class="card pad">
         <h2>L’host</h2>
-        <div class="host-card" style="margin-top:10px;">
+        <div class="host-card" style="margin-top:8px;">
           <div>
             <p>Sono Alessandra e da oltre quarant'anni vivo immersa nella natura di questo parco che porto nel cuore. Amo il design, l’arte e le piccole magie della vita quotidiana.</p>
             <p>Curo questo appartamento con la stessa dedizione che riservo alla mia casa: ogni dettaglio è pensato affinché gli ospiti possano sentirsi accolti e a loro agio. È il rifugio ideale per chi desidera scoprire Livorno e la Toscana vivendo un’esperienza intima, silenziosa e immersa nel verde.</p>
@@ -598,16 +510,13 @@
     </div>
   </section>
 
-
   <!-- RECENSIONI -->
   <section id="recensioni" class="section">
     <div class="container">
       <article class="card pad">
         <h2>Recensioni</h2>
 
-        <!-- Box punteggi -->
-        <div class="review-scores" style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin:20px 0;">
-
+        <div class="review-scores" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:14px 0;">
           <div class="score-box score-airbnb" style="flex:1 1 200px;text-align:center;">
             <img src="images/airbnb-logo.svg" alt="Airbnb" style="height:40px;margin-bottom:8px;" loading="lazy" decoding="async">
             <div class="score" style="font-size:40px;font-weight:700;color:#FF5A5F;">4.9<span style="font-size:16px;">/5</span></div>
@@ -634,7 +543,6 @@
               <br><span class="muted">– Anna, VRBO</span>
             </blockquote>
           </div>
-
         </div>
       </article>
     </div>
@@ -651,162 +559,87 @@
     </div>
   </section>
 
-  <!-- COSA FARE A LIVORNO -->
-<section id="cosa-fare" class="section">
-  <div class="container">
-    <article class="card pad">
-      <h2>Cosa fare a Livorno e dintorni</h2>
-      <p class="muted" style="margin-top:6px">
-        Idee selezionate per vivere al meglio mare, natura e sapori della costa toscana. Tutto raggiungibile in pochi minuti da <strong>La Luna nel Bosco</strong>.
-      </p>
+  <!-- COSA FARE A LIVORNO (senza link) -->
+  <section id="cosa-fare" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Cosa fare a Livorno e dintorni</h2>
+        <p class="muted" style="margin-top:6px">
+          Idee selezionate per vivere al meglio mare, natura e sapori della costa toscana. Tutto raggiungibile in pochi minuti da <strong>La Luna nel Bosco</strong>.
+        </p>
 
-      <div class="things-grid">
-        <!-- MARE E SPIAGGE -->
-        <div class="things-col">
-          <h3>🌊 Mare e spiagge</h3>
-          <ul class="things-list">
-            <li>
-              <a href="https://maps.app.goo.gl/6k8mQqQXb7ZtH2cK6" target="_blank" rel="noopener">
-                Spiaggia del Sonnino – 10 min
-              </a>
-              <span class="muted">Piccola caletta, acqua cristallina.</span>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/tqN3bP2sG8pK1o8R7" target="_blank" rel="noopener">
-                Scogli di Calafuria – 15 min
-              </a>
-              <span class="muted">Tuffi, snorkeling, tramonti iconici.</span>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/E3i7Z6jA2qf4rXKf6" target="_blank" rel="noopener">
-                Castiglioncello – 20 min
-              </a>
-              <span class="muted">Passeggiata sul mare, stabilimenti e ristoranti.</span>
-            </li>
-          </ul>
+        <div class="things-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px">
+          <!-- MARE E SPIAGGE -->
+          <div class="things-col">
+            <h3>🌊 Mare e spiagge</h3>
+            <ul class="things-list" style="padding-left:18px; margin:8px 0">
+              <li><strong>Spiaggia del Sonnino</strong> – 10 min <span class="muted">• Piccola caletta, acqua cristallina.</span></li>
+              <li><strong>Scogli di Calafuria</strong> – 15 min <span class="muted">• Tuffi, snorkeling, tramonti iconici.</span></li>
+              <li><strong>Castiglioncello</strong> – 20 min <span class="muted">• Passeggiata sul mare, stabilimenti e ristoranti.</span></li>
+            </ul>
+          </div>
+
+          <!-- NATURA E TREKKING -->
+          <div class="things-col">
+            <h3>🌿 Natura e trekking</h3>
+            <ul class="things-list" style="padding-left:18px; margin:8px 0">
+              <li><strong>Sentieri di Montenero</strong> <span class="muted">• Percorsi tra olivete e macchia mediterranea.</span></li>
+              <li><strong>Valle Benedetta</strong> <span class="muted">• Boschi, ruscelli e antiche strade vicinali.</span></li>
+              <li><strong>Santuario di Montenero</strong> <span class="muted">• Panorama su tutta la costa.</span></li>
+            </ul>
+          </div>
+
+          <!-- CULTURA E CITTÀ -->
+          <div class="things-col">
+            <h3>🏛️ Cultura e città</h3>
+            <ul class="things-list" style="padding-left:18px; margin:8px 0">
+              <li><strong>Quartiere Venezia – Fortezza Nuova</strong> <span class="muted">• Canali, locali serali, atmosfera unica.</span></li>
+              <li><strong>Museo Fattori (Villa Mimbelli)</strong> <span class="muted">• Macchiaioli e arte toscana.</span></li>
+              <li><strong>Porto di Livorno e imbarchi</strong> <span class="muted">• Traghetti per Capraia, Corsica, Sardegna.</span></li>
+            </ul>
+          </div>
+
+          <!-- SAPORI LOCALI -->
+          <div class="things-col">
+            <h3>🍝 Sapori locali</h3>
+            <ul class="things-list" style="padding-left:18px; margin:8px 0">
+              <li><strong>Mercato Centrale</strong> <span class="muted">• Prodotti freschi e street food livornese.</span></li>
+              <li><strong>Cacciucco “alla livornese”</strong> <span class="muted">• Il piatto simbolo della città.</span></li>
+              <li><strong>Enoteche e trattorie tipiche</strong> <span class="muted">• Vini toscani e cucina di mare.</span></li>
+            </ul>
+          </div>
+
+          <!-- GITE IN GIORNATA -->
+          <div class="things-col">
+            <h3>🗺️ Gite in giornata</h3>
+            <ul class="things-list" style="padding-left:18px; margin:8px 0">
+              <li><strong>Pisa</strong> – 25 min <span class="muted">• Torre Pendente e Piazza dei Miracoli.</span></li>
+              <li><strong>Lucca</strong> – 45 min <span class="muted">• Mura rinascimentali e centro storico.</span></li>
+              <li><strong>Escursioni Capraia / Gorgona</strong> <span class="muted">• Isole del Parco dell’Arcipelago Toscano.</span></li>
+            </ul>
+          </div>
         </div>
 
-        <!-- NATURA E TREKKING -->
-        <div class="things-col">
-          <h3>🌿 Natura e trekking</h3>
-          <ul class="things-list">
-            <li>
-              <a href="https://maps.app.goo.gl/3qv6L3p3Tt4yH2oX6" target="_blank" rel="noopener">
-                Sentieri di Montenero
-              </a>
-              <span class="muted">Percorsi tra olivete e macchia mediterranea.</span>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/8q8Y4F2D9Q8R9mQw8" target="_blank" rel="noopener">
-                Valle Benedetta
-              </a>
-              <span class="muted">Boschi, ruscelli e antiche strade vicinali.</span>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/8Cz9oH7Vn3z8Ck3c8" target="_blank" rel="noopener">
-                Santuario di Montenero
-              </a>
-              <span class="muted">Panorama su tutta la costa.</span>
-            </li>
-          </ul>
+        <div class="tip-box" style="margin-top:8px">
+          <strong>Consiglio:</strong> in alta stagione porta scarpette da scoglio per Calafuria e prenota i ristoranti sul mare con anticipo.
         </div>
+      </article>
+    </div>
+  </section>
 
-        <!-- CULTURA E CITTÀ -->
-        <div class="things-col">
-          <h3>🏛️ Cultura e città</h3>
-          <ul class="things-list">
-            <li>
-              <a href="https://maps.app.goo.gl/kM7m1Rj7xHhHoC7b6" target="_blank" rel="noopener">
-                Quartiere Venezia – Fortezza Nuova
-              </a>
-              <span class="muted">Canali, locali serali, atmosfera unica.</span>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/E5k7n3Zqx9zq8q2c7" target="_blank" rel="noopener">
-                Museo Fattori (Villa Mimbelli)
-              </a>
-              <span class="muted">Macchiaioli e arte toscana.</span>
-            </li>
-            <li>
-              <a href="https://www.portolivorno2000.it/it/" target="_blank" rel="noopener">
-                Porto di Livorno e imbarchi
-              </a>
-              <span class="muted">Traghetti per Capraia, Corsica, Sardegna.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- SAPORI LOCALI -->
-        <div class="things-col">
-          <h3>🍝 Sapori locali</h3>
-          <ul class="things-list">
-            <li>
-              <a href="https://maps.app.goo.gl/1sH3i7m3gM7kC1Vb7" target="_blank" rel="noopener">
-                Mercato Centrale
-              </a>
-              <span class="muted">Prodotti freschi e street food livornese.</span>
-            </li>
-            <li>
-              <a href="https://it.wikipedia.org/wiki/Cacciucco" target="_blank" rel="noopener">
-                Cacciucco “alla livornese”
-              </a>
-              <span class="muted">Il piatto simbolo della città.</span>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/8s8mJp2zVwq2fE9f6" target="_blank" rel="noopener">
-                Enoteche e trattorie tipiche
-              </a>
-              <span class="muted">Vini toscani e cucina di mare.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- GITE IN GIORNATA -->
-        <div class="things-col">
-          <h3>🗺️ Gite in giornata</h3>
-          <ul class="things-list">
-            <li>
-              <a href="https://maps.app.goo.gl/Fq2GQAhZy8H8p1gq7" target="_blank" rel="noopener">
-                Pisa – 25 min
-              </a>
-              <span class="muted">Torre Pendente e Piazza dei Miracoli.</span>
-            </li>
-            <li>
-              <a href="https://maps.app.goo.gl/9kPj8TtY8e3s8kC97" target="_blank" rel="noopener">
-                Lucca – 45 min
-              </a>
-              <span class="muted">Mura rinascimentali e centro storico.</span>
-            </li>
-            <li>
-              <a href="https://www.parco-arcipelago-toscano.it/" target="_blank" rel="noopener">
-                Escursioni Capraia / Gorgona
-              </a>
-              <span class="muted">Isole del Parco dell’Arcipelago Toscano.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tip-box">
-        <strong>Consiglio:</strong> in alta stagione porta scarpette da scoglio per Calafuria e prenota i ristoranti sul mare con anticipo.
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- (facoltativo) JSON-LD per lista risorse -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Cosa fare a Livorno",
-  "itemListElement": [
-    {"@type": "ListItem","position": 1,"name": "Spiaggia del Sonnino","url": "https://maps.app.goo.gl/6k8mQqQXb7ZtH2cK6"},
-    {"@type": "ListItem","position": 2,"name": "Scogli di Calafuria","url": "https://maps.app.goo.gl/tqN3bP2sG8pK1o8R7"},
-    {"@type": "ListItem","position": 3,"name": "Castiglioncello","url": "https://maps.app.goo.gl/E3i7Z6jA2qf4rXKf6"}
-  ]
-}
-</script>
+  <!-- (facoltativo) JSON-LD per lista risorse -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Cosa fare a Livorno",
+    "itemListElement": [
+      {"@type": "ListItem","position": 1,"name": "Spiaggia del Sonnino"},
+      {"@type": "ListItem","position": 2,"name": "Scogli di Calafuria"},
+      {"@type": "ListItem","position": 3,"name": "Castiglioncello"}
+    ]
+  }
+  </script>
 
   <!-- FAQ -->
   <section id="faq" class="section">
@@ -862,27 +695,32 @@
     <div class="container">
       <article class="card pad">
         <h2>Contatti</h2>
-        <p>Email: <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a></p>
-        <p>Instagram: <a class="ig-link" href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px">
-          <svg viewBox="0 0 448 512" width="16" height="16" aria-hidden="true"><path fill="#fff" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9 0 63.6 51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.2 0-74.7-33.4-74.7-74.7s33.4-74.7 74.7-74.7 74.7 33.4 74.7 74.7-33.5 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.9-26.9 26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 26.9-26.9 26.9 12 26.9 26.9zM446.6 124c-1-20.9-5.5-39.4-20.1-54C412 55.5 393.6 51 372.7 50c-21.2-1.2-84.8-1.6-148.6-1.6s-127.4.4-148.6 1.6C54.6 51 36.1 55.5 21.5 70.1 7 84.7 2.4 103.1 1.4 124c-1.2 21.2-1.6 84.8-1.6 148.6s-.4 127.4-1.6 148.6c1 20.9 5.5 39.4 20.1 54 14.6 14.6 19.1 33.1 20.1 54 1.2 21.2 1.6 84.8 1.6 148.6s-.4 127.4-1.6 148.6z"/></svg>
-          <span>@lalunanelbosco</span>
-        </a></p>
+        <p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+          <!-- Icona email -->
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#111" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16ZM4 18V8.236l7.386 6.391a1 1 0 0 0 1.228 0L20 8.236V18H4Z"/></svg>
+          <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a>
+        </p>
+        <p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+          <!-- Icona Instagram -->
+          <svg width="18" height="18" viewBox="0 0 448 512" aria-hidden="true"><path fill="#111" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.9 224.1 370.9 339 319.6 339 255.9 287.7 141 224.1 141Zm146.4-29.7a26.9 26.9 0 1 1-26.9 26.9a26.9 26.9 0 0 1 26.9-26.9ZM398.8 80.3A93.8 93.8 0 0 0 352 64H96A96 96 0 0 0 0 160v256a96 96 0 0 0 96 96h256a96 96 0 0 0 96-96V160a93.8 93.8 0 0 0-17.6-55.7ZM224 352a96 96 0 1 1 96-96a96 96 0 0 1-96 96Z"/></svg>
+          <a class="ig-link" href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener noreferrer">@lalunanelbosco</a>
+        </p>
       </article>
     </div>
   </section>
   
 </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120" decoding="async" loading="lazy">
-    <div>© <span id="year"></span> La Luna nel Bosco • Livorno</div>
-    <div>CF: <strong>DFRLSN57M41E625C</strong></div>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="120" height="120" decoding="async" loading="lazy">
+  <div>© <span id="year"></span> La Luna nel Bosco • Livorno</div>
+  <div>CF: <strong>DFRLSN57M41E625C</strong></div>
+</footer>
 
 <!-- BANNER PRENOTAZIONE -->
 <div class="booking-banner" role="region" aria-label="Prenotazioni rapide">
-  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="40" height="40" decoding="async" loading="lazy">
+  <img src="./logo.png" alt="Logo La Luna nel Bosco" width="34" height="34" decoding="async" loading="lazy">
   La Luna nel Bosco • Prenota su:
   <a href="https://www.airbnb.it/rooms/15109094" target="_blank" rel="noopener noreferrer">
     Airbnb <span class="note-airbnb">(tariffa ~15% inferiore alle altre piattaforme)</span>
@@ -892,6 +730,78 @@
 <!-- Script: anno footer -->
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- LIGHTBOX SCRIPT (unico, pulito) -->
+<script>
+  // Gruppi foto per la lightbox (JPG stabili)
+  const photos = {
+    esterno: ["esterno_giardino_1.jpg","esterno_giardino_2.jpg","esterno_giardino_3.jpg"],
+    piscina: ["piscina_1.jpg","piscina_2.jpg","piscina_3.jpg","piscina_4.jpg"],
+    tennis: ["campo_tennis_1.jpg","campo_tennis_2.jpg"],
+    terrazza: ["terrazza_1.jpg","terrazza_2.jpg","terrazza_3.jpg","terrazza_4.jpg","terrazza_5.jpg","terrazza_6.jpg","terrazza_7.jpg","terrazza_8.jpg"],
+    soggiorno: ["soggiorno_1.jpg","soggiorno_2.jpg","soggiorno_3.jpg","soggiorno_4.jpg","soggiorno_5.jpg","soggiorno_6.jpg"],
+    bagno_piccolo: ["bagno_piccolo_1.jpg","bagno_piccolo_2.jpg","bagno_piccolo_3.jpg"],
+    bagno_grande: ["bagno_grande_1.jpg","bagno_grande_2.jpg","bagno_grande_3.jpg","bagno_grande_4.jpg"],
+    cucina: ["cucina_1.jpg","cucina_2.jpg","cucina_3.jpg"],
+    matrimoniale: ["camera_matrimoniale_1.jpg","camera_matrimoniale_2.jpg","camera_matrimoniale_3.jpg"],
+    grigia: ["camera_grigia_1.jpg","camera_grigia_2.jpg","camera_grigia_3.jpg","camera_grigia_4.jpg"],
+    gialla: ["camera_gialla_1.jpg","camera_gialla_2.jpg","camera_gialla_3.jpg"],
+    soppalco: ["camera_soppalco_1.jpg","camera_soppalco_2.jpg","camera_soppalco_3.jpg"],
+    parco: ["parco_condominiale_1.jpg","parco_condominiale_2.jpg","parco_condominiale_3.jpg","parco_condominiale_4.jpg","parco_condominiale_5.jpg","parco_condominiale_6.jpg","parco_condominiale_7.jpg"]
+  };
+
+  const lb = document.getElementById("lightbox");
+  const lbImg = lb.querySelector("img");
+  let currentGroup=[], currentIndex=0;
+
+  function openLightbox(group,i=0){
+    currentGroup = photos[group].map(f=>"images/"+f);
+    currentIndex = i;
+    lbImg.src = currentGroup[currentIndex];
+    lb.style.display="flex";
+  }
+  function closeLightbox(){ lb.style.display="none"; }
+  function next(){ currentIndex=(currentIndex+1)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
+  function prev(){ currentIndex=(currentIndex-1+currentGroup.length)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
+
+  // Click miniature
+  document.querySelectorAll(".thumb").forEach((el)=>{
+    el.addEventListener("click",()=> openLightbox(el.dataset.group,0));
+  });
+  // Pulsanti
+  lb.querySelector(".lb-close").onclick = closeLightbox;
+  lb.querySelector(".lb-next").onclick  = next;
+  lb.querySelector(".lb-prev").onclick  = prev;
+
+  // Tastiera
+  window.addEventListener("keydown",(e)=>{
+    if(lb.style.display!=="flex") return;
+    if(e.key==="Escape") closeLightbox();
+    if(e.key==="ArrowRight") next();
+    if(e.key==="ArrowLeft")  prev();
+  });
+
+  // Swipe mobile
+  let startX = 0, startY = 0, dx = 0, dy = 0;
+  lb.addEventListener("touchstart", (e) => {
+    if (lb.style.display !== "flex") return;
+    const t = e.changedTouches[0];
+    startX = t.clientX; startY = t.clientY;
+    dx = 0; dy = 0;
+  }, { passive: true });
+
+  lb.addEventListener("touchmove", (e) => {
+    const t = e.changedTouches[0];
+    dx = t.clientX - startX;
+    dy = t.clientY - startY;
+  }, { passive: true });
+
+  lb.addEventListener("touchend", () => {
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      dx < 0 ? next() : prev();
+    }
+  }, { passive: true });
 </script>
 
 <!-- Dati strutturati FAQ schema.org -->
