@@ -90,6 +90,22 @@
         margin:6px auto 0;         /* sopra alle sezioni, centrato */
         justify-content:center; gap:14px;
       }
+/* Evita "gomma" e spazi bianchi ai bordi */
+html, body {
+  overscroll-behavior-y: none; /* Chrome/Android/Firefox */
+}
+
+/* Scroll-snap leggero per fermarsi sulle sezioni su mobile */
+@media (max-width: 640px){
+  html, body { height: 100%; }
+  main {
+    scroll-snap-type: y proximity;
+  }
+  section {
+    scroll-snap-align: start;
+  }
+}
+
     }
 
     /* NAV */
@@ -465,6 +481,49 @@
       if(e.key==="ArrowRight") next();
       if(e.key==="ArrowLeft")  prev();
     });
+    <script>
+  (function(){
+    const NAV_H = parseInt(getComputedStyle(document.documentElement)
+                     .getPropertyValue('--navH')) || 96;
+
+    // Selettore dei link di navigazione (puoi aggiungere altri se serve)
+    const links = document.querySelectorAll('nav.top .links a[href^="#"]');
+
+    function smoothScrollTo(targetId){
+      const el = document.querySelector(targetId);
+      if(!el) return;
+
+      // posizione della sezione meno l’altezza del nav
+      const rect = el.getBoundingClientRect();
+      const absoluteTop = window.pageYOffset + rect.top - NAV_H;
+
+      // limite inferiore: non andare oltre il fondo della pagina
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const finalY = Math.max(0, Math.min(absoluteTop, maxScroll));
+
+      window.scrollTo({ top: finalY, behavior: 'smooth' });
+    }
+
+    links.forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(!href || href.charAt(0) !== '#') return;
+        e.preventDefault();
+        smoothScrollTo(href);
+        // aggiorna hash senza "saltare"
+        history.pushState(null, '', href);
+      });
+    });
+
+    // Se arrivi con un hash in URL (es. /#faq), applica lo stesso offset
+    window.addEventListener('load', ()=>{
+      if(location.hash){
+        setTimeout(()=> smoothScrollTo(location.hash), 0);
+      }
+    });
+  })();
+</script>
+
   </script>
 
   <!-- GLI SPAZI -->
