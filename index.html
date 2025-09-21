@@ -437,7 +437,7 @@
   </section>
 
 <script>
-  // Gruppi di immagini (solo JPG per la lightbox)
+  // --- LIGHTBOX + SWIPE MOBILE ---
   const photos = {
     esterno: ["esterno_giardino_1.jpg","esterno_giardino_2.jpg","esterno_giardino_3.jpg"],
     piscina: ["piscina_1.jpg","piscina_2.jpg","piscina_3.jpg","piscina_4.jpg"],
@@ -468,12 +468,12 @@
   function next(){ currentIndex=(currentIndex+1)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
   function prev(){ currentIndex=(currentIndex-1+currentGroup.length)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
 
-  // Clic sulle miniature
+  // Click miniature
   document.querySelectorAll(".thumb").forEach(el=>{
     el.addEventListener("click", ()=> openLightbox(el.dataset.group,0));
   });
 
-  // Pulsanti
+  // Pulsanti lightbox
   lb.querySelector(".lb-close").onclick = closeLightbox;
   lb.querySelector(".lb-next").onclick  = next;
   lb.querySelector(".lb-prev").onclick  = prev;
@@ -485,8 +485,28 @@
     if(e.key==="ArrowRight") next();
     if(e.key==="ArrowLeft")  prev();
   });
-</script>
 
+  // Swipe mobile
+  let startX = 0, startY = 0, dx = 0, dy = 0;
+  lb.addEventListener("touchstart", (e) => {
+    if (lb.style.display !== "flex") return;
+    const t = e.changedTouches[0];
+    startX = t.clientX; startY = t.clientY;
+    dx = 0; dy = 0;
+  }, { passive: true });
+
+  lb.addEventListener("touchmove", (e) => {
+    const t = e.changedTouches[0];
+    dx = t.clientX - startX;
+    dy = t.clientY - startY;
+  }, { passive: true });
+
+  lb.addEventListener("touchend", () => {
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      dx < 0 ? next() : prev();
+    }
+  }, { passive: true });
+</script>
 
   // Swipe mobile
   let startX = 0, startY = 0, dx = 0, dy = 0;
