@@ -50,19 +50,51 @@
     :root{
       --bg:#fdfcf8;--card:#ffffff;--muted:#6b7280;--brand:#2e7d32;--brand-2:#42a5f5;--text:#333333;
       --max:1080px;--radius:14px;--shadow:0 6px 20px rgba(0,0,0,.12);
+      /* altezza header per lo scroll delle ancore */
+      --navH: 96px;
     }
+
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;padding-bottom:72px}
+    html{
+      scroll-behavior:smooth;
+      /* evita titoli tagliati / spazio bianco quando salti alle sezioni */
+      scroll-padding-top: var(--navH);
+    }
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:'Poppins',sans-serif;line-height:1.6;
+      padding-bottom:72px;overflow-x:hidden; /* niente scroll orizzontale */
+    }
+    /* immagini e media non “spingono” oltre la larghezza */
+    img, picture, video, canvas{max-width:100%;height:auto;display:block}
 
     a{color:var(--brand-2);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--max);margin:0 auto;padding:24px}
     h1,h2,h3{margin:0}
 
+    /* --- Lang switch (desktop: in alto a destra del nav; mobile: riga propria, centrato) --- */
+    .lang-switch{
+      position:absolute; top:12px; right:16px;
+      display:flex; align-items:center; gap:10px; z-index:30
+    }
+    .lang-switch img{
+      width:28px; height:auto; /* bandierine più grandi */
+      border:none; border-radius:3px; display:block
+    }
+
+    @media (max-width: 640px){
+      :root{ --navH: 130px; } /* header più alto su mobile */
+      .lang-switch{
+        position:static;           /* smette di flottare */
+        margin:6px auto 0;         /* sopra alle sezioni, centrato */
+        justify-content:center; gap:14px;
+      }
+    }
+
     /* NAV */
     nav.top{position:sticky;top:0;z-index:20;background:#ffffffd9;backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #eee}
-    nav.top .inner{max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;align-items:center;padding:10px 16px;gap:12px}
+    nav.top .inner{max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;align-items:center;padding:10px 16px;gap:12px;position:relative}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px}
     .brand img{height:36px;width:auto}
     nav.top .links{display:flex;gap:24px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
@@ -89,7 +121,7 @@
     .cta .btn:hover{opacity:.95}
 
     /* SEZIONI / CARD */
-    section{scroll-margin-top:80px}
+    section{scroll-margin-top:var(--navH)} /* fallback extra per browser che ignorano scroll-padding */
     .section{padding:22px 0}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #eee}
     .pad{padding:22px}
@@ -173,20 +205,18 @@
       <span>La Luna nel Bosco</span>
     </div>
 
-<!-- Language switch with flags -->
-<div class="lang-switch" style="position:absolute; top:20px; right:20px; display:flex; align-items:center; gap:0,05px; z-index:30;">
-    <a href="/" hreflang="it" lang="it" aria-label="Italian" title="Italian">
-    <img src="/images/it.svg?v=1" alt="Italian" width="70" height="20" loading="lazy"
-         style="display:block;">
-  </a>
-  <a href="/en/" hreflang="en" lang="en" aria-label="English" title="English">
-    <img src="/images/gb.svg?v=1" alt="English" width="70" height="20" loading="lazy"
-         style="display:block;">
-  </a>
-</div>
+    <!-- Switch lingue con bandierine -->
+    <div class="lang-switch" aria-label="Cambio lingua">
+      <a href="/" hreflang="it" lang="it" aria-label="Italiano" title="Italiano">
+        <img src="/images/it.svg?v=1" alt="Italiano" width="28" height="20" loading="lazy">
+      </a>
+      <a href="/en/" hreflang="en" lang="en" aria-label="English" title="English">
+        <img src="/images/gb.svg?v=1" alt="English" width="28" height="20" loading="lazy">
+      </a>
+    </div>
 
     <!-- Link di navigazione -->
-    <div class="links">
+    <div class="links" role="navigation">
       <a href="#descrizione">Descrizione</a>
       <a href="#comfort">Comfort</a>
       <a href="#gallery">Galleria</a>
@@ -196,7 +226,7 @@
       <a href="#host">L’host</a>
       <a href="#recensioni">Recensioni</a>
       <a href="#mappa">Dove siamo</a>
-      <a href="#cosa-fare">Cosa fare</a> 
+      <a href="#cosa-fare">Cosa fare</a>
       <a href="#faq">FAQ</a>
       <a href="#contatti">Contatti</a>
     </div>
