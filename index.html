@@ -46,174 +46,153 @@
 
   <meta name="twitter:card" content="summary_large_image">
 
-<style>
-  :root{
-    --bg:#fdfcf8; --card:#ffffff; --muted:#6b7280;
-    --brand:#2e7d32; --brand-2:#42a5f5; --text:#111111; /* testo più scuro */
-    --max:1080px; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.12); --navH:86px;
-  }
+  <style>
+    :root{
+      --bg:#fdfcf8; --card:#ffffff; --muted:#6b7280;
+      --brand:#2e7d32; --brand-2:#42a5f5; --text:#111111; /* testo più scuro */
+      --max:1080px; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.12); --navH:86px;
+    }
 
-  /* Reset basilare e base layout */
-  *{ box-sizing:border-box }
-  html{ scroll-behavior:smooth }
-  html,body{ overflow-x:hidden }
-  body{ margin:0; background:var(--bg); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.6; padding-bottom:72px }
+    /* Offset globale per le ancore (aggiornato anche da JS) */
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:96px;
+    }
 
-  /* Media non devono "spingere" il layout */
-  img,picture,video,canvas{ max-width:100%; height:auto; display:block }
+    /* Reset basilare e base layout */
+    *{ box-sizing:border-box }
+    html,body{ overflow-x:hidden }
+    body{ margin:0; background:var(--bg); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.6; padding-bottom:72px }
 
-  a{ color:var(--brand-2); text-decoration:none }  /* “frase celeste” invariata */
-  a:hover{ text-decoration:underline }
-  .container{ max-width:var(--max); margin:0 auto; padding:20px 24px } /* leggermente meno padding */
-  h1,h2,h3{ margin:0; color:#000 } /* titoli neri */
+    /* Media non devono "spingere" il layout */
+    img,picture,video,canvas{ max-width:100%; height:auto; display:block }
 
-  /* --- Lang switch (desktop: in alto a dx; mobile: riga propria centrata) --- */
-  .lang-switch{
-    position:absolute; top:12px; right:16px;
-    display:flex; align-items:center; gap:10px; z-index:30;
-  }
-  .lang-switch img{ width:28px; height:20; border:none; display:block }
+    a{ color:var(--brand-2); text-decoration:none }  /* “frase celeste” invariata */
+    a:hover{ text-decoration:underline }
+    .container{ max-width:var(--max); margin:0 auto; padding:20px 24px } /* leggermente meno padding */
+    h1,h2,h3{ margin:0; color:#000 } /* titoli neri */
 
-  /* NAV */
-  nav.top{ position:sticky; top:0; z-index:20; background:#ffffffd9; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid #eee }
-  nav.top .inner{ max-width:var(--max); margin:0 auto; display:flex; flex-direction:column; align-items:center; padding:10px 16px; gap:10px; position:relative }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:22px; color:#000 }
-  .brand img{ height:36px; width:auto }
-  nav.top .links{ display:flex; gap:18px; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none }
-  nav.top .links::-webkit-scrollbar{ display:none }
-  nav.top .links a{ color:#000; text-decoration:none; padding:8px 10px; border-radius:8px; font-weight:500; font-size:16px; white-space:nowrap; line-height:1.3 }
-  nav.top .links a:hover{ background:#f2f2f2 }
+    /* --- Lang switch (desktop: in alto a dx; mobile: riga propria centrata) --- */
+    .lang-switch{
+      position:absolute; top:12px; right:16px;
+      display:flex; align-items:center; gap:10px; z-index:30;
+    }
+    .lang-switch img{ width:28px; height:20px; border:none; display:block }
 
-  /* HERO */
-  header.hero{ position:relative; min-height:70vh; display:grid; align-items:center; overflow:hidden; color:#fff }
-  .hero-bg{ position:absolute; inset:0; z-index:-2 }
-  .hero-bg img{ width:100%; height:100%; object-fit:cover }
-  .hero-overlay{ position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)); z-index:-1 }
-  header .wrap{ max-width:var(--max); margin:auto; padding:52px 24px; display:grid; gap:16px } /* meno spazio */
-  .badge{ display:inline-block; background:rgba(255,255,255,.22); color:#fff; padding:6px 10px; border-radius:999px; font-size:12px }
-  .hero-title{ display:flex; align-items:center; gap:16px; flex-wrap:wrap }
-  .hero-title img{ height:96px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.2)) }
-  @media (max-width:600px){ .hero-title img{ height:72px } }
-  h1{ font-size:clamp(28px,6vw,52px); line-height:1.2; color:#fff }
-  .subtitle{ color:#f0f0f0; font-size:18px; max-width:720px }
-  .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px }
-  .cta .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-size:16px; font-weight:600; border-radius:12px; padding:12px 18px; min-width:170px; line-height:1; text-align:center; cursor:pointer }
-  .cta .btn-primary{ background:var(--brand); color:#fff; border:2px solid var(--brand) }
-  .cta .btn-outline{ background:transparent; color:#fff; border:2px solid rgba(255,255,255,.9) }
-  .cta .btn:hover{ opacity:.95 }
+    /* NAV */
+    nav.top{ position:sticky; top:0; z-index:20; background:#ffffffd9; backdrop-filter:saturate(1.2) blur(6px); border-bottom:1px solid #eee }
+    nav.top .inner{ max-width:var(--max); margin:0 auto; display:flex; flex-direction:column; align-items:center; padding:10px 16px; gap:10px; position:relative }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:22px; color:#000 }
+    .brand img{ height:36px; width:auto }
+    nav.top .links{ display:flex; gap:18px; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none }
+    nav.top .links::-webkit-scrollbar{ display:none }
+    nav.top .links a{ color:#000; text-decoration:none; padding:8px 10px; border-radius:8px; font-weight:500; font-size:16px; white-space:nowrap; line-height:1.3 }
+    nav.top .links a:hover{ background:#f2f2f2 }
 
-  /* SEZIONI / CARD */
-  section{ scroll-margin-top:80px; content-visibility:auto; contain-intrinsic-size:1px 800px } /* velocizza rendering off-screen */
-  .section{ padding:16px 0 } /* meno spazio tra sezioni */
-  .card{ background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #eee; color:#111 } /* testo scuro */
-  .pad{ padding:18px } /* leggermente meno padding interno */
-  .muted{ color:var(--muted) }
+    /* HERO */
+    header.hero{ position:relative; min-height:70vh; display:grid; align-items:center; overflow:hidden; color:#fff }
+    .hero-bg{ position:absolute; inset:0; z-index:-2 }
+    .hero-bg img{ width:100%; height:100%; object-fit:cover }
+    .hero-overlay{ position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)); z-index:-1 }
+    header .wrap{ max-width:var(--max); margin:auto; padding:52px 24px; display:grid; gap:16px } /* meno spazio */
+    .badge{ display:inline-block; background:rgba(255,255,255,.22); color:#fff; padding:6px 10px; border-radius:999px; font-size:12px }
+    .hero-title{ display:flex; align-items:center; gap:16px; flex-wrap:wrap }
+    .hero-title img{ height:96px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.2)) }
+    @media (max-width:600px){ .hero-title img{ height:72px } }
+    h1{ font-size:clamp(28px,6vw,52px); line-height:1.2; color:#fff }
+    .subtitle{ color:#f0f0f0; font-size:18px; max-width:720px }
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px }
+    .cta .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-size:16px; font-weight:600; border-radius:12px; padding:12px 18px; min-width:170px; line-height:1; text-align:center; cursor:pointer }
+    .cta .btn-primary{ background:var(--brand); color:#fff; border:2px solid var(--brand) }
+    .cta .btn-outline{ background:transparent; color:#fff; border:2px solid rgba(255,255,255,.9) }
+    .cta .btn:hover{ opacity:.95 }
 
-  /* COMFORT */
-  .features-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px }
-  .features-row .feature{
-    flex:1 1 180px; min-width:180px; min-height:72px;
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    font-weight:600; background:#fafafa; border:1px solid #eee; border-radius:12px; padding:14px;
-    color:#111; text-decoration:none; box-shadow:var(--shadow)
-  }
-  .features-row .feature:hover{ background:#f2f2f2 }
+    /* SEZIONI / CARD */
+    section{ content-visibility:auto; contain-intrinsic-size:1px 800px } /* velocizza rendering off-screen */
+    .section{ padding:16px 0 } /* meno spazio tra sezioni */
+    .card{ background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid #eee; color:#111 } /* testo scuro */
+    .pad{ padding:18px } /* meno padding interno */
+    .muted{ color:var(--muted) }
 
-  /* GALLERY */
-  .gallery-grid{
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-    gap:12px; margin-top:10px;
-  }
-  .thumb{
-    position:relative; border:1px solid #eee; border-radius:12px; overflow:hidden;
-    background:var(--card); box-shadow:var(--shadow); cursor:pointer; aspect-ratio:4/3;
-  }
-  .thumb picture,.thumb img{ width:100%; height:100%; object-fit:cover }
-  .thumb .cap{
-    position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.6); color:#fff;
-    font-size:14px; font-weight:600; padding:4px 8px; border-radius:8px;
-  }
+    /* COMFORT */
+    .features-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px }
+    .features-row .feature{
+      flex:1 1 180px; min-width:180px; min-height:72px;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      font-weight:600; background:#fafafa; border:1px solid #eee; border-radius:12px; padding:14px;
+      color:#111; text-decoration:none; box-shadow:var(--shadow)
+    }
+    .features-row .feature:hover{ background:#f2f2f2 }
 
-  /* HOST */
-  .host-card{ display:grid; gap:14px }
-  .host-photo{ width:180px; height:180px; margin:0 auto; border-radius:50%; overflow:hidden; box-shadow:var(--shadow) }
-  .host-photo img{ width:100%; height:100%; object-fit:cover }
-  @media(min-width:860px){
-    .host-card{ grid-template-columns:1fr 220px; align-items:center }
-    .host-photo{ margin:0 }
-  }
+    /* GALLERY */
+    .gallery-grid{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:12px; margin-top:10px;
+    }
+    .thumb{
+      position:relative; border:1px solid #eee; border-radius:12px; overflow:hidden;
+      background:var(--card); box-shadow:var(--shadow); cursor:pointer; aspect-ratio:4/3;
+    }
+    .thumb picture,.thumb img{ width:100%; height:100%; object-fit:cover }
+    .thumb .cap{
+      position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,.6); color:#fff;
+      font-size:14px; font-weight:600; padding:4px 8px; border-radius:8px;
+    }
 
-  /* RECENSIONI */
-  .review-grid{ display:grid; grid-template-columns:1fr; gap:14px }
-  @media(min-width:860px){ .review-grid{ grid-template-columns:1fr 1fr } }
-  .score-box{ padding:16px; border:1px solid #eee; border-radius:12px; background:#fafafa; text-align:center; color:#111 }
-  .score-box img{ height:26px; margin-bottom:8px }
-  .score-airbnb .score{ color:#FF5A5F }
-  .score-booking .score{ color:#0071c2 }
-  blockquote{ background:#fafafa; border-left:4px solid #ddd; padding:12px 16px; border-radius:8px; margin:0; color:#111 }
+    /* HOST */
+    .host-card{ display:grid; gap:14px }
+    .host-photo{ width:180px; height:180px; margin:0 auto; border-radius:50%; overflow:hidden; box-shadow:var(--shadow) }
+    .host-photo img{ width:100%; height:100%; object-fit:cover }
+    @media(min-width:860px){
+      .host-card{ grid-template-columns:1fr 220px; align-items:center }
+      .host-photo{ margin:0 }
+    }
 
-  /* MAPPA + FOOTER */
-  .map{ border:0; width:100%; height:360px; border-radius:12px }
-  footer{ margin-top:28px; padding:18px; color:#111; text-align:center; border-top:1px solid #ddd; background:#fff } /* footer testo scuro */
-  footer img{ max-height:80px; width:auto; display:block; margin:0 auto 10px }
+    /* RECENSIONI */
+    .review-grid{ display:grid; grid-template-columns:1fr; gap:14px }
+    @media(min-width:860px){ .review-grid{ grid-template-columns:1fr 1fr } }
+    .score-box{ padding:16px; border:1px solid #eee; border-radius:12px; background:#fafafa; text-align:center; color:#111 }
+    .score-box img{ height:26px; margin-bottom:8px }
+    .score-airbnb .score{ color:#FF5A5F }
+    .score-booking .score{ color:#0071c2 }
+    blockquote{ background:#fafafa; border-left:4px solid #ddd; padding:12px 16px; border-radius:8px; margin:0; color:#111 }
 
-  /* BANNER PRENOTAZIONE FISSO */
-  .booking-banner{
-    position:fixed; bottom:0; left:0; right:0; z-index:100;
-    background:#2e7d32; color:#fff; padding:10px 16px;
-    display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap; font-size:16px; font-weight:600
-  }
-  .booking-banner a{ background:#fff; color:#2e7d32; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none }
-  .booking-banner a:hover{ background:#f2f2f2 }
-  .note-airbnb{ font-weight:700; opacity:.95 }
+    /* MAPPA + FOOTER */
+    .map{ border:0; width:100%; height:360px; border-radius:12px }
+    footer{ margin-top:28px; padding:18px; color:#111; text-align:center; border-top:1px solid #ddd; background:#fff }
+    footer img{ max-height:80px; width:auto; display:block; margin:0 auto 10px }
 
-  /* LIGHTBOX */
-  .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:1000 }
-  .lightbox img{ max-width:90vw; max-height:85vh; object-fit:contain; border-radius:8px }
-  .lb-btn{ position:absolute; background:rgba(255,255,255,.2); border:none; color:#fff; padding:10px; cursor:pointer; border-radius:8px }
-  .lb-prev{ left:20px; top:50%; transform:translateY(-50%); font-size:30px }
-  .lb-next{ right:20px; top:50%; transform:translateY(-50%); font-size:30px }
-  .lb-close{ top:20px; right:20px; font-size:24px; padding:8px }
+    /* BANNER PRENOTAZIONE FISSO */
+    .booking-banner{
+      position:fixed; bottom:0; left:0; right:0; z-index:100;
+      background:#2e7d32; color:#fff; padding:10px 16px;
+      display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap; font-size:16px; font-weight:600
+    }
+    .booking-banner a{ background:#fff; color:#2e7d32; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none }
+    .booking-banner a:hover{ background:#f2f2f2 }
+    .note-airbnb{ font-weight:700; opacity:.95 }
 
-  /* --- Mobile tweaks --- */
-  @media (max-width:640px){
-    :root{ --navH:130px }
-    .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px; }
-    nav.top .inner{ gap:8px }
-    nav.top .links a{ padding:6px 10px; font-size:15px }
-    .section{ padding:12px 0 } /* ancora meno spazio su mobile */
-    section{ scroll-margin-top:calc(var(--navH) + 8px) }
-  }
+    /* LIGHTBOX */
+    .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:1000 }
+    .lightbox img{ max-width:90vw; max-height:85vh; object-fit:contain; border-radius:8px }
+    .lb-btn{ position:absolute; background:rgba(255,255,255,.2); border:none; color:#fff; padding:10px; cursor:pointer; border-radius:8px }
+    .lb-prev{ left:20px; top:50%; transform:translateY(-50%); font-size:30px }
+    .lb-next{ right:20px; top:50%; transform:translateY(-50%); font-size:30px }
+    .lb-close{ top:20px; right:20px; font-size:24px; padding:8px }
 
-  @media (prefers-reduced-motion:reduce){
-    html{ scroll-behavior:auto }
-  }
-</style>
+    /* --- Mobile tweaks --- */
+    @media (max-width:640px){
+      :root{ --navH:130px }
+      .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px; }
+      nav.top .inner{ gap:8px }
+      nav.top .links a{ padding:6px 10px; font-size:15px }
+      .section{ padding:12px 0 } /* ancora meno spazio su mobile */
+    }
 
-  <!-- Dati strutturati business -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LodgingBusiness",
-  "name": "La Luna nel Bosco",
-  "url": "https://lalunanelbosco.com/",
-  "logo": "https://lalunanelbosco.com/logo.png",
-  "image": "https://lalunanelbosco.com/images/hero-1280.jpg",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Via del Pino",
-    "addressLocality": "Livorno",
-    "addressRegion": "LI",
-    "addressCountry": "IT"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "bestRating": "5",
-    "ratingCount": "45"
-  }
-}
-</script>
+    @media (prefers-reduced-motion:reduce){
+      html{ scroll-behavior:auto }
+    }
+  </style>
 </head>
 <body>
 
@@ -257,7 +236,6 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <!-- immagine responsive -->
   <picture class="hero-bg">
     <source type="image/webp"
             srcset="images/hero-768.webp 768w, images/hero-1280.webp 1280w, images/hero-1920.webp 1920w, images/hero-2560.webp 2560w"
@@ -330,7 +308,7 @@
           <div id="gallery-esterno" class="thumb" data-group="esterno">
             <picture>
               <source srcset="images/esterno_giardino_1.webp" type="image/webp">
-              <img src="images/esterno_giardino_1.jpg" alt="Esterno e giardino" loading="lazy" decoding="async">
+              <img src="images/esterno_giardino_1.jpg" alt="Esterno e giardino" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Esterno e giardino</span>
           </div>
@@ -338,7 +316,7 @@
           <div id="gallery-piscina" class="thumb" data-group="piscina">
             <picture>
               <source srcset="images/piscina_1.webp" type="image/webp">
-              <img src="images/piscina_1.jpg" alt="Piscina" loading="lazy" decoding="async">
+              <img src="images/piscina_1.jpg" alt="Piscina" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Piscina</span>
           </div>
@@ -346,7 +324,7 @@
           <div id="gallery-tennis" class="thumb" data-group="tennis">
             <picture>
               <source srcset="images/campo_tennis_1.webp" type="image/webp">
-              <img src="images/campo_tennis_1.jpg" alt="Campo da tennis" loading="lazy" decoding="async">
+              <img src="images/campo_tennis_1.jpg" alt="Campo da tennis" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Campo da tennis</span>
           </div>
@@ -354,7 +332,7 @@
           <div id="gallery-terrazza" class="thumb" data-group="terrazza">
             <picture>
               <source srcset="images/terrazza_1.webp" type="image/webp">
-              <img src="images/terrazza_1.jpg" alt="Terrazza" loading="lazy" decoding="async">
+              <img src="images/terrazza_1.jpg" alt="Terrazza" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Terrazza</span>
           </div>
@@ -362,7 +340,7 @@
           <div id="gallery-soggiorno" class="thumb" data-group="soggiorno">
             <picture>
               <source srcset="images/soggiorno_1.webp" type="image/webp">
-              <img src="images/soggiorno_1.jpg" alt="Soggiorno" loading="lazy" decoding="async">
+              <img src="images/soggiorno_1.jpg" alt="Soggiorno" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Soggiorno</span>
           </div>
@@ -370,7 +348,7 @@
           <div class="thumb" data-group="bagno_piccolo">
             <picture>
               <source srcset="images/bagno_piccolo_1.webp" type="image/webp">
-              <img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo" loading="lazy" decoding="async">
+              <img src="images/bagno_piccolo_1.jpg" alt="Bagno piccolo" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Bagno piccolo</span>
           </div>
@@ -378,7 +356,7 @@
           <div class="thumb" data-group="bagno_grande">
             <picture>
               <source srcset="images/bagno_grande_1.webp" type="image/webp">
-              <img src="images/bagno_grande_1.jpg" alt="Bagno grande" loading="lazy" decoding="async">
+              <img src="images/bagno_grande_1.jpg" alt="Bagno grande" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Bagno grande</span>
           </div>
@@ -386,7 +364,7 @@
           <div class="thumb" data-group="cucina">
             <picture>
               <source srcset="images/cucina_1.webp" type="image/webp">
-              <img src="images/cucina_1.jpg" alt="Cucina" loading="lazy" decoding="async">
+              <img src="images/cucina_1.jpg" alt="Cucina" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Cucina</span>
           </div>
@@ -394,7 +372,7 @@
           <div class="thumb" data-group="matrimoniale">
             <picture>
               <source srcset="images/camera_matrimoniale_1.webp" type="image/webp">
-              <img src="images/camera_matrimoniale_1.jpg" alt="Camera matrimoniale" loading="lazy" decoding="async">
+              <img src="images/camera_matrimoniale_1.jpg" alt="Camera matrimoniale" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Camera matrimoniale</span>
           </div>
@@ -402,7 +380,7 @@
           <div class="thumb" data-group="grigia">
             <picture>
               <source srcset="images/camera_grigia_1.webp" type="image/webp">
-              <img src="images/camera_grigia_1.jpg" alt="Camera singola 1" loading="lazy" decoding="async">
+              <img src="images/camera_grigia_1.jpg" alt="Camera singola 1" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Camera singola 1</span>
           </div>
@@ -410,7 +388,7 @@
           <div class="thumb" data-group="gialla">
             <picture>
               <source srcset="images/camera_gialla_1.webp" type="image/webp">
-              <img src="images/camera_gialla_1.jpg" alt="Camera singola 2" loading="lazy" decoding="async">
+              <img src="images/camera_gialla_1.jpg" alt="Camera singola 2" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Camera singola 2</span>
           </div>
@@ -418,7 +396,7 @@
           <div class="thumb" data-group="soppalco">
             <picture>
               <source srcset="images/camera_soppalco_1.webp" type="image/webp">
-              <img src="images/camera_soppalco_1.jpg" alt="Camera singola 3" loading="lazy" decoding="async">
+              <img src="images/camera_soppalco_1.jpg" alt="Camera singola 3" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Camera singola 3</span>
           </div>
@@ -426,7 +404,7 @@
           <div class="thumb" data-group="parco">
             <picture>
               <source srcset="images/parco_condominiale_1.webp" type="image/webp">
-              <img src="images/parco_condominiale_1.jpg" alt="Parco condominiale" loading="lazy" decoding="async">
+              <img src="images/parco_condominiale_1.jpg" alt="Parco condominiale" loading="lazy" decoding="async" width="1200" height="800">
             </picture>
             <span class="cap">Parco condominiale</span>
           </div>
@@ -559,7 +537,7 @@
     </div>
   </section>
 
-  <!-- COSA FARE A LIVORNO (senza link) -->
+  <!-- COSA FARE A LIVORNO (elenco, senza link) -->
   <section id="cosa-fare" class="section">
     <div class="container">
       <article class="card pad">
@@ -569,7 +547,6 @@
         </p>
 
         <div class="things-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px">
-          <!-- MARE E SPIAGGE -->
           <div class="things-col">
             <h3>🌊 Mare e spiagge</h3>
             <ul class="things-list" style="padding-left:18px; margin:8px 0">
@@ -579,7 +556,6 @@
             </ul>
           </div>
 
-          <!-- NATURA E TREKKING -->
           <div class="things-col">
             <h3>🌿 Natura e trekking</h3>
             <ul class="things-list" style="padding-left:18px; margin:8px 0">
@@ -589,7 +565,6 @@
             </ul>
           </div>
 
-          <!-- CULTURA E CITTÀ -->
           <div class="things-col">
             <h3>🏛️ Cultura e città</h3>
             <ul class="things-list" style="padding-left:18px; margin:8px 0">
@@ -599,7 +574,6 @@
             </ul>
           </div>
 
-          <!-- SAPORI LOCALI -->
           <div class="things-col">
             <h3>🍝 Sapori locali</h3>
             <ul class="things-list" style="padding-left:18px; margin:8px 0">
@@ -609,7 +583,6 @@
             </ul>
           </div>
 
-          <!-- GITE IN GIORNATA -->
           <div class="things-col">
             <h3>🗺️ Gite in giornata</h3>
             <ul class="things-list" style="padding-left:18px; margin:8px 0">
@@ -695,26 +668,30 @@
     <div class="container">
       <article class="card pad">
         <h2>Contatti</h2>
+
         <p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
-          <!-- Icona email -->
+          <!-- Icona email (nera) -->
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#111" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6h16ZM4 18V8.236l7.386 6.391a1 1 0 0 0 1.228 0L20 8.236V18H4Z"/></svg>
           <a href="mailto:ale2difranco@gmail.com">ale2difranco@gmail.com</a>
         </p>
-<p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
-  <svg width="20" height="20" viewBox="0 0 448 512" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%"  stop-color="#F58529"/>
-        <stop offset="30%" stop-color="#FEDA77"/>
-        <stop offset="50%" stop-color="#DD2A7B"/>
-        <stop offset="70%" stop-color="#8134AF"/>
-        <stop offset="100%" stop-color="#515BD4"/>
-      </linearGradient>
-    </defs>
-    <path fill="url(#igGrad)" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.9 224.1 370.9 339 319.6 339 255.9 287.7 141 224.1 141Zm146.4-29.7a26.9 26.9 0 1 1-26.9 26.9a26.9 26.9 0 0 1 26.9-26.9ZM398.8 80.3A93.8 93.8 0 0 0 352 64H96A96 96 0 0 0 0 160v256a96 96 0 0 0 96 96h256a96 96 0 0 0 96-96V160a93.8 93.8 0 0 0-17.6-55.7ZM224 352a96 96 0 1 1 96-96a96 96 0 0 1-96 96Z"/>
-  </svg>
-  <a href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener noreferrer">@lalunanelbosco</a>
-</p>
+
+        <p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+          <!-- Icona Instagram con gradiente a colori -->
+          <svg width="20" height="20" viewBox="0 0 448 512" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"  stop-color="#F58529"/>
+                <stop offset="30%" stop-color="#FEDA77"/>
+                <stop offset="50%" stop-color="#DD2A7B"/>
+                <stop offset="70%" stop-color="#8134AF"/>
+                <stop offset="100%" stop-color="#515BD4"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#igGrad)" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.9 224.1 370.9 339 319.6 339 255.9 287.7 141 224.1 141Zm146.4-29.7a26.9 26.9 0 1 1-26.9 26.9a26.9 26.9 0 0 1 26.9-26.9ZM398.8 80.3A93.8 93.8 0 0 0 352 64H96A96 96 0 0 0 0 160v256a96 96 0 0 0 96 96h256a96 96 0 0 0 96-96V160a93.8 93.8 0 0 0-17.6-55.7ZM224 352a96 96 0 1 1 96-96a96 96 0 0 1-96 96Z"/>
+          </svg>
+          <a href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener noreferrer">@lalunanelbosco</a>
+        </p>
+
       </article>
     </div>
   </section>
@@ -740,6 +717,20 @@
 <!-- Script: anno footer -->
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Script: offset automatico per ancore sotto il menu sticky -->
+<script>
+  (function(){
+    const nav = document.querySelector('nav.top');
+    function setScrollPad(){
+      if(!nav) return;
+      const h = nav.offsetHeight || 0;
+      document.documentElement.style.scrollPaddingTop = (h + 8) + 'px';
+    }
+    window.addEventListener('load', setScrollPad);
+    window.addEventListener('resize', setScrollPad);
+  })();
 </script>
 
 <!-- LIGHTBOX SCRIPT (unico, pulito) -->
@@ -820,110 +811,19 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Qual è il soggiorno minimo presso La Luna nel Bosco a Livorno?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Il soggiorno minimo è di 4 notti. Questo permette di godere appieno dell’esperienza della casa vacanza e scoprire con calma le colline di Montenero, il mare di Livorno e le città vicine come Pisa e Lucca."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quante persone può ospitare l’appartamento La Luna nel Bosco?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "L’appartamento può accogliere comodamente fino a 5 persone (+1 extra su richiesta). È quindi ideale per famiglie o piccoli gruppi di amici che vogliono trascorrere una vacanza insieme."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "La casa vacanza è adatta a famiglie con bambini?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Assolutamente sì. L’appartamento dispone di ampi spazi, una terrazza privata e un parco secolare dove i bambini possono giocare in sicurezza, sempre sotto la supervisione degli adulti."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "La casa vacanza è riscaldata in inverno?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sì, l’appartamento è riscaldato e dispone anche di un accogliente caminetto, perfetto per creare un’atmosfera calda e rilassante nelle serate più fredde."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Gli animali domestici sono ammessi a La Luna nel Bosco?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Purtroppo no. Per garantire ambienti sempre puliti e adatti anche a chi soffre di allergie non è possibile ospitare animali."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "A che ora sono il check-in e il check-out?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Il check-in è disponibile dalle 15:00 in poi, mentre il check-out deve avvenire entro le 10:00. In caso di esigenze particolari, è possibile richiedere flessibilità e valuteremo la disponibilità."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Il parcheggio della casa vacanza può ospitare anche veicoli grandi o van?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sì, il parcheggio è ampio e accessibile anche a veicoli come van. Ti chiediamo soltanto di segnalarlo in fase di prenotazione, così possiamo organizzare al meglio gli spazi."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quanto dista il mare dalla casa vacanza La Luna nel Bosco?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "La casa si trova sulle colline di Montenero, a pochi minuti in auto dalle spiagge più belle della zona: 10 minuti dalla Spiaggia del Sonnino, 15 minuti da Calafuria e 20 minuti da Castiglioncello."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quanto dista il porto di Livorno da La Luna nel Bosco?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Il porto di Livorno è raggiungibile in circa 15 minuti in auto. La posizione è comoda per chi deve prendere i traghetti diretti verso Sardegna, Corsica o l’isola di Capraia."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "La casa vacanza si trova vicino a supermercati, farmacie e servizi utili?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sì, in circa 5 minuti di auto puoi raggiungere supermercati, farmacie e altri servizi essenziali. Anche i mezzi pubblici collegano facilmente Montenero al centro di Livorno."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Si possono fare passeggiate o trekking vicino alla casa vacanza La Luna nel Bosco?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Certamente. Dai dintorni di Montenero partono diversi sentieri ideali per passeggiate panoramiche e percorsi di trekking immersi nella natura."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Ci sono percorsi per ciclisti e mountain bike nei dintorni di Livorno?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Le colline circostanti offrono itinerari sia per bici da strada che per mountain bike, adatti a diversi livelli di esperienza."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Dove mangiare vicino a La Luna nel Bosco?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A pochi minuti dall’appartamento troverai trattorie tipiche toscane, ristoranti di pesce e enoteche dove degustare vini locali e piatti tradizionali."
-      }
-    }
+    {"@type":"Question","name":"Qual è il soggiorno minimo presso La Luna nel Bosco a Livorno?","acceptedAnswer":{"@type":"Answer","text":"Il soggiorno minimo è di 4 notti. Questo permette di godere appieno dell’esperienza della casa vacanza e scoprire con calma le colline di Montenero, il mare di Livorno e le città vicine come Pisa e Lucca."}},
+    {"@type":"Question","name":"Quante persone può ospitare l’appartamento La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"L’appartamento può accogliere comodamente fino a 5 persone (+1 extra su richiesta). È quindi ideale per famiglie o piccoli gruppi di amici che vogliono trascorrere una vacanza insieme."}},
+    {"@type":"Question","name":"La casa vacanza è adatta a famiglie con bambini?","acceptedAnswer":{"@type":"Answer","text":"Assolutamente sì. L’appartamento dispone di ampi spazi, una terrazza privata e un parco secolare dove i bambini possono giocare in sicurezza, sempre sotto la supervisione degli adulti."}},
+    {"@type":"Question","name":"La casa vacanza è riscaldata in inverno?","acceptedAnswer":{"@type":"Answer","text":"Sì, l’appartamento è riscaldato e dispone anche di un accogliente caminetto, perfetto per creare un’atmosfera calda e rilassante nelle serate più fredde."}},
+    {"@type":"Question","name":"Gli animali domestici sono ammessi a La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"Purtroppo no. Per garantire ambienti sempre puliti e adatti anche a chi soffre di allergie non è possibile ospitare animali."}},
+    {"@type":"Question","name":"A che ora sono il check-in e il check-out?","acceptedAnswer":{"@type":"Answer","text":"Il check-in è disponibile dalle 15:00 in poi, mentre il check-out deve avvenire entro le 10:00. In caso di esigenze particolari, è possibile richiedere flessibilità e valuteremo la disponibilità."}},
+    {"@type":"Question","name":"Il parcheggio della casa vacanza può ospitare anche veicoli grandi o van?","acceptedAnswer":{"@type":"Answer","text":"Sì, il parcheggio è ampio e accessibile anche a veicoli come van. Ti chiediamo soltanto di segnalarlo in fase di prenotazione, così possiamo organizzare al meglio gli spazi."}},
+    {"@type":"Question","name":"Quanto dista il mare dalla casa vacanza La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"La casa si trova sulle colline di Montenero, a pochi minuti in auto dalle spiagge più belle della zona: 10 minuti dalla Spiaggia del Sonnino, 15 minuti da Calafuria e 20 minuti da Castiglioncello."}},
+    {"@type":"Question","name":"Quanto dista il porto di Livorno da La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"Il porto di Livorno è raggiungibile in circa 15 minuti in auto. La posizione è comoda per chi deve prendere i traghetti diretti verso Sardegna, Corsica o l’isola di Capraia."}},
+    {"@type":"Question","name":"La casa vacanza si trova vicino a supermercati, farmacie e servizi utili?","acceptedAnswer":{"@type":"Answer","text":"Sì, in circa 5 minuti di auto puoi raggiungere supermercati, farmacie e altri servizi essenziali. Anche i mezzi pubblici collegano facilmente Montenero al centro di Livorno."}},
+    {"@type":"Question","name":"Si possono fare passeggiate o trekking vicino alla casa vacanza La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"Certamente. Dai dintorni di Montenero partono diversi sentieri ideali per passeggiate panoramiche e percorsi di trekking immersi nella natura."}},
+    {"@type":"Question","name":"Ci sono percorsi per ciclisti e mountain bike nei dintorni di Livorno?","acceptedAnswer":{"@type":"Answer","text":"Le colline circostanti offrono itinerari sia per bici da strada che per mountain bike, adatti a diversi livelli di esperienza."}},
+    {"@type":"Question","name":"Dove mangiare vicino a La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"A pochi minuti dall’appartamento troverai trattorie tipiche toscane, ristoranti di pesce e enoteche dove degustare vini locali e piatti tradizionali."}}
   ]
 }
 </script>
