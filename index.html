@@ -152,80 +152,72 @@
     .lb-next{ right:20px; top:50%; transform:translateY(-50%) }
     .lb-close{ top:20px; right:20px }
 
-/* === Recensioni === */
-.reviews-cards{
+/* Contenitore griglia */
+.reviews{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:20px;
+  margin-top:18px;
 }
 
+/* Card recensione */
 .review-card{
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:12px;
-  box-shadow:var(--shadow);
-  padding:18px;
-  text-align:center;
   display:flex;
-  flex-direction:column;   /* per far “spingere” la citazione in basso */
-  height:100%;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  padding:20px;
+  border:1px solid #eee;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+  min-height:300px;   /* 👈 assicura che abbiano stessa altezza */
 }
 
-/* Riga brand (logo + label) */
+/* Riga brand/logo */
 .review-card .brand-row{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  height:26px;
-  margin-bottom:6px;
+  gap:8px;
+  margin-bottom:10px;
 }
 
-.review-card .brand-row img{
-  height:24px;            /* dimensione base dei loghi */
+.review-card .logo{
+  height:24px;
   width:auto;
-  display:block;
-}
-.review-card .brand-row .logo-booking{
-  height:20px !important; /* 👈 booking più piccolo */
 }
 
-/* punteggio grande */
+/* Logo Booking più piccolo */
+.review-card .logo-booking{
+  height:18px !important;
+}
+
+/* Punteggio */
 .review-card .score{
-  font-size:44px;
-  font-weight:800;
-  line-height:1;
-  margin:10px 0 14px;
+  font-size:40px;
+  font-weight:700;
+  margin:8px 0;
 }
-.review-card .score .unit{ font-size:16px; }
+.review-card .unit{ font-size:16px; }
 
-/* box citazione – tutte uguali in altezza grazie a flex */
+/* Frase */
 .review-card .quote{
-  margin-top:auto;                 /* occupa lo spazio rimanente */
-  background:#fafafa;
-  border-radius:10px;
-  padding:14px;
-  border-left:4px solid #ddd;
+  font-size:15px;
+  line-height:1.5;
+  margin-top:10px;
+  flex:1; /* occupa spazio e allinea in basso gli autori */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
-.review-card.airbnb  .quote{ border-color:#FF5A5F; }
-.review-card.booking .quote{ border-color:#0071c2; }
-.review-card.vrbo    .quote{ border-color:#2e7d32; }
-
 .review-card .quote p{ margin:0; }
 .review-card .author{
-  display:block;
-  margin-top:8px;
-  color:var(--muted);
-  font-weight:600;
+  margin-top:6px;
+  font-size:14px;
+  color:#666;
 }
-
-/* centra l'intero blocco titolo + cards */
-#recensioni .card.pad{ text-align:left; }
-#recensioni h2{ text-align:left; }
-@media (max-width:640px){
-  .review-card .score{ font-size:40px; }
-}
-
 
     /* --- Mobile --- */
     @media (max-width:640px){
@@ -466,11 +458,11 @@
     <article class="card pad">
       <h2>Recensioni</h2>
 
-      <div class="reviews-cards">
+      <div class="reviews">
         <!-- Airbnb -->
         <div class="review-card airbnb">
           <div class="brand-row">
-            <img src="images/airbnb-logo.svg" alt="Airbnb">
+            <img src="images/airbnb-logo.svg" alt="Airbnb" class="logo">
             <span>Airbnb</span>
           </div>
           <div class="score">4.9<span class="unit">/5</span></div>
@@ -483,7 +475,7 @@
         <!-- Booking -->
         <div class="review-card booking">
           <div class="brand-row">
-            <img src="images/booking-logo.svg" alt="Booking.com" class="logo-booking">
+            <img src="images/booking-logo.svg" alt="Booking.com" class="logo logo-booking">
             <span>Booking.com</span>
           </div>
           <div class="score">9.6<span class="unit">/10</span></div>
@@ -496,7 +488,7 @@
         <!-- VRBO -->
         <div class="review-card vrbo">
           <div class="brand-row">
-            <img src="images/Vrbo.svg" alt="VRBO">
+            <img src="images/vrbo-logo.svg" alt="VRBO" class="logo">
             <span>VRBO</span>
           </div>
           <div class="score">10<span class="unit">/10</span></div>
@@ -509,6 +501,7 @@
     </article>
   </div>
 </section>
+
   
   <!-- MAPPA -->
   <section id="mappa" class="section">
