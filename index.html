@@ -209,6 +209,33 @@
 .score-booking .score{ color:#0071c2; }
 .score-vrbo    .score{ color:#2e7d32; }
 
+    /* === RECENSIONI: override dimensioni === */
+:root{
+  --rev-logo-row: 72px;      /* altezza riga dei loghi */
+  --rev-score-row: 84px;     /* altezza riga del voto   */
+  --rev-logo-img: 56px;      /* altezza logo standard   */
+  --rev-logo-booking: 50px;  /* Booking leggermente più piccolo */
+  --rev-score-size: 64px;    /* dimensione numero voto  */
+}
+
+/* ricalibra la griglia delle card (logo / voto / quote) */
+.score-box{
+  grid-template-rows: var(--rev-logo-row) var(--rev-score-row) 1fr;
+}
+
+/* riga logo */
+.score-box .brand{ height: var(--rev-logo-row); }
+.score-box .brand img{ height: var(--rev-logo-img); width:auto; display:block; }
+.score-booking .brand img{ height: var(--rev-logo-booking); }
+
+/* riga voto più grande */
+.score-box .score{
+  font-size: var(--rev-score-size);
+}
+.score-box .score .unit{
+  font-size: 18px;
+}
+
     /* --- Mobile --- */
     @media (max-width:640px){
       .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px }
