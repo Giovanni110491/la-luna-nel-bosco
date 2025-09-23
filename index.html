@@ -160,64 +160,59 @@
   margin-top:18px;
 }
 
-/* Card recensione */
+/* Griglia card recensioni */
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:20px;
+  margin-top:16px;
+  align-items:stretch;            /* tutte stessa altezza */
+}
+
+/* Card */
 .review-card{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
   text-align:center;
-  padding:20px;
+  padding:22px;
   border:1px solid #eee;
   border-radius:14px;
   background:#fff;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
-  min-height:300px;   /* 👈 assicura che abbiano stessa altezza */
+  box-shadow:var(--shadow);
+  min-height:360px;               /* 👈 garantisce la stessa altezza */
 }
 
-/* Riga brand/logo */
-.review-card .brand-row{
+/* Riga logo */
+.brand-row{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  margin-bottom:10px;
+  min-height:32px;                /* allinea verticalmente i loghi */
+  margin-bottom:8px;
 }
-
-.review-card .logo{
-  height:24px;
-  width:auto;
-}
-
-/* Logo Booking più piccolo */
-.review-card .logo-booking{
-  height:18px !important;
-}
+.brand-row .logo{ height:26px; width:auto; }
+.brand-row .logo.logo--booking{ height:22px; } /* solo un filo più piccolo */
 
 /* Punteggio */
 .review-card .score{
-  font-size:40px;
+  font-size:42px;
   font-weight:700;
-  margin:8px 0;
+  line-height:1;
+  margin:8px 0 10px;
 }
 .review-card .unit{ font-size:16px; }
 
-/* Frase */
+/* Citazione */
 .review-card .quote{
-  font-size:15px;
-  line-height:1.5;
-  margin-top:10px;
-  flex:1; /* occupa spazio e allinea in basso gli autori */
+  margin-top:auto;                /* spinge in basso per allineare i testi */
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  gap:8px;
 }
 .review-card .quote p{ margin:0; }
-.review-card .author{
-  margin-top:6px;
-  font-size:14px;
-  color:#666;
-}
+.review-card .author{ color:#6b7280; font-size:14px; }
+
 
     /* --- Mobile --- */
     @media (max-width:640px){
@@ -460,10 +455,9 @@
 
       <div class="reviews">
         <!-- Airbnb -->
-        <div class="review-card airbnb">
+        <div class="review-card">
           <div class="brand-row">
             <img src="images/airbnb-logo.svg" alt="Airbnb" class="logo">
-            <span>Airbnb</span>
           </div>
           <div class="score">4.9<span class="unit">/5</span></div>
           <div class="quote">
@@ -472,11 +466,10 @@
           </div>
         </div>
 
-        <!-- Booking -->
-        <div class="review-card booking">
+        <!-- Booking (logo solo un filo più piccolo) -->
+        <div class="review-card">
           <div class="brand-row">
-            <img src="images/booking-logo.svg" alt="Booking.com" class="logo logo-booking">
-            <span>Booking.com</span>
+            <img src="images/booking-logo.svg" alt="Booking.com" class="logo logo--booking">
           </div>
           <div class="score">9.6<span class="unit">/10</span></div>
           <div class="quote">
@@ -486,10 +479,9 @@
         </div>
 
         <!-- VRBO -->
-        <div class="review-card vrbo">
+        <div class="review-card">
           <div class="brand-row">
             <img src="images/vrbo-logo.svg" alt="VRBO" class="logo">
-            <span>VRBO</span>
           </div>
           <div class="score">10<span class="unit">/10</span></div>
           <div class="quote">
@@ -501,7 +493,6 @@
     </article>
   </div>
 </section>
-
   
   <!-- MAPPA -->
   <section id="mappa" class="section">
