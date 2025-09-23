@@ -43,6 +43,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- STILI -->
   <style>
     :root{
       --bg:#fdfcf8; --card:#ffffff; --muted:#6b7280;
@@ -50,14 +51,12 @@
       --max:1080px; --radius:14px; --shadow:0 6px 20px rgba(0,0,0,.12);
     }
 
-    /* offset globale per ancore (ritoccato da JS) */
+    /* base */
     html{ scroll-behavior:smooth; scroll-padding-top:96px }
     *{ box-sizing:border-box }
     html,body{ overflow-x:hidden }
     body{ margin:0; background:var(--bg); color:var(--text); font-family:'Poppins',sans-serif; line-height:1.6; padding-bottom:72px }
-
     img,picture,video,canvas{ max-width:100%; height:auto; display:block }
-
     a{ color:var(--brand-2); text-decoration:none }
     a:hover{ text-decoration:underline }
     .container{ max-width:var(--max); margin:0 auto; padding:20px 24px }
@@ -67,15 +66,15 @@
     .lang-switch{ position:absolute; top:12px; right:16px; display:flex; gap:10px; z-index:30 }
     .lang-switch img{ width:28px; height:20px; display:block }
 
-    /* NAV sticky (robusto su iOS) */
+    /* NAV sticky */
     nav.top{
-      position:sticky; position:-webkit-sticky; top:0; z-index:1000;
+      position:sticky; top:0; z-index:1000;
       background:#fff; border-bottom:1px solid #eee; width:100%;
+      backdrop-filter:saturate(1.2);
     }
     nav.top .inner{ max-width:var(--max); margin:0 auto; display:flex; flex-direction:column; align-items:center; padding:10px 16px; gap:10px; position:relative }
     .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:22px; color:#000 }
-    /* logo quadrato, misure fisse per evitare “schiacciamenti” */
-    .brand img{ width:54px; height:54px; aspect-ratio:1/1; object-fit:contain; flex:0 0 auto }
+    .brand img{ width:54px; height:54px; object-fit:contain; aspect-ratio:1/1; flex:0 0 auto }
     nav.top .links{ display:flex; gap:18px; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none }
     nav.top .links::-webkit-scrollbar{ display:none }
     nav.top .links a{ color:#000; padding:8px 10px; border-radius:8px; font-weight:500; font-size:16px; white-space:nowrap; line-height:1.3 }
@@ -126,6 +125,28 @@
     .host-photo img{ width:100%; height:100%; object-fit:cover }
     @media(min-width:860px){ .host-card{ grid-template-columns:1fr 220px; align-items:center } .host-photo{ margin:0 } }
 
+    /* RECENSIONI – card uguali, loghi centrati e allineati */
+    .review-scores{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:18px; align-items:stretch; margin:14px 0;
+    }
+    .score-card{
+      display:grid; grid-template-rows:72px 84px 1fr; /* LOGO / VOTO / TESTO */
+      align-items:center; justify-items:center; text-align:center;
+      background:#fff; border:1px solid #eee; border-radius:12px; padding:20px; box-shadow:var(--shadow);
+    }
+    .score-card .brand{ height:72px; display:flex; align-items:center; justify-content:center }
+    .score-card .brand img{ height:54px; width:auto; display:block }
+    .score-card .score{ font-size:62px; font-weight:700; line-height:1 }
+    .score-card .score .unit{ font-size:18px; font-weight:700 }
+    .score-card blockquote{ width:100%; margin:0; background:#fafafa; padding:12px 14px; border-radius:10px; font-size:14px; text-align:center }
+    .score-airbnb .score{ color:#FF5A5F }   .score-airbnb blockquote{ border-left:4px solid #FF5A5F }
+    .score-booking .score{ color:#0071c2 }  .score-booking blockquote{ border-left:4px solid #0071c2 }
+    .score-vrbo .score{ color:#2e7d32 }     .score-vrbo blockquote{ border-left:4px solid #2e7d32 }
+    /* booking un filo più piccolo se serve */
+    .score-booking .brand img{ height:50px }
+
     /* MAPPA + FOOTER */
     .map{ border:0; width:100%; height:360px; border-radius:12px }
     footer{ margin-top:28px; padding:18px; color:#111; text-align:center; border-top:1px solid #ddd; background:#fff }
@@ -139,27 +160,22 @@
     }
     .booking-banner a{ background:#fff; color:#2e7d32; padding:8px 12px; border-radius:8px; font-weight:700 }
 
-    /* LIGHTBOX (solo quando .open) */
-    .lightbox{
-      position:fixed; inset:0; background:rgba(0,0,0,.9);
-      display:flex; align-items:center; justify-content:center; z-index:10000;
-      opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s ease;
+    /* Mobile */
+    @media (max-width:640px){
+      .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px }
+      nav.top .inner{ gap:8px }
+      nav.top .links a{ padding:6px 10px; font-size:15px }
+      .section{ padding:12px 0 }
+      .score-card{ grid-template-rows:70px 84px 1fr }
+      .score-card .brand img{ height:54px }
+      .score-booking .brand img{ height:50px }
+      .score-card .score{ font-size:58px }
     }
-    .lightbox.open{ opacity:1; visibility:visible; pointer-events:auto }
-    .lightbox img{ max-width:90vw; max-height:85vh; object-fit:contain; border-radius:8px }
-    .lb-btn{ position:absolute; background:rgba(255,255,255,.25); border:none; color:#000; padding:10px; cursor:pointer; border-radius:10px; font-weight:700 }
-    .lb-prev{ left:20px; top:50%; transform:translateY(-50%) }
-    .lb-next{ right:20px; top:50%; transform:translateY(-50%) }
-    .lb-close{ top:20px; right:20px }
+    @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto } }
+  </style>
+</head>
+<body>
 
-/* mobile: leggermente più compatti */
-@media (max-width:640px){
-  .score-box{ grid-template-rows: 70px 84px 1fr !important; }
-  .score-box .brand img{ height:54px !important; }
-  .score-booking .brand img{ height:50px !important; }
-  .score-box .score{ font-size:58px !important; }
-}
-  <style>
 <!-- NAV -->
 <nav class="top" aria-label="Navigazione principale">
   <div class="inner">
@@ -170,10 +186,10 @@
 
     <div class="lang-switch" aria-label="Cambio lingua">
       <a href="/" hreflang="it" lang="it" aria-label="Italiano" title="Italiano">
-        <img src="/images/it.svg?v=1" alt="Italiano" width="28" height="20" loading="lazy" decoding="async">
+        <img src="images/it.svg" alt="Italiano" width="28" height="20" loading="lazy" decoding="async">
       </a>
       <a href="/en/" hreflang="en" lang="en" aria-label="English" title="English">
-        <img src="/images/gb.svg?v=1" alt="English" width="28" height="20" loading="lazy" decoding="async">
+        <img src="images/gb.svg" alt="English" width="28" height="20" loading="lazy" decoding="async">
       </a>
     </div>
 
@@ -265,7 +281,6 @@
         <h2>Galleria</h2>
 
         <div class="gallery-grid">
-          <!-- solo primo blocco, gli altri identici come sotto -->
           <div id="gallery-esterno" class="thumb" data-group="esterno">
             <picture>
               <source srcset="images/esterno_giardino_1.webp" type="image/webp">
@@ -308,14 +323,14 @@
   </section>
 
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galleria immagini">
-    <button class="lb-btn lb-prev" aria-label="Precedente">❮</button>
-    <img src="" alt="" decoding="async" width="1600" height="1200">
-    <button class="lb-btn lb-next" aria-label="Successiva">❯</button>
-    <button class="lb-btn lb-close" aria-label="Chiudi">✕</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galleria immagini" style="position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;z-index:10000;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease;">
+    <button class="lb-btn lb-prev" aria-label="Precedente" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.25);border:none;color:#000;padding:10px;cursor:pointer;border-radius:10px;font-weight:700">❮</button>
+    <img src="" alt="" decoding="async" width="1600" height="1200" style="max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px">
+    <button class="lb-btn lb-next" aria-label="Successiva" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.25);border:none;color:#000;padding:10px;cursor:pointer;border-radius:10px;font-weight:700">❯</button>
+    <button class="lb-btn lb-close" aria-label="Chiudi" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,.25);border:none;color:#000;padding:10px;cursor:pointer;border-radius:10px;font-weight:700">✕</button>
   </div>
 
-  <!-- SPAZI -->
+  <!-- SPAZI INTERNI -->
   <section id="spazi-interni" class="section">
     <div class="container">
       <article class="card pad">
@@ -332,6 +347,7 @@
     </div>
   </section>
 
+  <!-- SPAZI ESTERNI -->
   <section id="esterni" class="section">
     <div class="container">
       <article class="card pad">
@@ -381,32 +397,58 @@
     </div>
   </section>
 
-  <!-- RECENSIONI (centrate) -->
+  <!-- RECENSIONI -->
   <section id="recensioni" class="section">
     <div class="container">
       <article class="card pad">
         <h2>Recensioni</h2>
-        <div class="review-scores" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:stretch;text-align:center;margin:14px 0;">
-          <div class="score-box" style="flex:1 1 240px; max-width:360px; margin:0 auto;">
-            <img src="images/airbnb-logo.svg" alt="Airbnb" style="height:40px;margin:0 auto 8px;display:block" loading="lazy" decoding="async">
-            <div style="font-size:40px;font-weight:700;color:#FF5A5F;">4.9<span style="font-size:16px;">/5</span></div>
-            <blockquote style="margin-top:8px;font-size:14px;background:#fafafa;padding:10px;border-radius:8px;border-left:4px solid #FF5A5F;">“Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli. Torneremo sicuramente!”<br><span class="muted">– Laura, Airbnb</span></blockquote>
+        <div class="review-scores">
+          <!-- AIRBNB -->
+          <div class="score-card score-airbnb">
+            <div class="brand">
+              <img src="images/airbnb-logo.svg" alt="Airbnb" loading="lazy" decoding="async">
+            </div>
+            <div class="score">
+              <span class="num">4.9</span><span class="unit">/5</span>
+            </div>
+            <blockquote>
+              “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli. Torneremo sicuramente!”
+              <br><span class="muted">– Laura, Airbnb</span>
+            </blockquote>
           </div>
-          <div class="score-box" style="flex:1 1 240px; max-width:360px; margin:0 auto;">
-            <img src="images/booking-logo.svg" alt="Booking.com" style="height:40px;margin:0 auto 8px;display:block" loading="lazy" decoding="async">
-            <div style="font-size:40px;font-weight:700;color:#0071c2;">9.6<span style="font-size:16px;">/10</span></div>
-            <blockquote style="margin-top:8px;font-size:14px;background:#fafafa;padding:10px;border-radius:8px;border-left:4px solid #0071c2;">“Accoglienza fantastica, Alessandra è un’host speciale. Vista mozzafiato dalla terrazza.”<br><span class="muted">– Marco, Booking</span></blockquote>
+
+          <!-- BOOKING -->
+          <div class="score-card score-booking">
+            <div class="brand">
+              <img src="images/booking-logo.svg" alt="Booking.com" loading="lazy" decoding="async">
+            </div>
+            <div class="score">
+              <span class="num">9.6</span><span class="unit">/10</span>
+            </div>
+            <blockquote>
+              “Accoglienza fantastica, Alessandra è un’host speciale. Vista mozzafiato dalla terrazza.”
+              <br><span class="muted">– Marco, Booking</span>
+            </blockquote>
           </div>
-          <div class="score-box" style="flex:1 1 240px; max-width:360px; margin:0 auto;">
-            <img src="images/Vrbo.svg" alt="VRBO" style="height:40px;margin:0 auto 8px;display:block" loading="lazy" decoding="async">
-            <div style="font-size:40px;font-weight:700;color:#2e7d32;">10<span style="font-size:16px;">/10</span></div>
-            <blockquote style="margin-top:8px;font-size:14px;background:#fafafa;padding:10px;border-radius:8px;border-left:4px solid #2e7d32;">“Soggiorno perfetto! Appartamento impeccabile e posizione ideale. Consigliatissimo.”<br><span class="muted">– Anna, VRBO</span></blockquote>
+
+          <!-- VRBO -->
+          <div class="score-card score-vrbo">
+            <div class="brand">
+              <img src="images/Vrbo.svg" alt="VRBO" loading="lazy" decoding="async">
+            </div>
+            <div class="score">
+              <span class="num">10</span><span class="unit">/10</span>
+            </div>
+            <blockquote>
+              “Soggiorno perfetto! Appartamento impeccabile e posizione ideale. Consigliatissimo.”
+              <br><span class="muted">– Anna, VRBO</span>
+            </blockquote>
           </div>
         </div>
       </article>
     </div>
   </section>
-  
+
   <!-- MAPPA -->
   <section id="mappa" class="section">
     <div class="container">
@@ -418,7 +460,7 @@
     </div>
   </section>
 
-  <!-- COSA FARE: elenco unico (no colonne), titoli in bold, senza link) -->
+  <!-- COSA FARE (elenco nero, titoli bold) -->
   <section id="cosa-fare" class="section">
     <div class="container">
       <article class="card pad">
@@ -516,7 +558,7 @@
       </article>
     </div>
   </section>
-  
+
   <!-- CONTATTI -->
   <section id="contatti" class="section">
     <div class="container">
@@ -608,9 +650,9 @@
     currentGroup = photos[group].map(f=>"images/"+f);
     currentIndex = i;
     lbImg.src = currentGroup[currentIndex];
-    lb.classList.add('open');
+    lb.style.opacity = 1; lb.style.visibility = 'visible'; lb.style.pointerEvents = 'auto';
   }
-  function closeLightbox(){ lb.classList.remove('open'); }
+  function closeLightbox(){ lb.style.opacity = 0; lb.style.visibility = 'hidden'; lb.style.pointerEvents = 'none'; }
   function next(){ currentIndex=(currentIndex+1)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
   function prev(){ currentIndex=(currentIndex-1+currentGroup.length)%currentGroup.length; lbImg.src=currentGroup[currentIndex]; }
 
@@ -622,7 +664,8 @@
   lb.querySelector(".lb-prev").onclick  = prev;
 
   window.addEventListener("keydown",(e)=>{
-    if(!lb.classList.contains('open')) return;
+    const open = lb.style.visibility==='visible';
+    if(!open) return;
     if(e.key==="Escape") closeLightbox();
     if(e.key==="ArrowRight") next();
     if(e.key==="ArrowLeft")  prev();
@@ -630,9 +673,9 @@
 
   // Swipe mobile
   let startX=0,startY=0,dx=0,dy=0;
-  lb.addEventListener("touchstart",(e)=>{ if(!lb.classList.contains('open')) return; const t=e.changedTouches[0]; startX=t.clientX; startY=t.clientY; dx=0; dy=0; },{passive:true});
+  lb.addEventListener("touchstart",(e)=>{ if(lb.style.visibility!=='visible') return; const t=e.changedTouches[0]; startX=t.clientX; startY=t.clientY; dx=0; dy=0; },{passive:true});
   lb.addEventListener("touchmove",(e)=>{ const t=e.changedTouches[0]; dx=t.clientX-startX; dy=t.clientY-startY; },{passive:true});
-  lb.addEventListener("touchend",()=>{ if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); } },{passive:true});
+  lb.addEventListener("touchend",()=>{ if(lb.style.visibility!=='visible') return; if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); } },{passive:true});
 </script>
 
 <!-- FAQ schema (sintetico) -->
