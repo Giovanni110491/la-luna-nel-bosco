@@ -152,101 +152,62 @@
     .lb-next{ right:20px; top:50%; transform:translateY(-50%) }
     .lb-close{ top:20px; right:20px }
 
-    /* === RECENSIONI: griglia + allineamenti === */
+/* === RECENSIONI: griglia + allineamenti (FORZATO) === */
 .review-scores{
   display:grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap:22px;
-  align-items:stretch;           /* stessa altezza per le card */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap:22px !important;
+  align-items:stretch !important;
+  justify-items:stretch !important;
   margin:16px 0 !important;
-  justify-items:stretch;
 }
 
-/* card recensione: 3 righe fisse = LOGO / VOTO / QUOTE  */
 .score-box{
-  display:grid;
-  grid-template-rows: 56px 68px 1fr; /* 👈 fissa le altezze: quote parte alla stessa Y */
-  align-items:center;
-  justify-items:center;
-  text-align:center;
-  padding:22px;
-  border:1px solid #eee;
-  border-radius:14px;
-  background:#fff;
-  box-shadow:var(--shadow);
+  display:grid !important;
+  grid-template-rows: 80px 96px 1fr !important;  /* LOGO / VOTO / QUOTE */
+  align-items:center !important;
+  justify-items:center !important;
+  text-align:center !important;
+  padding:22px !important;
+  border:1px solid #eee !important;
+  border-radius:14px !important;
+  background:#fff !important;
+  box-shadow:0 6px 20px rgba(0,0,0,.12) !important;
 }
 
 /* riga logo */
-.score-box .brand{
-  height:56px; display:flex; align-items:center; justify-content:center;
-}
-.score-box .brand img{ height:40px; width:auto; display:block; }
-.score-booking .brand img{ height:34px; }   /* Booking leggermente più piccolo */
+.score-box .brand{ height:80px !important; display:flex !important; align-items:center !important; justify-content:center !important; }
+.score-box .brand img{ height:64px !important; width:auto !important; display:block !important; }
+.score-booking .brand img{ height:56px !important; } /* Booking un filo più piccolo */
 
 /* riga voto */
-.score-box .score{
-  display:flex; align-items:flex-end; gap:6px;
-  font-weight:700; line-height:1;
-  font-size:42px; color:#111;
-}
-.score-box .score .unit{ font-size:16px; font-weight:700; }
+.score-box .score{ display:flex !important; align-items:flex-end !important; gap:6px !important; font-weight:700 !important; line-height:1 !important; font-size:72px !important; color:#111 !important; }
+.score-box .score .unit{ font-size:18px !important; font-weight:700 !important; }
+
+.score-airbnb  .score{ color:#FF5A5F !important; }
+.score-booking .score{ color:#0071c2 !important; }
+.score-vrbo    .score{ color:#2e7d32 !important; }
 
 /* quote */
 .score-box blockquote{
-  width:100%;
-  margin:0;
-  background:#fafafa;
-  padding:12px 14px;
-  border-radius:10px;
-  text-align:center;
+  width:100% !important;
+  margin:0 !important;
+  background:#fafafa !important;
+  padding:14px !important;
+  border-radius:10px !important;
+  text-align:center !important;
 }
-.score-airbnb  blockquote{ border-left:4px solid #FF5A5F; }
-.score-booking blockquote{ border-left:4px solid #0071c2; }
-.score-vrbo    blockquote{ border-left:4px solid #2e7d32; }
+.score-airbnb  blockquote{ border-left:4px solid #FF5A5F !important; }
+.score-booking blockquote{ border-left:4px solid #0071c2 !important; }
+.score-vrbo    blockquote{ border-left:4px solid #2e7d32 !important; }
 
-/* uniforma colore del voto per ogni brand (facoltativo, identico a prima) */
-.score-airbnb  .score{ color:#FF5A5F; }
-.score-booking .score{ color:#0071c2; }
-.score-vrbo    .score{ color:#2e7d32; }
-
-    /* === RECENSIONI: override dimensioni === */
-:root{
-  --rev-logo-row: 72px;      /* altezza riga dei loghi */
-  --rev-score-row: 84px;     /* altezza riga del voto   */
-  --rev-logo-img: 80px;      /* altezza logo standard   */
-  --rev-logo-booking: 80px;  /* Booking leggermente più piccolo */
-  --rev-score-size: 64px;    /* dimensione numero voto  */
+/* mobile: leggermente più compatti */
+@media (max-width:640px){
+  .score-box{ grid-template-rows: 70px 84px 1fr !important; }
+  .score-box .brand img{ height:54px !important; }
+  .score-booking .brand img{ height:50px !important; }
+  .score-box .score{ font-size:58px !important; }
 }
-
-/* ricalibra la griglia delle card (logo / voto / quote) */
-.score-box{
-  grid-template-rows: var(--rev-logo-row) var(--rev-score-row) 1fr;
-}
-
-/* riga logo */
-.score-box .brand{ height: var(--rev-logo-row); }
-.score-box .brand img{ height: var(--rev-logo-img); width:auto; display:block; }
-.score-booking .brand img{ height: var(--rev-logo-booking); }
-
-/* riga voto più grande */
-.score-box .score{
-  font-size: var(--rev-score-size);
-}
-.score-box .score .unit{
-  font-size: 18px;
-}
-
-    /* --- Mobile --- */
-    @media (max-width:640px){
-      .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px }
-      nav.top .inner{ gap:8px }
-      nav.top .links a{ padding:6px 10px; font-size:15px }
-      .section{ padding:12px 0 }
-    }
-    @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto } }
-  </style>
-</head>
-<body>
 
 <!-- NAV -->
 <nav class="top" aria-label="Navigazione principale">
