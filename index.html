@@ -152,6 +152,63 @@
     .lb-next{ right:20px; top:50%; transform:translateY(-50%) }
     .lb-close{ top:20px; right:20px }
 
+    /* === RECENSIONI: griglia + allineamenti === */
+.review-scores{
+  display:grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:22px;
+  align-items:stretch;           /* stessa altezza per le card */
+  margin:16px 0 !important;
+  justify-items:stretch;
+}
+
+/* card recensione: 3 righe fisse = LOGO / VOTO / QUOTE  */
+.score-box{
+  display:grid;
+  grid-template-rows: 56px 68px 1fr; /* 👈 fissa le altezze: quote parte alla stessa Y */
+  align-items:center;
+  justify-items:center;
+  text-align:center;
+  padding:22px;
+  border:1px solid #eee;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+/* riga logo */
+.score-box .brand{
+  height:56px; display:flex; align-items:center; justify-content:center;
+}
+.score-box .brand img{ height:40px; width:auto; display:block; }
+.score-booking .brand img{ height:34px; }   /* Booking leggermente più piccolo */
+
+/* riga voto */
+.score-box .score{
+  display:flex; align-items:flex-end; gap:6px;
+  font-weight:700; line-height:1;
+  font-size:42px; color:#111;
+}
+.score-box .score .unit{ font-size:16px; font-weight:700; }
+
+/* quote */
+.score-box blockquote{
+  width:100%;
+  margin:0;
+  background:#fafafa;
+  padding:12px 14px;
+  border-radius:10px;
+  text-align:center;
+}
+.score-airbnb  blockquote{ border-left:4px solid #FF5A5F; }
+.score-booking blockquote{ border-left:4px solid #0071c2; }
+.score-vrbo    blockquote{ border-left:4px solid #2e7d32; }
+
+/* uniforma colore del voto per ogni brand (facoltativo, identico a prima) */
+.score-airbnb  .score{ color:#FF5A5F; }
+.score-booking .score{ color:#0071c2; }
+.score-vrbo    .score{ color:#2e7d32; }
+
     /* --- Mobile --- */
     @media (max-width:640px){
       .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px }
@@ -385,43 +442,58 @@
     </div>
   </section>
 
- <!-- RECENSIONI -->
-  <section id="recensioni" class="section">
-    <div class="container">
-      <article class="card pad">
-        <h2>Recensioni</h2>
+<!-- RECENSIONI -->
+<section id="recensioni" class="section">
+  <div class="container">
+    <article class="card pad">
+      <h2>Recensioni</h2>
 
-        <div class="review-scores" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:14px 0;">
-          <div class="score-box score-airbnb" style="flex:1 1 200px;text-align:center;">
-            <img src="images/airbnb-logo.svg" alt="Airbnb" style="height:48px;margin-bottom:8px;" loading="lazy" decoding="async">
-            <div class="score" style="font-size:40px;font-weight:700;color:#FF5A5F;">4.9<span style="font-size:16px;">/5</span></div>
-            <blockquote style="margin-top:8px;font-size:14px;background:#fafafa;padding:10px;border-radius:8px;border-left:4px solid #FF5A5F;">
-              “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli. Torneremo sicuramente!”
-              <br><span class="muted">– Laura, Airbnb</span>
-            </blockquote>
+      <div class="review-scores">
+        <!-- AIRBNB -->
+        <div class="score-box score-airbnb">
+          <div class="brand">
+            <img src="images/airbnb-logo.svg" alt="Airbnb" loading="lazy" decoding="async">
           </div>
-
-          <div class="score-box score-booking" style="flex:1 1 200px;text-align:center;">
-            <img src="images/booking-logo.svg" alt="Booking.com" style="height:32px;margin-bottom:8px;" loading="lazy" decoding="async">
-            <div class="score" style="font-size:40px;font-weight:700;color:#0071c2;">9.6<span style="font-size:16px;">/10</span></div>
-            <blockquote style="margin-top:8px;font-size:14px;background:#fafafa;padding:10px;border-radius:8px;border-left:4px solid #0071c2;">
-              “Accoglienza fantastica, Alessandra è un’host speciale. Vista mozzafiato dalla terrazza.”
-              <br><span class="muted">– Marco, Booking</span>
-            </blockquote>
+          <div class="score">
+            <span class="num">4.9</span><span class="unit">/5</span>
           </div>
-
-          <div class="score-box score-vrbo" style="flex:1 1 200px;text-align:center;">
-            <img src="images/Vrbo.svg" alt="VRBO" style="height:40px;margin-bottom:8px;" loading="lazy" decoding="async">
-            <div class="score" style="font-size:40px;font-weight:700;color:#2e7d32;">10<span style="font-size:16px;">/10</span></div>
-            <blockquote style="margin-top:8px;font-size:14px;background:#fafafa;padding:10px;border-radius:8px;border-left:4px solid #2e7d32;">
-              “Soggiorno perfetto! Appartamento impeccabile e posizione ideale. Consigliatissimo.”
-              <br><span class="muted">– Anna, VRBO</span>
-            </blockquote>
-          </div>
+          <blockquote>
+            “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli. Torneremo sicuramente!”
+            <br><span class="muted">– Laura, Airbnb</span>
+          </blockquote>
         </div>
-      </article>
-    </div>
-  </section>
+
+        <!-- BOOKING -->
+        <div class="score-box score-booking">
+          <div class="brand">
+            <img src="images/booking-logo.svg" alt="Booking.com" loading="lazy" decoding="async">
+          </div>
+          <div class="score">
+            <span class="num">9.6</span><span class="unit">/10</span>
+          </div>
+          <blockquote>
+            “Accoglienza fantastica, Alessandra è un’host speciale. Vista mozzafiato dalla terrazza.”
+            <br><span class="muted">– Marco, Booking</span>
+          </blockquote>
+        </div>
+
+        <!-- VRBO -->
+        <div class="score-box score-vrbo">
+          <div class="brand">
+            <img src="images/Vrbo.svg" alt="VRBO" loading="lazy" decoding="async">
+          </div>
+          <div class="score">
+            <span class="num">10</span><span class="unit">/10</span>
+          </div>
+          <blockquote>
+            “Soggiorno perfetto! Appartamento impeccabile e posizione ideale. Consigliatissimo.”
+            <br><span class="muted">– Anna, VRBO</span>
+          </blockquote>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
   
   <!-- MAPPA -->
   <section id="mappa" class="section">
