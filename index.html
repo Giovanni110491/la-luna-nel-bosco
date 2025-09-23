@@ -152,6 +152,63 @@
     .lb-next{ right:20px; top:50%; transform:translateY(-50%) }
     .lb-close{ top:20px; right:20px }
 
+    /* ---- RECENSIONI uniformate ---- */
+.reviews-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:18px;
+  justify-items:stretch;
+  align-items:stretch;
+  margin:14px 0;
+}
+@media (max-width: 980px){ .reviews-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 640px){ .reviews-grid{ grid-template-columns: 1fr; } }
+
+.review-card{
+  background:#fafafa;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  text-align:center;
+  gap:12px;
+}
+
+/* box logo con altezza fissa: tutti uguali */
+.brand-row{
+  height:38px;                /* stessa altezza per tutti */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.brand-row img{
+  height:100%;                /* si adatta all’altezza del box */
+  width:auto;
+  object-fit:contain;
+  display:block;
+}
+
+/* punteggio grande */
+.score-xl{ font-size:40px; font-weight:700; line-height:1; }
+.score-airbnb{ color:#FF5A5F; }
+.score-booking{ color:#0071c2; }
+.score-vrbo{ color:#2e7d32; }
+
+/* nuvoletta citazione */
+.quote{
+  background:#fff;
+  border-radius:10px;
+  padding:12px;
+  border-left:4px solid #ddd;
+}
+.quote.airbnb{ border-left-color:#FF5A5F; }
+.quote.booking{ border-left-color:#0071c2; }
+.quote.vrbo{ border-left-color:#2e7d32; }
+
     /* --- Mobile --- */
     @media (max-width:640px){
       .lang-switch{ position:static; margin:6px auto 0; justify-content:center; gap:14px }
@@ -385,55 +442,54 @@
     </div>
   </section>
 
-<!-- RECENSIONI (loghi veri, centrati) -->
+<!-- RECENSIONI -->
 <section id="recensioni" class="section">
   <div class="container">
     <article class="card pad">
       <h2>Recensioni</h2>
 
-      <div class="review-scores" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:stretch;text-align:center;margin:14px 0;">
+      <div class="reviews-grid">
 
         <!-- Airbnb -->
-        <div class="score-box" style="flex:1 1 260px;max-width:360px;margin:0 auto;background:#fafafa;border:1px solid #eee;border-radius:12px;padding:16px">
-          <img src="images/airbnb-logo.svg" alt="Airbnb" width="140" height="40"
-               loading="lazy" decoding="async"
-               style="display:block;margin:0 auto 8px;height:auto;object-fit:contain">
-          <div style="font-size:40px;font-weight:700;color:#FF5A5F;">4.9<span style="font-size:16px;">/5</span></div>
-          <blockquote style="margin-top:8px;font-size:14px;background:#fff;padding:10px;border-radius:8px;border-left:4px solid #FF5A5F;">
+        <div class="review-card">
+          <div class="brand-row" aria-label="Airbnb">
+            <img src="images/airbnb-logo.svg?v=1" alt="Airbnb">
+          </div>
+          <div class="score-xl score-airbnb">4.9<span style="font-size:16px;">/5</span></div>
+          <div class="quote airbnb">
             “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli.”
             <br><span class="muted">– Laura, Airbnb</span>
-          </blockquote>
+          </div>
         </div>
 
-        <!-- Booking -->
-        <div class="score-box" style="flex:1 1 260px;max-width:360px;margin:0 auto;background:#fafafa;border:1px solid #eee;border-radius:12px;padding:16px">
-          <img src="images/booking-logo.svg" alt="Booking.com" width="140" height="40"
-               loading="lazy" decoding="async"
-               style="display:block;margin:0 auto 8px;height:auto;object-fit:contain">
-          <div style="font-size:40px;font-weight:700;color:#0071c2;">9.6<span style="font-size:16px;">/10</span></div>
-          <blockquote style="margin-top:8px;font-size:14px;background:#fff;padding:10px;border-radius:8px;border-left:4px solid #0071c2;">
+        <!-- Booking.com -->
+        <div class="review-card">
+          <div class="brand-row" aria-label="Booking.com">
+            <img src="images/booking-logo.svg?v=1" alt="Booking.com">
+          </div>
+          <div class="score-xl score-booking">9.6<span style="font-size:16px;">/10</span></div>
+          <div class="quote booking">
             “Accoglienza fantastica, vista mozzafiato dalla terrazza.”
             <br><span class="muted">– Marco, Booking</span>
-          </blockquote>
+          </div>
         </div>
 
         <!-- VRBO -->
-        <div class="score-box" style="flex:1 1 260px;max-width:360px;margin:0 auto;background:#fafafa;border:1px solid #eee;border-radius:12px;padding:16px">
-          <img src="images/Vrbo.svg" alt="VRBO" width="140" height="40"
-               loading="lazy" decoding="async"
-               style="display:block;margin:0 auto 8px;height:auto;object-fit:contain">
-          <div style="font-size:40px;font-weight:700;color:#2e7d32;">10<span style="font-size:16px;">/10</span></div>
-          <blockquote style="margin-top:8px;font-size:14px;background:#fff;padding:10px;border-radius:8px;border-left:4px solid #2e7d32;">
+        <div class="review-card">
+          <div class="brand-row" aria-label="VRBO">
+            <img src="images/Vrbo.svg?v=1" alt="VRBO">
+          </div>
+          <div class="score-xl score-vrbo">10<span style="font-size:16px;">/10</span></div>
+          <div class="quote vrbo">
             “Appartamento impeccabile e posizione ideale.”
             <br><span class="muted">– Anna, VRBO</span>
-          </blockquote>
+          </div>
         </div>
 
       </div>
     </article>
   </div>
 </section>
-
   
   <!-- MAPPA -->
   <section id="mappa" class="section">
