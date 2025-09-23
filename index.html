@@ -152,7 +152,7 @@
     .lb-next{ right:20px; top:50%; transform:translateY(-50%) }
     .lb-close{ top:20px; right:20px }
 
-    /* ---- RECENSIONI uniformate ---- */
+/* ---- RECENSIONI uniformate ---- */
 .reviews-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -175,35 +175,37 @@
   align-items:center;
   text-align:center;
   gap:12px;
+  height:100%;                /* 👈 forza tutte le card a riempire la griglia */
 }
 
-/* box logo con altezza fissa: tutti uguali */
 .brand-row{
-  height:38px;                /* stessa altezza per tutti */
+  height:38px;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:10px;
 }
 .brand-row img{
-  height:100%;                /* si adatta all’altezza del box */
+  height:100%;
   width:auto;
   object-fit:contain;
   display:block;
 }
 
-/* punteggio grande */
 .score-xl{ font-size:40px; font-weight:700; line-height:1; }
 .score-airbnb{ color:#FF5A5F; }
 .score-booking{ color:#0071c2; }
 .score-vrbo{ color:#2e7d32; }
 
-/* nuvoletta citazione */
 .quote{
   background:#fff;
   border-radius:10px;
   padding:12px;
   border-left:4px solid #ddd;
+  flex-grow:1;                /* 👈 la citazione occupa lo spazio rimanente */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 .quote.airbnb{ border-left-color:#FF5A5F; }
 .quote.booking{ border-left-color:#0071c2; }
