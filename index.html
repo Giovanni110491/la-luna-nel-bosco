@@ -405,31 +405,33 @@
 
       <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:stretch;margin-top:12px;">
 
-        <!-- AIRBNB -->
-        <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
-          <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
-            <img src="images/airbnb-air.svg" alt="Airbnb"
-                 style="max-height:56px;width:auto;display:block;"
-                 onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>Airbnb</strong>'">
-          </div>
+       <!-- AIRBNB -->
+<div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
+  <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+    <!-- carica l'SVG; se non riesce, mostra il PNG; se manca anche quello, mostra il testo -->
+    <object data="images/airbnb-air.svg" type="image/svg+xml"
+            style="height:56px;width:auto;pointer-events:none;">
+      <img src="images/airbnb-air.png" alt="Airbnb" style="height:56px;width:auto;">
+      <strong style="font-size:22px">Airbnb</strong>
+    </object>
+  </div>
 
-          <div style="margin-bottom:10px;text-align:center;">
-            <span style="font-size:72px;font-weight:700;color:#FF5A5F;">4.9</span>
-            <span style="font-size:24px;font-weight:700;color:#FF5A5F;">/5</span>
-          </div>
+  <div style="margin-bottom:10px;text-align:center;">
+    <span style="font-size:72px;font-weight:700;color:#FF5A5F;">4.9</span>
+    <span style="font-size:24px;font-weight:700;color:#FF5A5F;">/5</span>
+  </div>
 
-          <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
-                             border-left:4px solid #FF5A5F;min-height:210px;
-                             display:flex;flex-direction:column;justify-content:space-between;
-                             text-align:center;">
-            <div style="font-size:18px;">
-              “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli.
-              Torneremo sicuramente!”
-            </div>
-            <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Laura, Airbnb</div>
-          </blockquote>
-        </div>
-
+  <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
+                     border-left:4px solid #FF5A5F;min-height:210px;
+                     display:flex;flex-direction:column;justify-content:space-between;
+                     text-align:center;">
+    <div style="font-size:18px;">
+      “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli.
+      Torneremo sicuramente!”
+    </div>
+    <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Laura, Airbnb</div>
+  </blockquote>
+</div>
         <!-- BOOKING -->
         <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
           <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
