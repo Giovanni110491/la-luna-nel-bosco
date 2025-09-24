@@ -405,20 +405,19 @@
 
       <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:stretch;margin-top:12px;">
 
-<!-- LOGO AIRBNB (con fallback di percorso) -->
-<img
-  src="images/logo-air.svg?v=1"
-  onerror="this.onerror=null;this.src='/images/logo-air.svg?v=1';"
-  alt="Airbnb"
-  style="max-height:56px;width:auto;display:block;">
+        <!-- AIRBNB -->
+        <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
+          <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+            <img src="images/airbnb-air.svg" alt="Airbnb"
+                 style="max-height:56px;width:auto;display:block;"
+                 onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>Airbnb</strong>'">
+          </div>
 
-          <!-- voto sotto al logo -->
           <div style="margin-bottom:10px;text-align:center;">
             <span style="font-size:72px;font-weight:700;color:#FF5A5F;">4.9</span>
             <span style="font-size:24px;font-weight:700;color:#FF5A5F;">/5</span>
           </div>
 
-          <!-- box recensione (autore dentro e centrato) -->
           <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
                              border-left:4px solid #FF5A5F;min-height:210px;
                              display:flex;flex-direction:column;justify-content:space-between;
@@ -434,8 +433,9 @@
         <!-- BOOKING -->
         <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
           <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
-            <img src="/images/booking-logo.svg?v=1" alt="Booking.com"
-                 style="max-height:56px;width:auto;display:block;">
+            <img src="images/booking-logo.svg" alt="Booking.com"
+                 style="max-height:56px;width:auto;display:block;"
+                 onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>Booking.com</strong>'">
           </div>
 
           <div style="margin-bottom:10px;text-align:center;">
@@ -458,8 +458,9 @@
         <!-- VRBO -->
         <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
           <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
-            <img src="/images/Vrbo.svg?v=1" alt="VRBO"
-                 style="max-height:56px;width:auto;display:block;">
+            <img src="images/Vrbo.svg" alt="VRBO"
+                 style="max-height:56px;width:auto;display:block;"
+                 onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>VRBO</strong>'">
           </div>
 
           <div style="margin-bottom:10px;text-align:center;">
@@ -482,6 +483,7 @@
     </article>
   </div>
 </section>
+
 
   <!-- MAPPA -->
   <section id="mappa" class="section">
