@@ -79,10 +79,10 @@
       "latitude": 43.51347,
       "longitude": 10.33964
     },
-    "hasMap": "https://www.google.com/maps?q=43.51347,10.33964",
+    "hasMap": "https://share.google/uCjCz3yWfyZJVBXEw",
     "email": "ale2difranco@gmail.com",
     "sameAs": [
-      "https://www.google.com/maps?q=43.51347,10.33964",
+      "https://share.google/uCjCz3yWfyZJVBXEw",
       "https://www.instagram.com/lalunanelbosco/?hl=it",
       "https://www.airbnb.it/rooms/15109094"
     ]
@@ -190,7 +190,6 @@
     .score-airbnb .score{ color:#FF5A5F }   .score-airbnb blockquote{ border-left:4px solid #FF5A5F }
     .score-booking .score{ color:#0071c2 }  .score-booking blockquote{ border-left:4px solid #0071c2 }
     .score-vrbo .score{ color:#2e7d32 }     .score-vrbo blockquote{ border-left:4px solid #2e7d32 }
-    /* booking un filo più piccolo se serve */
     .score-booking .brand img{ height:60px }
 
     /* MAPPA + FOOTER */
@@ -443,95 +442,94 @@
     </div>
   </section>
 
-<!-- RECENSIONI -->
-<section id="recensioni" class="section">
-  <div class="container">
-    <article class="card pad">
-      <h2>Recensioni</h2>
+  <!-- RECENSIONI -->
+  <section id="recensioni" class="section">
+    <div class="container">
+      <article class="card pad">
+        <h2>Recensioni</h2>
 
-      <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:stretch;margin-top:12px;">
+        <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:stretch;margin-top:12px;">
 
-       <!-- AIRBNB -->
-<div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
-  <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
-    <!-- carica l'SVG; se non riesce, mostra il PNG; se manca anche quello, mostra il testo -->
-    <object data="images/airbnb-air.svg" type="image/svg+xml"
-            style="height:56px;width:auto;pointer-events:none;">
-      <img src="images/airbnb-air.png" alt="Airbnb" style="height:56px;width:auto;">
-      <strong style="font-size:22px">Airbnb</strong>
-    </object>
-  </div>
+          <!-- AIRBNB -->
+          <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
+            <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+              <object data="images/airbnb-air.svg" type="image/svg+xml"
+                      style="height:56px;width:auto;pointer-events:none;">
+                <img src="images/airbnb-air.png" alt="Airbnb" style="height:56px;width:auto;">
+                <strong style="font-size:22px">Airbnb</strong>
+              </object>
+            </div>
 
-  <div style="margin-bottom:10px;text-align:center;">
-    <span style="font-size:72px;font-weight:700;color:#FF5A5F;">4.9</span>
-    <span style="font-size:24px;font-weight:700;color:#FF5A5F;">/5</span>
-  </div>
+            <div style="margin-bottom:10px;text-align:center;">
+              <span style="font-size:72px;font-weight:700;color:#FF5A5F;">4.9</span>
+              <span style="font-size:24px;font-weight:700;color:#FF5A5F;">/5</span>
+            </div>
 
-  <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
-                     border-left:4px solid #FF5A5F;min-height:210px;
-                     display:flex;flex-direction:column;justify-content:space-between;
-                     text-align:center;">
-    <div style="font-size:18px;">
-      “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli.
-      Torneremo sicuramente!”
+            <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
+                               border-left:4px solid #FF5A5F;min-height:210px;
+                               display:flex;flex-direction:column;justify-content:space-between;
+                               text-align:center;">
+              <div style="font-size:18px;">
+                “Un luogo magico immerso nel verde, appartamento curato nei minimi dettagli.
+                Torneremo sicuramente!”
+              </div>
+              <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Laura, Airbnb</div>
+            </blockquote>
+          </div>
+
+          <!-- BOOKING -->
+          <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
+            <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+              <img src="images/booking-logo.svg" alt="Booking.com"
+                   style="max-height:65px;width:auto;display:block;"
+                   onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>Booking.com</strong>'">
+            </div>
+
+            <div style="margin-bottom:10px;text-align:center;">
+              <span style="font-size:72px;font-weight:700;color:#0071c2;">9.6</span>
+              <span style="font-size:24px;font-weight:700;color:#0071c2;">/10</span>
+            </div>
+
+            <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
+                               border-left:4px solid #0071c2;min-height:210px;
+                               display:flex;flex-direction:column;justify-content:space-between;
+                               text-align:center;">
+              <div style="font-size:18px;">
+                “Accoglienza fantastica, Alessandra è un’host speciale.
+                Vista mozzafiato dalla terrazza.”
+              </div>
+              <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Marco, Booking</div>
+            </blockquote>
+          </div>
+
+          <!-- VRBO -->
+          <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
+            <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+              <img src="images/Vrbo.svg" alt="VRBO"
+                   style="max-height:56px;width:auto;display:block;"
+                   onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>VRBO</strong>'">
+            </div>
+
+            <div style="margin-bottom:10px;text-align:center;">
+              <span style="font-size:72px;font-weight:700;color:#2e7d32;">10</span>
+              <span style="font-size:24px;font-weight:700;color:#2e7d32;">/10</span>
+            </div>
+
+            <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
+                               border-left:4px solid #2e7d32;min-height:210px;
+                               display:flex;flex-direction:column;justify-content:space-between;
+                               text-align:center;">
+              <div style="font-size:18px;">
+                “Soggiorno perfetto! Appartamento impeccabile e posizione ideale. Consigliatissimo.”
+              </div>
+              <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Anna, VRBO</div>
+            </blockquote>
+          </div>
+
+        </div>
+      </article>
     </div>
-    <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Laura, Airbnb</div>
-  </blockquote>
-</div>
-        <!-- BOOKING -->
-        <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
-          <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
-            <img src="images/booking-logo.svg" alt="Booking.com"
-                 style="max-height:65px;width:auto;display:block;"
-                 onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>Booking.com</strong>'">
-          </div>
-
-          <div style="margin-bottom:10px;text-align:center;">
-            <span style="font-size:72px;font-weight:700;color:#0071c2;">9.6</span>
-            <span style="font-size:24px;font-weight:700;color:#0071c2;">/10</span>
-          </div>
-
-          <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
-                             border-left:4px solid #0071c2;min-height:210px;
-                             display:flex;flex-direction:column;justify-content:space-between;
-                             text-align:center;">
-            <div style="font-size:18px;">
-              “Accoglienza fantastica, Alessandra è un’host speciale.
-              Vista mozzafiato dalla terrazza.”
-            </div>
-            <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Marco, Booking</div>
-          </blockquote>
-        </div>
-
-        <!-- VRBO -->
-        <div style="flex:1 1 300px;max-width:420px;display:flex;flex-direction:column;align-items:center;">
-          <div style="height:84px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
-            <img src="images/Vrbo.svg" alt="VRBO"
-                 style="max-height:56px;width:auto;display:block;"
-                 onerror="this.outerHTML='<strong style=&quot;font-size:22px&quot;>VRBO</strong>'">
-          </div>
-
-          <div style="margin-bottom:10px;text-align:center;">
-            <span style="font-size:72px;font-weight:700;color:#2e7d32;">10</span>
-            <span style="font-size:24px;font-weight:700;color:#2e7d32;">/10</span>
-          </div>
-
-          <blockquote style="margin:0;background:#fafafa;padding:16px;border-radius:10px;
-                             border-left:4px solid #2e7d32;min-height:210px;
-                             display:flex;flex-direction:column;justify-content:space-between;
-                             text-align:center;">
-            <div style="font-size:18px;">
-              “Soggiorno perfetto! Appartamento impeccabile e posizione ideale. Consigliatissimo.”
-            </div>
-            <div style="margin-top:10px;font-size:16px;color:#6b7280;">– Anna, VRBO</div>
-          </blockquote>
-        </div>
-
-      </div>
-    </article>
-  </div>
-</section>
-
+  </section>
 
   <!-- MAPPA -->
   <section id="mappa" class="section">
@@ -548,7 +546,7 @@
     </div>
   </section>
 
-  <!-- COSA FARE (elenco nero, titoli bold) -->
+  <!-- COSA FARE -->
   <section id="cosa-fare" class="section">
     <div class="container">
       <article class="card pad">
@@ -598,7 +596,7 @@
     </div>
   </section>
 
-  <!-- FAQ (complete) -->
+  <!-- FAQ -->
   <section id="faq" class="section">
     <div class="container">
       <article class="card pad">
@@ -675,12 +673,12 @@
         </p>
 
         <p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
-          <!-- Icona pin mappa (più bella e neutra) -->
+          <!-- Icona pin mappa -->
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex:0 0 auto;display:block;">
             <path fill="#111" d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7zm0 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
           </svg>
 
-          <a href="https://www.google.com/maps?q=43.51347,10.33964"
+          <a href="https://share.google/uCjCz3yWfyZJVBXEw"
              target="_blank"
              rel="noopener noreferrer"
              aria-label="Apri la posizione su Google Maps">
@@ -762,4 +760,34 @@
   document.querySelectorAll(".thumb").forEach(el=>{
     el.addEventListener("click",()=> openLightbox(el.dataset.group,0));
   });
-  lb.querySelector(".lb-close").onclick = closeLig
+  lb.querySelector(".lb-close").onclick = closeLightbox;
+  lb.querySelector(".lb-next").onclick  = next;
+  lb.querySelector(".lb-prev").onclick  = prev;
+
+  window.addEventListener("keydown",(e)=>{
+    const open = lb.style.visibility==='visible';
+    if(!open) return;
+    if(e.key==="Escape") closeLightbox();
+    if(e.key==="ArrowRight") next();
+    if(e.key==="ArrowLeft")  prev();
+  });
+
+  // Swipe mobile
+  let startX=0,startY=0,dx=0,dy=0;
+  lb.addEventListener("touchstart",(e)=>{ if(lb.style.visibility!=='visible') return; const t=e.changedTouches[0]; startX=t.clientX; startY=t.clientY; dx=0; dy=0; },{passive:true});
+  lb.addEventListener("touchmove",(e)=>{ const t=e.changedTouches[0]; dx=t.clientX-startX; dy=t.clientY-startY; },{passive:true});
+  lb.addEventListener("touchend",()=>{ if(lb.style.visibility!=='visible') return; if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); } },{passive:true});
+</script>
+
+<!-- FAQ schema (sintetico) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Qual è il soggiorno minimo presso La Luna nel Bosco a Livorno?","acceptedAnswer":{"@type":"Answer","text":"Il soggiorno minimo è di 4 notti."}},
+    {"@type":"Question","name":"Quante persone può ospitare l’appartamento La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"Fino a 5 persone (+1 su richiesta)."}},
+    {"@type":"Question","name":"La casa vacanza è adatta a famiglie con bambini?","acceptedAnswer":{"@type":"Answer","text":"Sì, ampi spazi, terrazza privata e parco secolare."}}
+  ]
+}
+</script>
+</body>
+</html>
