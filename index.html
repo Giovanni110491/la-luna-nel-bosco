@@ -79,10 +79,10 @@
       "latitude": 43.51347,
       "longitude": 10.33964
     },
-    "hasMap": "https://www.google.com/maps?q=Via%20del%20Pino%20152%2C%2057128%20Livorno%20LI",
+    "hasMap": "https://www.google.com/maps?q=43.51347,10.33964",
     "email": "ale2difranco@gmail.com",
     "sameAs": [
-      "https://www.google.com/maps?q=Via%20del%20Pino%20152%2C%2057128%20Livorno%20LI",
+      "https://www.google.com/maps?q=43.51347,10.33964",
       "https://www.instagram.com/lalunanelbosco/?hl=it",
       "https://www.airbnb.it/rooms/15109094"
     ]
@@ -539,7 +539,11 @@
       <article class="card pad">
         <h2>Dove siamo</h2>
         <p>L’appartamento si trova in <strong>Via del Pino, Livorno</strong>, sulle colline di Montenero.</p>
-        <iframe class="map" src="https://www.google.com/maps?q=Via%20del%20Pino%20Livorno&output=embed" title="Mappa La Luna nel Bosco" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="map"
+          src="https://www.google.com/maps?q=43.51347,10.33964&z=17&output=embed"
+          title="Mappa La Luna nel Bosco"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </article>
     </div>
   </section>
@@ -670,22 +674,19 @@
           <a href="https://www.instagram.com/lalunanelbosco/?hl=it" target="_blank" rel="noopener noreferrer">@lalunanelbosco</a>
         </p>
 
-<p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
-  <svg width="20" height="20" viewBox="0 0 488 512" aria-hidden="true" style="flex:0 0 auto;display:block;">
-    <path fill="#111" d="M488 261.8c0-17.8-1.6-35-4.6-51.8H249v98h134.6c-5.8 31.4-23.2 58-49.4 75.8v62h79.8c46.8-43 73-106.4 73-184z"/>
-    <path fill="#111" d="M249 512c67.2 0 123.6-22.2 164.8-60.2l-79.8-62c-22.2 15-50.6 23.8-85 23.8-65.4 0-120.8-44.2-140.6-103.8H26.6v65.4C67.6 462.8 152.8 512 249 512z"/>
-    <path fill="#111" d="M108.4 309.8c-10-29.8-10-61.8 0-91.6V152.8H26.6c-32.8 65.6-32.8 143.8 0 209.4l81.8-52.4z"/>
-    <path fill="#111" d="M249 98.2c35.6-.6 69.8 12.8 95.8 37.6l71.6-71.6C371.8 23.4 313 0 249 0 152.8 0 67.6 49.2 26.6 137.4l81.8 65.4C128.2 142.4 183.6 98.2 249 98.2z"/>
-  </svg>
+        <p style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+          <!-- Icona pin mappa (più bella e neutra) -->
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex:0 0 auto;display:block;">
+            <path fill="#111" d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7zm0 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+          </svg>
 
-  <a href="https://www.google.com/maps?q=Via%20del%20Pino%20152%2C%2057128%20Livorno%20LI"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Apri il profilo Google di La Luna nel Bosco – Livorno">
-    Google – La Luna nel Bosco · Livorno
-  </a>
-</p>
-
+          <a href="https://www.google.com/maps?q=43.51347,10.33964"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Apri la posizione su Google Maps">
+            Google Maps – La Luna nel Bosco
+          </a>
+        </p>
 
       </article>
     </div>
@@ -761,34 +762,4 @@
   document.querySelectorAll(".thumb").forEach(el=>{
     el.addEventListener("click",()=> openLightbox(el.dataset.group,0));
   });
-  lb.querySelector(".lb-close").onclick = closeLightbox;
-  lb.querySelector(".lb-next").onclick  = next;
-  lb.querySelector(".lb-prev").onclick  = prev;
-
-  window.addEventListener("keydown",(e)=>{
-    const open = lb.style.visibility==='visible';
-    if(!open) return;
-    if(e.key==="Escape") closeLightbox();
-    if(e.key==="ArrowRight") next();
-    if(e.key==="ArrowLeft")  prev();
-  });
-
-  // Swipe mobile
-  let startX=0,startY=0,dx=0,dy=0;
-  lb.addEventListener("touchstart",(e)=>{ if(lb.style.visibility!=='visible') return; const t=e.changedTouches[0]; startX=t.clientX; startY=t.clientY; dx=0; dy=0; },{passive:true});
-  lb.addEventListener("touchmove",(e)=>{ const t=e.changedTouches[0]; dx=t.clientX-startX; dy=t.clientY-startY; },{passive:true});
-  lb.addEventListener("touchend",()=>{ if(lb.style.visibility!=='visible') return; if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); } },{passive:true});
-</script>
-
-<!-- FAQ schema (sintetico) -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"Qual è il soggiorno minimo presso La Luna nel Bosco a Livorno?","acceptedAnswer":{"@type":"Answer","text":"Il soggiorno minimo è di 4 notti."}},
-    {"@type":"Question","name":"Quante persone può ospitare l’appartamento La Luna nel Bosco?","acceptedAnswer":{"@type":"Answer","text":"Fino a 5 persone (+1 su richiesta)."}},
-    {"@type":"Question","name":"La casa vacanza è adatta a famiglie con bambini?","acceptedAnswer":{"@type":"Answer","text":"Sì, ampi spazi, terrazza privata e parco secolare."}}
-  ]
-}
-</script>
-</body>
-</html>
+  lb.querySelector(".lb-close").onclick = closeLig
